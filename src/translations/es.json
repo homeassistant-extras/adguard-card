@@ -7,8 +7,8 @@
       "list_blocked_queries": "Listar peticiones bloqueadas",
       "percentage_blocked": "Porcentaje bloqueos",
       "list_all_queries": "Listar todas las peticiones",
-      "domains_on_lists": "Dominios bloqueados",
-      "manage_lists": "Gestionar listas"
+      "average_processing_speed": "Velocidad de Procesamiento Promedio",
+      "processing_speed_info": "Tiempo promedio de procesamiento de consultas"
     },
     "sections": {
       "pause": "Pausar Bloqueo de Anuncios",

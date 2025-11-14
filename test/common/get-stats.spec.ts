@@ -19,7 +19,7 @@ describe('dashboard-stats.ts', () => {
 
       // Check first row, first stat
       expect(result[0]![0]).to.deep.include({
-        sensorKey: 'dns_queries_today',
+        sensorKey: 'dns_queries',
         title: 'card.stats.total_queries',
         className: 'queries-box',
         icon: 'mdi:earth',
@@ -32,11 +32,11 @@ describe('dashboard-stats.ts', () => {
 
       // Check second row, second stat
       expect(result[1]![1]).to.deep.include({
-        sensorKey: 'domains_blocked',
-        title: 'card.stats.domains_on_lists',
-        footer: 'card.stats.manage_lists',
+        sensorKey: 'average_processing_speed',
+        title: 'card.stats.average_processing_speed',
+        footer: 'card.stats.processing_speed_info',
         className: 'domains-box',
-        icon: 'mdi:format-list-bulleted',
+        icon: 'mdi:speedometer',
       });
     });
 

@@ -1,4 +1,4 @@
-import type { EntityInformation, AdGuardDevice } from '@type/types';
+import type { AdGuardDevice, EntityInformation } from '@type/types';
 
 /**
  * Maps entities to the AdGuard device object based on their translation keys.
@@ -11,10 +11,12 @@ export const mapEntitiesByTranslationKey = (
   device: AdGuardDevice,
 ) => {
   const keyToPropertyMap = {
-    dns_queries_today: 'dns_queries_today',
-    domains_blocked: 'domains_blocked',
-    ads_percentage_blocked_today: 'ads_percentage_blocked_today',
-    ads_blocked_today: 'ads_blocked_today',
+    dns_queries: 'dns_queries',
+    dns_queries_blocked: 'dns_queries_blocked',
+    dns_queries_blocked_ratio: 'dns_queries_blocked_ratio',
+    average_processing_speed: 'average_processing_speed',
+
+    // not vetted yet
     dns_unique_clients: 'dns_unique_clients',
     remaining_until_blocking_mode: 'remaining_until_blocking_mode',
     action_refresh_data: 'action_refresh_data',
@@ -24,11 +26,11 @@ export const mapEntitiesByTranslationKey = (
     action_ftl_purge_diagnosis_messages: 'purge_diagnosis_messages',
 
     // backwards compatibility for HA integration
-    dns_queries: 'dns_queries_today',
-    ads_blocked: 'ads_blocked_today',
-    percent_ads_blocked: 'ads_percentage_blocked_today',
-    ads_percentage_today: 'ads_percentage_blocked_today',
-    domains_being_blocked: 'domains_blocked',
+    // dns_queries: 'dns_queries',
+    // ads_blocked: 'dns_queries_blocked',
+    // percent_ads_blocked: 'dns_queries_blocked_ratio',
+    // ads_percentage_today: 'dns_queries_blocked_ratio',
+    // domains_being_blocked: 'domains_blocked',
   };
 
   const key = entity.translation_key;

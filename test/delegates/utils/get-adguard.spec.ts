@@ -82,7 +82,7 @@ describe('get-adguard.ts', () => {
   it('should map entities using mapEntitiesByTranslationKey and sort updates', () => {
     // Create some test entities
     const mockEntities = [
-      createEntity('sensor.test_1', 'dns_queries_today', '10000'),
+      createEntity('sensor.test_1', 'dns_queries', '10000'),
       createEntity('button.test_2', 'action_refresh_data'),
       createEntity('update.test_3', undefined, 'off', { title: 'Core' }),
       createEntity('update.test_4', undefined, 'off', { title: 'FTL' }),
@@ -113,7 +113,7 @@ describe('get-adguard.ts', () => {
   it('should filter out entities that should be skipped', () => {
     // Create some test entities
     const mockEntities = [
-      createEntity('sensor.test_1', 'dns_queries_today', '10000'),
+      createEntity('sensor.test_1', 'dns_queries', '10000'),
       createEntity('button.test_2', undefined),
     ];
 
@@ -145,7 +145,7 @@ describe('get-adguard.ts', () => {
     // Create test entities in a specific order
     const mockEntities = [
       createEntity('button.test_1', 'action_refresh_data', 'on'),
-      createEntity('sensor.test_2', 'dns_queries_today', '1000'),
+      createEntity('sensor.test_2', 'dns_queries', '1000'),
       createEntity('switch.test_3', undefined, 'on'),
       createEntity('button.test_4', undefined, 'off'),
     ];

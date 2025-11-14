@@ -15,7 +15,7 @@ describe('is-graph-sensor.ts', () => {
       expect(isGraphSensor('sensor.seen_clients')).to.be.false;
       expect(isGraphSensor('sensor.dns_unique_domains')).to.be.false;
       expect(isGraphSensor('sensor.dns_queries_cached')).to.be.false;
-      expect(isGraphSensor('sensor.pi_hole_ads_blocked_today')).to.be.false;
+      expect(isGraphSensor('sensor.pi_hole_dns_queries_blocked')).to.be.false;
     });
 
     it('should return false for non-sensor entities', () => {
@@ -36,4 +36,3 @@ describe('is-graph-sensor.ts', () => {
     });
   });
 });
-

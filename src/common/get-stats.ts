@@ -10,7 +10,7 @@ export const getDashboardStats = (
 ): DashboardStatConfig[][] => [
   [
     {
-      sensorKey: 'dns_queries_today',
+      sensorKey: 'dns_queries',
       title: 'card.stats.total_queries',
       footer: {
         key: 'card.stats.active_clients',
@@ -21,7 +21,7 @@ export const getDashboardStats = (
       icon: 'mdi:earth',
     },
     {
-      sensorKey: 'ads_blocked_today',
+      sensorKey: 'dns_queries_blocked',
       title: 'card.stats.queries_blocked',
       footer: 'card.stats.list_blocked_queries',
       className: 'blocked-box',
@@ -30,18 +30,18 @@ export const getDashboardStats = (
   ],
   [
     {
-      sensorKey: 'ads_percentage_blocked_today',
+      sensorKey: 'dns_queries_blocked_ratio',
       title: 'card.stats.percentage_blocked',
       footer: 'card.stats.list_all_queries',
       className: 'percentage-box',
       icon: 'mdi:chart-pie',
     },
     {
-      sensorKey: 'domains_blocked',
-      title: 'card.stats.domains_on_lists',
-      footer: 'card.stats.manage_lists',
+      sensorKey: 'average_processing_speed',
+      title: 'card.stats.average_processing_speed',
+      footer: 'card.stats.processing_speed_info',
       className: 'domains-box',
-      icon: 'mdi:format-list-bulleted',
+      icon: 'mdi:speedometer',
     },
   ],
 ];

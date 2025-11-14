@@ -7,8 +7,8 @@
       "list_blocked_queries": "Λίστα αποκλεισμένων ερωτημάτων",
       "percentage_blocked": "Ποσοστό που αποκλείστηκε",
       "list_all_queries": "Λίστα όλων των ερωτημάτων",
-      "domains_on_lists": "Τομείς στις Λίστες",
-      "manage_lists": "Διαχείριση Λιστών"
+      "average_processing_speed": "Μέση Ταχύτητα Επεξεργασίας",
+      "processing_speed_info": "Μέσος χρόνος επεξεργασίας ερωτημάτων"
     },
     "sections": {
       "pause": "Παύση Αποκλεισμού Διαφημίσεων",

@@ -12,8 +12,8 @@ const VALID_KEYS: TranslationKey[] = [
   'card.stats.list_blocked_queries',
   'card.stats.percentage_blocked',
   'card.stats.list_all_queries',
-  'card.stats.domains_on_lists',
-  'card.stats.manage_lists',
+  'card.stats.average_processing_speed',
+  'card.stats.processing_speed_info',
 ];
 
 // A key that doesn't exist

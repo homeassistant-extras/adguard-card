@@ -8,16 +8,16 @@ export interface AdGuardDevice {
   device_id: string;
 
   /** Total DNS Queries */
-  dns_queries_today?: EntityInformation;
+  dns_queries?: EntityInformation;
 
-  /** Total Domains Blocked */
-  domains_blocked?: EntityInformation;
+  /** Average Processing Speed */
+  average_processing_speed?: EntityInformation;
 
   /** Percentage of Ads Blocked Today */
-  ads_percentage_blocked_today?: EntityInformation;
+  dns_queries_blocked_ratio?: EntityInformation;
 
   /** Total Ads Blocked Today */
-  ads_blocked_today?: EntityInformation;
+  dns_queries_blocked?: EntityInformation;
 
   /** Total Unique Clients Queried */
   dns_unique_clients?: EntityInformation;

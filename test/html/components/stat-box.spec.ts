@@ -41,7 +41,7 @@ describe('stat-box.ts', () => {
     // Create default StatBoxConfig
     mockStatBoxConfig = {
       title: 'card.stats.total_queries',
-      footer: 'card.stats.manage_lists',
+      footer: 'card.stats.list_all_queries',
       className: 'queries-box',
       icon: 'mdi:earth',
     };
@@ -75,7 +75,7 @@ describe('stat-box.ts', () => {
       if (key === 'card.stats.list_blocked_queries')
         return 'List Blocked Queries';
       // For footer texts
-      if (key === 'card.stats.manage_lists') return 'Manage Lists';
+      if (key === 'card.stats.list_all_queries') return 'List all queries';
 
       // Default fallback for other keys
       return `Localized: ${key}`;
@@ -145,7 +145,7 @@ describe('stat-box.ts', () => {
     // Footer section should have the localized string
     const footerEl = el.querySelector('.stat-footer span');
     expect(footerEl).to.exist;
-    expect(footerEl?.textContent?.trim()).to.equal('Manage Lists');
+    expect(footerEl?.textContent?.trim()).to.equal('List all queries');
   });
 
   it('should handle missing entity data', async () => {

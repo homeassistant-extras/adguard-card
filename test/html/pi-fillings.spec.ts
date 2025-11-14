@@ -37,7 +37,7 @@ describe('pi-fillings.ts', () => {
     mockDashboardStats = [
       [
         {
-          sensorKey: 'dns_queries_today',
+          sensorKey: 'dns_queries',
           title: 'card.stats.total_queries',
           footer: {
             key: 'card.stats.active_clients',
@@ -48,7 +48,7 @@ describe('pi-fillings.ts', () => {
           icon: 'mdi:earth',
         },
         {
-          sensorKey: 'ads_blocked_today',
+          sensorKey: 'dns_queries_blocked',
           title: 'card.stats.queries_blocked',
           footer: 'card.stats.list_blocked_queries',
           className: 'blocked-box',
@@ -57,18 +57,18 @@ describe('pi-fillings.ts', () => {
       ],
       [
         {
-          sensorKey: 'ads_percentage_blocked_today',
+          sensorKey: 'dns_queries_blocked_ratio',
           title: 'card.stats.percentage_blocked',
           footer: 'card.stats.list_all_queries',
           className: 'percentage-box',
           icon: 'mdi:chart-pie',
         },
         {
-          sensorKey: 'domains_blocked',
-          title: 'card.stats.domains_on_lists',
-          footer: 'card.stats.manage_lists',
+          sensorKey: 'average_processing_speed',
+          title: 'card.stats.average_processing_speed',
+          footer: 'card.stats.processing_speed_info',
           className: 'domains-box',
-          icon: 'mdi:format-list-bulleted',
+          icon: 'mdi:speedometer',
         },
       ],
     ];
@@ -91,29 +91,29 @@ describe('pi-fillings.ts', () => {
     // Mock device with required stats
     mockDevice = {
       device_id: 'adguard_device',
-      dns_queries_today: {
-        entity_id: 'sensor.dns_queries_today',
+      dns_queries: {
+        entity_id: 'sensor.dns_queries',
         state: '12345',
         attributes: {},
-        translation_key: 'dns_queries_today',
+        translation_key: 'dns_queries',
       },
-      ads_blocked_today: {
-        entity_id: 'sensor.ads_blocked_today',
+      dns_queries_blocked: {
+        entity_id: 'sensor.dns_queries_blocked',
         state: '5678',
         attributes: {},
-        translation_key: 'ads_blocked_today',
+        translation_key: 'dns_queries_blocked',
       },
-      ads_percentage_blocked_today: {
-        entity_id: 'sensor.ads_percentage_blocked_today',
+      dns_queries_blocked_ratio: {
+        entity_id: 'sensor.dns_queries_blocked_ratio',
         state: '45.6',
         attributes: {},
-        translation_key: 'ads_percentage_blocked_today',
+        translation_key: 'dns_queries_blocked_ratio',
       },
-      domains_blocked: {
-        entity_id: 'sensor.domains_blocked',
-        state: '987654',
+      average_processing_speed: {
+        entity_id: 'sensor.average_processing_speed',
+        state: '12.5',
         attributes: {},
-        translation_key: 'domains_blocked',
+        translation_key: 'average_processing_speed',
       },
       dns_unique_clients: {
         entity_id: 'sensor.dns_unique_clients',
@@ -193,7 +193,7 @@ describe('pi-fillings.ts', () => {
     expect(createStatBoxStub.firstCall.args[0]).to.equal(mockElement);
     expect(createStatBoxStub.firstCall.args[1]).to.equal(mockHass);
     expect(createStatBoxStub.firstCall.args[2]).to.equal(
-      mockDevice.dns_queries_today,
+      mockDevice.dns_queries,
     );
     expect(createStatBoxStub.firstCall.args[3]).to.equal(mockConfig.stats);
     expect(createStatBoxStub.firstCall.args[4]).to.deep.equal(firstStatConfig);
@@ -203,7 +203,7 @@ describe('pi-fillings.ts', () => {
     // Create a device missing some stats
     const incompleteDevice = {
       ...mockDevice,
-      ads_blocked_today: undefined,
+      dns_queries_blocked: undefined,
     };
 
     // Call createDashboardStats

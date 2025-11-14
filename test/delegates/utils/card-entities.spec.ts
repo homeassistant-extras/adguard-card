@@ -14,15 +14,15 @@ describe('card-entities.ts', () => {
     // Create mock Home Assistant instance
     mockHass = {
       entities: {
-        'sensor.pi_hole_dns_queries_today': {
-          entity_id: 'sensor.pi_hole_dns_queries_today',
+        'sensor.pi_hole_dns_queries': {
+          entity_id: 'sensor.pi_hole_dns_queries',
           device_id: DEVICE_ID,
-          translation_key: 'dns_queries_today',
+          translation_key: 'dns_queries',
         },
-        'sensor.pi_hole_domains_blocked': {
-          entity_id: 'sensor.pi_hole_domains_blocked',
+        'sensor.adguard_average_processing_speed': {
+          entity_id: 'sensor.adguard_average_processing_speed',
           device_id: DEVICE_ID,
-          translation_key: 'domains_blocked',
+          translation_key: 'average_processing_speed',
         },
         'binary_sensor.pi_hole_status': {
           entity_id: 'binary_sensor.pi_hole_status',
@@ -48,15 +48,15 @@ describe('card-entities.ts', () => {
 
     // Configure mock responses
     const mockStates = {
-      'sensor.pi_hole_dns_queries_today': {
-        entity_id: 'sensor.pi_hole_dns_queries_today',
+      'sensor.pi_hole_dns_queries': {
+        entity_id: 'sensor.pi_hole_dns_queries',
         state: '10000',
         attributes: { friendly_name: 'Pi-hole DNS Queries Today' },
       },
-      'sensor.pi_hole_domains_blocked': {
-        entity_id: 'sensor.pi_hole_domains_blocked',
-        state: '120000',
-        attributes: { friendly_name: 'Pi-hole Domains Blocked' },
+      'sensor.adguard_average_processing_speed': {
+        entity_id: 'sensor.adguard_average_processing_speed',
+        state: '12.5',
+        attributes: { friendly_name: 'Pi-hole Average Processing Speed' },
       },
       'binary_sensor.pi_hole_status': {
         entity_id: 'binary_sensor.pi_hole_status',
@@ -93,8 +93,8 @@ describe('card-entities.ts', () => {
 
       const entityIds = entities.map((e) => e.entity_id);
       expect(entityIds).to.deep.equal([
-        'sensor.pi_hole_dns_queries_today',
-        'sensor.pi_hole_domains_blocked',
+        'sensor.pi_hole_dns_queries',
+        'sensor.adguard_average_processing_speed',
         'binary_sensor.pi_hole_status',
         'update.pi_hole_v6_integration_update',
       ]);
@@ -133,8 +133,8 @@ describe('card-entities.ts', () => {
       const entities = getDeviceEntities(mockHass, DEVICE_ID, DEVICE_NAME);
 
       const expectedNameMappings: Record<string, string> = {
-        'sensor.pi_hole_dns_queries_today': 'DNS Queries Today',
-        'sensor.pi_hole_domains_blocked': 'Domains Blocked',
+        'sensor.pi_hole_dns_queries': 'DNS Queries Today',
+        'sensor.adguard_average_processing_speed': 'Average Processing Speed',
         'binary_sensor.pi_hole_status': 'Status',
         'update.pi_hole_v6_integration_update': 'Integration Update',
       };
@@ -186,12 +186,12 @@ describe('card-entities.ts', () => {
     it('should map entity properties correctly', () => {
       const entities = getDeviceEntities(mockHass, DEVICE_ID, DEVICE_NAME);
       const dnsQueriesEntity = entities.find(
-        (e) => e.entity_id === 'sensor.pi_hole_dns_queries_today',
+        (e) => e.entity_id === 'sensor.pi_hole_dns_queries',
       );
 
       expect(dnsQueriesEntity).to.deep.include({
-        entity_id: 'sensor.pi_hole_dns_queries_today',
-        translation_key: 'dns_queries_today',
+        entity_id: 'sensor.pi_hole_dns_queries',
+        translation_key: 'dns_queries',
         state: '10000',
       });
 

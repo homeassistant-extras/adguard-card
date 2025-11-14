@@ -254,23 +254,23 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 
 ## Configuration Options
 
-| Name               | Type            | Default      | Description                                                        |
-| ------------------ | --------------- | ------------ | ------------------------------------------------------------------ |
-| device_id          | string or array | **Required** | The ID(s) of your AdGuard device(s) in Home Assistant              |
-| title              | string          | AdGuard      | Custom title for the card header                                   |
+| Name               | Type            | Default          | Description                                                        |
+| ------------------ | --------------- | ---------------- | ------------------------------------------------------------------ |
+| device_id          | string or array | **Required**     | The ID(s) of your AdGuard device(s) in Home Assistant              |
+| title              | string          | AdGuard          | Custom title for the card header                                   |
 | icon               | string          | mdi:shield-check | Custom icon for the card header                                    |
-| badge              | object          | _none_       | Configure actions for the card icon/badge                          |
-| pause_durations    | array           | [60,300,900] | Durations for pause buttons (supports numbers, strings with units) |
-| stats              | object          | _none_       | Configure actions for statistics tiles                             |
-| info               | object          | _none_       | Configure actions for additional info items                        |
-| controls           | object          | _none_       | Configure actions for control buttons                              |
-| exclude_sections   | list            | _none_       | Sections of entities to exclude. See below.                        |
-| exclude_entities   | list            | _none_       | Entities to remove from the card.                                  |
-| entity_order       | list            | _none_       | Custom order for switch, button, sensor entities or dividers.      |
-| collapsed_sections | list            | _none_       | Sections to be initially collapsed. See below.                     |
-| switch_spacing     | string          | flex         | Layout style for switches: flex, space-around, space-between       |
-| chart              | object          | _none_       | Chart configuration options. See below.                            |
-| features           | list            | See below    | Optional flags to toggle different features                        |
+| badge              | object          | _none_           | Configure actions for the card icon/badge                          |
+| pause_durations    | array           | [60,300,900]     | Durations for pause buttons (supports numbers, strings with units) |
+| stats              | object          | _none_           | Configure actions for statistics tiles                             |
+| info               | object          | _none_           | Configure actions for additional info items                        |
+| controls           | object          | _none_           | Configure actions for control buttons                              |
+| exclude_sections   | list            | _none_           | Sections of entities to exclude. See below.                        |
+| exclude_entities   | list            | _none_           | Entities to remove from the card.                                  |
+| entity_order       | list            | _none_           | Custom order for switch, button, sensor entities or dividers.      |
+| collapsed_sections | list            | _none_           | Sections to be initially collapsed. See below.                     |
+| switch_spacing     | string          | flex             | Layout style for switches: flex, space-around, space-between       |
+| chart              | object          | _none_           | Chart configuration options. See below.                            |
+| features           | list            | See below        | Optional flags to toggle different features                        |
 
 ### Action Configuration
 
@@ -576,8 +576,8 @@ device_id: adguard_device_1
 switch_spacing: 'space-around'
 entity_order:
   - button.adguard_action_refresh_data
-  - sensor.adguard_dns_queries_today
-  - sensor.adguard_ads_blocked_today
+  - sensor.adguard_dns_queries
+  - sensor.adguard_dns_queries_blocked
   - switch.adguard
 ```
 
@@ -589,8 +589,8 @@ device_id: adguard_device_1
 entity_order:
   - button.adguard_action_refresh_data
   - divider
-  - sensor.adguard_dns_queries_today
-  - sensor.adguard_ads_blocked_today
+  - sensor.adguard_dns_queries
+  - sensor.adguard_dns_queries_blocked
   - divider
   - switch.adguard
 ```

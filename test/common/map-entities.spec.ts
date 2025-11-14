@@ -1,5 +1,5 @@
 import { mapEntitiesByTranslationKey } from '@common/map-entities';
-import type { EntityInformation, AdGuardDevice } from '@type/types';
+import type { AdGuardDevice, EntityInformation } from '@type/types';
 import { expect } from 'chai';
 
 describe('map-entities.ts', () => {
@@ -20,10 +20,10 @@ describe('map-entities.ts', () => {
     it('should map entity with known translation key to correct device property', () => {
       // Create test entity with a known translation key
       const entity: EntityInformation = {
-        entity_id: 'sensor.dns_queries_today',
+        entity_id: 'sensor.dns_queries',
         state: '1234',
         attributes: { friendly_name: 'DNS Queries Today' },
-        translation_key: 'dns_queries_today',
+        translation_key: 'dns_queries',
       };
 
       // Map the entity to the device
@@ -31,7 +31,7 @@ describe('map-entities.ts', () => {
 
       // Check that the mapping was successful
       expect(result).to.be.true;
-      expect(device.dns_queries_today).to.equal(entity);
+      expect(device.dns_queries).to.equal(entity);
     });
 
     it('should map action_ftl_purge_diagnosis_messages to purge_diagnosis_messages property', () => {
@@ -54,13 +54,13 @@ describe('map-entities.ts', () => {
     it('should map all supported translation keys correctly', () => {
       // Define all supported translation keys and their corresponding property names
       const supportedKeys = [
-        { key: 'dns_queries_today', prop: 'dns_queries_today' },
-        { key: 'domains_blocked', prop: 'domains_blocked' },
+        { key: 'dns_queries', prop: 'dns_queries' },
+        { key: 'average_processing_speed', prop: 'average_processing_speed' },
         {
-          key: 'ads_percentage_blocked_today',
-          prop: 'ads_percentage_blocked_today',
+          key: 'dns_queries_blocked_ratio',
+          prop: 'dns_queries_blocked_ratio',
         },
-        { key: 'ads_blocked_today', prop: 'ads_blocked_today' },
+        { key: 'dns_queries_blocked', prop: 'dns_queries_blocked' },
         { key: 'dns_unique_clients', prop: 'dns_unique_clients' },
         {
           key: 'remaining_until_blocking_mode',
@@ -129,30 +129,28 @@ describe('map-entities.ts', () => {
 
     it('should not modify other properties of the device object', () => {
       // Set up a device with some existing properties
-      device.dns_queries_today = {
+      device.dns_queries = {
         entity_id: 'sensor.existing_queries',
         state: '5000',
         attributes: { friendly_name: 'Existing Queries' },
-        translation_key: 'dns_queries_today',
+        translation_key: 'dns_queries',
       };
 
       // Create test entity with a different translation key
       const entity: EntityInformation = {
-        entity_id: 'sensor.domains_blocked',
-        state: '50000',
-        attributes: { friendly_name: 'Domains Blocked' },
-        translation_key: 'domains_blocked',
+        entity_id: 'sensor.average_processing_speed',
+        state: '12.5',
+        attributes: { friendly_name: 'Average Processing Speed' },
+        translation_key: 'average_processing_speed',
       };
 
       // Map the new entity to the device
       mapEntitiesByTranslationKey(entity, device);
 
       // Check that the existing property wasn't modified
-      expect(device.dns_queries_today.entity_id).to.equal(
-        'sensor.existing_queries',
-      );
+      expect(device.dns_queries.entity_id).to.equal('sensor.existing_queries');
       // Check that the new property was added
-      expect(device.domains_blocked).to.equal(entity);
+      expect(device.average_processing_speed).to.equal(entity);
     });
   });
 });

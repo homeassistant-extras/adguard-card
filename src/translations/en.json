@@ -7,8 +7,8 @@
       "list_blocked_queries": "List blocked queries",
       "percentage_blocked": "Percentage Blocked",
       "list_all_queries": "List all queries",
-      "domains_on_lists": "Domains on Lists",
-      "manage_lists": "Manage lists"
+      "average_processing_speed": "Average Processing Speed",
+      "processing_speed_info": "Average query processing time"
     },
     "sections": {
       "pause": "Pause Ad-Blocking",

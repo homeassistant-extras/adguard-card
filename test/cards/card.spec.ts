@@ -47,11 +47,11 @@ describe('AdGuardCard', () => {
         attributes: {},
         translation_key: undefined,
       },
-      dns_queries_today: {
-        entity_id: 'sensor.dns_queries_today',
+      dns_queries: {
+        entity_id: 'sensor.dns_queries',
         state: '12345',
         attributes: {},
-        translation_key: 'dns_queries_today',
+        translation_key: 'dns_queries',
       },
     } as any as AdGuardDevice;
 

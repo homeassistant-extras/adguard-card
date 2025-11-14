@@ -7,8 +7,8 @@
       "list_blocked_queries": "Списък с блокирани заявки",
       "percentage_blocked": "Процент блокирани",
       "list_all_queries": "Списък с всички заявки",
-      "domains_on_lists": "Списък с домейни",
-      "manage_lists": "Управление на списъци"
+      "average_processing_speed": "Средна Скорост на Обработка",
+      "processing_speed_info": "Средно време за обработка на заявки"
     },
     "sections": {
       "pause": "Пауза на блокирането на реклами",

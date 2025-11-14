@@ -7,8 +7,8 @@
       "list_blocked_queries": "Liste des requêtes bloquées",
       "percentage_blocked": "Pourcentage bloqué",
       "list_all_queries": "Liste de toutes les requêtes",
-      "domains_on_lists": "Domaines listés",
-      "manage_lists": "Gérer les listes"
+      "average_processing_speed": "Vitesse de Traitement Moyenne",
+      "processing_speed_info": "Temps moyen de traitement des requêtes"
     },
     "sections": {
       "pause": "Pause du bloqueur de pubs",
