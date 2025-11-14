@@ -61,7 +61,7 @@
     "pause_60_seconds": "60 segundos",
     "pause_5_minutes": "5 minutos",
     "pause_15_minutes": "15 minutos",
-    "pi_hole_device": "Dispositivo Pi-hole",
+    "adguard_device": "Dispositivo AdGuard",
     "entity_display_order": "Orden de visualización de entidades (hacer clic en orden)",
     "flex_default": "Flex (predeterminado)",
     "chart": "Gráfico",

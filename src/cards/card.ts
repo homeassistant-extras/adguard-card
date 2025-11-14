@@ -1,20 +1,20 @@
-import { renderPiHoleCard } from '@/html/bake-pi';
+import { renderAdGuardCard } from '@/html/bake-pi';
 import { getConfigDevice } from '@delegates/utils/get-config-device';
-import { getPiSetup } from '@delegates/utils/get-setup';
+import { getAdGuardSetup } from '@delegates/utils/get-setup';
 import { fireEvent } from '@hass/common/dom/fire_event';
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
 import { CSSResult, html, LitElement } from 'lit';
 import { state } from 'lit/decorators.js';
 import { styles } from '../styles';
-import type { PiHoleSetup } from '../types/types';
+import type { AdGuardSetup } from '../types/types';
 const equal = require('fast-deep-equal');
 
 /**
- * Pi-hole card class
+ * AdGuard card class
  * @extends {LitElement}
  */
-export class PiHoleCard extends LitElement {
+export class AdGuardCard extends LitElement {
   /**
    * Card configuration object
    */
@@ -22,10 +22,10 @@ export class PiHoleCard extends LitElement {
   private _config!: Config;
 
   /**
-   * Pi-hole setup information
+   * AdGuard setup information
    */
   @state()
-  protected _setup!: PiHoleSetup;
+  protected _setup!: AdGuardSetup;
 
   /**
    * Home Assistant instance
@@ -57,7 +57,7 @@ export class PiHoleCard extends LitElement {
   set hass(hass: HomeAssistant) {
     this._hass = hass;
 
-    const setup = getPiSetup(hass, this._config);
+    const setup = getAdGuardSetup(hass, this._config);
 
     if (setup && !equal(setup, this._setup)) {
       this._setup = setup;
@@ -71,7 +71,7 @@ export class PiHoleCard extends LitElement {
 
   // card configuration
   static getConfigElement() {
-    return document.createElement('pi-hole-editor');
+    return document.createElement('adguard-editor');
   }
 
   public static async getStubConfig(hass: HomeAssistant): Promise<Config> {
@@ -91,6 +91,6 @@ export class PiHoleCard extends LitElement {
       </ha-card>`;
     }
 
-    return renderPiHoleCard(this, this._hass, this._setup, this._config);
+    return renderAdGuardCard(this, this._hass, this._setup, this._config);
   }
 }

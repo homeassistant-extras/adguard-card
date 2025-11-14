@@ -1,20 +1,20 @@
 import { styles } from '@/styles';
-import { PiHoleCard } from '@cards/card';
+import { AdGuardCard } from '@cards/card';
+import * as getAdGuardModule from '@delegates/utils/get-adguard';
 import * as getConfigDeviceModule from '@delegates/utils/get-config-device';
-import * as getPiHoleModule from '@delegates/utils/get-pihole';
 import type { HomeAssistant } from '@hass/types';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import type { TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
-describe('PiHoleCard', () => {
+describe('AdGuardCard', () => {
   let mockHass: HomeAssistant;
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockConfig: Config;
-  let getPiHoleStub: sinon.SinonStub;
+  let getAdGuardStub: sinon.SinonStub;
   let getConfigDeviceStub: sinon.SinonStub;
 
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe('PiHoleCard', () => {
           state: 'on',
           entity_id: 'binary_sensor.pi_hole_status',
           attributes: {
-            friendly_name: 'Pi-hole Status',
+            friendly_name: 'AdGuard Status',
           },
         },
       },
@@ -34,11 +34,11 @@ describe('PiHoleCard', () => {
 
     // Create mock device
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       status: {
         entity_id: 'binary_sensor.pi_hole_status',
         state: 'on',
-        attributes: { friendly_name: 'Pi-hole Status' },
+        attributes: { friendly_name: 'AdGuard Status' },
         translation_key: undefined,
       },
       switch_pi_hole: {
@@ -53,59 +53,59 @@ describe('PiHoleCard', () => {
         attributes: {},
         translation_key: 'dns_queries_today',
       },
-    } as any as PiHoleDevice;
+    } as any as AdGuardDevice;
 
     // Create mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
 
-    // Stub getPiHole function
-    getPiHoleStub = stub(getPiHoleModule, 'getPiHole').returns(mockDevice);
+    // Stub getAdGuard function
+    getAdGuardStub = stub(getAdGuardModule, 'getAdGuard').returns(mockDevice);
 
     // Stub getConfigDevice function for getStubConfig
     getConfigDeviceStub = stub(
       getConfigDeviceModule,
       'getConfigDevice',
     ).resolves({
-      id: 'pi_hole_device',
+      id: 'adguard_device',
       config_entries: ['entry_1'],
-      name: 'Pi-hole',
+      name: 'AdGuard',
     });
   });
 
   afterEach(() => {
     // Restore stubs
-    getPiHoleStub.restore();
+    getAdGuardStub.restore();
     getConfigDeviceStub.restore();
   });
 
   it('should not update when hass changes but device data remains the same', async () => {
-    const card = new PiHoleCard();
+    const card = new AdGuardCard();
 
     // Set initial config and hass
     card.setConfig(mockConfig);
     card.hass = mockHass;
 
-    // First call to getPiHole
-    expect(getPiHoleStub.calledOnce).to.be.true;
+    // First call to getAdGuard
+    expect(getAdGuardStub.calledOnce).to.be.true;
 
     // Set hass again with same device data
     card.hass = { ...mockHass };
 
-    // Should not call getPiHole again since device is the same
-    expect(getPiHoleStub.calledTwice).to.be.true;
+    // Should not call getAdGuard again since device is the same
+    expect(getAdGuardStub.calledTwice).to.be.true;
   });
 
   it('should getStubConfig correctly', async () => {
-    const stubConfig = await PiHoleCard.getStubConfig(mockHass);
+    const stubConfig = await AdGuardCard.getStubConfig(mockHass);
 
     // Check that getConfigDevice was called
     expect(getConfigDeviceStub.calledOnce).to.be.true;
 
     // Check that returned config is correct
     expect(stubConfig).to.deep.equal({
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     });
   });
 
@@ -113,7 +113,7 @@ describe('PiHoleCard', () => {
     // Update stub to return null/undefined
     getConfigDeviceStub.resolves(undefined);
 
-    const stubConfig = await PiHoleCard.getStubConfig(mockHass);
+    const stubConfig = await AdGuardCard.getStubConfig(mockHass);
 
     // Should return empty string for device_id
     expect(stubConfig).to.deep.equal({
@@ -122,22 +122,22 @@ describe('PiHoleCard', () => {
   });
 
   it('should return editor element when getConfigElement is called', () => {
-    const editorElement = PiHoleCard.getConfigElement();
+    const editorElement = AdGuardCard.getConfigElement();
 
     // Check that it returns an element with the expected tag name
-    expect(editorElement.tagName.toLowerCase()).to.equal('pi-hole-editor');
+    expect(editorElement.tagName.toLowerCase()).to.equal('adguard-editor');
   });
 
   describe('styles', () => {
     it('should return expected styles', () => {
-      const actual = PiHoleCard.styles;
+      const actual = AdGuardCard.styles;
       expect(actual).to.deep.equal(styles);
     });
   });
 
   describe('rendering', () => {
     it('should render a loading message when not ready', async () => {
-      const card = new PiHoleCard();
+      const card = new AdGuardCard();
 
       card.setConfig(undefined as any as Config);
 

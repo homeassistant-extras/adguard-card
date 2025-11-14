@@ -7,17 +7,17 @@ import { hasFeature } from '@config/feature';
 import { handlePauseClick } from '@delegates/utils/pause-hole';
 import { localize } from '@localize/localize';
 import type { Config } from '@type/config';
-import type { EntityInformation, PiHoleSetup } from '@type/types';
+import type { EntityInformation, AdGuardSetup } from '@type/types';
 import { html, LitElement, nothing, type TemplateResult } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { pauseStyles } from './styles';
 
 /**
- * Pi-hole pause component that handles pause duration selection and entity targeting
+ * AdGuard pause component that handles pause duration selection and entity targeting
  */
 export class PauseComponent extends HassUpdateMixin(LitElement) {
   @property({ attribute: false })
-  setup!: PiHoleSetup;
+  setup!: AdGuardSetup;
 
   @property({ attribute: false })
   config!: Config;

@@ -1,10 +1,10 @@
 import { mapEntitiesByTranslationKey } from '@common/map-entities';
-import type { EntityInformation, PiHoleDevice } from '@type/types';
+import type { EntityInformation, AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 
 describe('map-entities.ts', () => {
   describe('mapEntitiesByTranslationKey', () => {
-    let device: PiHoleDevice;
+    let device: AdGuardDevice;
 
     beforeEach(() => {
       // Reset the device object before each test
@@ -14,7 +14,7 @@ describe('map-entities.ts', () => {
         sensors: [],
         switches: [],
         updates: [],
-      } as PiHoleDevice;
+      } as AdGuardDevice;
     });
 
     it('should map entity with known translation key to correct device property', () => {

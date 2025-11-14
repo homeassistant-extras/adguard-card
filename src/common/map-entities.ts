@@ -1,14 +1,14 @@
-import type { EntityInformation, PiHoleDevice } from '@type/types';
+import type { EntityInformation, AdGuardDevice } from '@type/types';
 
 /**
- * Maps entities to the Pi-hole device object based on their translation keys.
+ * Maps entities to the AdGuard device object based on their translation keys.
  * @param entity - The entity information object
- * @param device - The Pi-hole device object
+ * @param device - The AdGuard device object
  * @returns True if the entity was mapped, false otherwise
  */
 export const mapEntitiesByTranslationKey = (
   entity: EntityInformation,
-  device: PiHoleDevice,
+  device: AdGuardDevice,
 ) => {
   const keyToPropertyMap = {
     dns_queries_today: 'dns_queries_today',

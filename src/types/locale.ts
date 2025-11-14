@@ -53,7 +53,7 @@ export type TranslationKey =
   | 'editor.pause_60_seconds'
   | 'editor.pause_5_minutes'
   | 'editor.pause_15_minutes'
-  | 'editor.pi_hole_device'
+  | 'editor.adguard_device'
   | 'editor.entity_display_order'
   | 'editor.flex_default'
   | 'editor.chart'

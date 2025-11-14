@@ -3,21 +3,21 @@ import {
   handleMultiPiClickAction,
 } from '@delegates/action-handler-delegate';
 import type { Config } from '@type/config';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 import { html, type TemplateResult } from 'lit';
 
 /**
- * Renders an icon or a warning badge based on the number of info messages in the Pi-hole setup.
+ * Renders an icon or a warning badge based on the number of info messages in the AdGuard setup.
  *
  * @param element - The HTML element to render the icon into
  * @param config - The configuration object containing icon information.
- * @param setup - The PiHoleSetup object containing the list of holes and their info message counts.
+ * @param setup - The AdGuardSetup object containing the list of holes and their info message counts.
  * @returns A TemplateResult displaying either the configured icon (or a default) or a warning badge with the info count.
  */
 export const icon = (
   element: HTMLElement,
   config: Config,
-  setup: PiHoleSetup,
+  setup: AdGuardSetup,
 ): TemplateResult => {
   const infoCount = setup.holes.reduce((acc, h) => {
     if (
@@ -29,9 +29,9 @@ export const icon = (
     return acc;
   }, 0);
 
-  // Create ActionConfigParams for each Pi-hole
+  // Create ActionConfigParams for each AdGuard instance
   const actionConfigs = setup.holes.map((h) => {
-    // If user has custom badge config, apply it to all Pi-holes
+    // If user has custom badge config, apply it to all AdGuard instances
     if (config.badge) {
       return {
         entity:
@@ -77,7 +77,7 @@ export const icon = (
       };
     }
 
-    // For Pi-holes without required entities, just use the base config
+      // For AdGuard instances without required entities, just use the base config
     return {
       entity: h.status?.entity_id ?? h.device_id,
       ...baseConfig,
@@ -90,7 +90,7 @@ export const icon = (
     .actionHandler=${actionHandler(actionConfigs[0])}
   >
     ${infoCount === 0
-      ? html`<ha-icon icon="${config.icon ?? 'mdi:pi-hole'}"></ha-icon>`
+      ? html`<ha-icon icon="${config.icon ?? 'mdi:shield-check'}"></ha-icon>`
       : html`<div class="warning-badge">${infoCount}</div>`}
   </div>`;
 };

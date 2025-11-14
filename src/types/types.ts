@@ -1,9 +1,9 @@
-export interface PiHoleSetup {
+export interface AdGuardSetup {
   /** Some people like to watch ads burn */
-  holes: PiHoleDevice[];
+  holes: AdGuardDevice[];
 }
 
-export interface PiHoleDevice {
+export interface AdGuardDevice {
   /** Unique identifier for the device */
   device_id: string;
 
@@ -37,13 +37,13 @@ export interface PiHoleDevice {
   /** Button to Purge Diagnosis Messages */
   purge_diagnosis_messages?: EntityInformation;
 
-  /** Status of Pi-hole */
+  /** Status of AdGuard */
   status?: EntityInformation;
 
-  /** Sensors for the Pi-hole */
+  /** Sensors for the AdGuard */
   sensors: EntityInformation[];
 
-  /** Switches for Pi-hole */
+  /** Switches for AdGuard */
   switches: EntityInformation[];
 
   /** Control entities for the device */

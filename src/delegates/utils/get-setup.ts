@@ -1,19 +1,19 @@
 import { sortEntitiesByOrder } from '@common/sort-entities';
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
-import type { EntityInformation, PiHoleSetup } from '@type/types';
-import { getPiHole } from './get-pihole';
+import type { AdGuardSetup, EntityInformation } from '@type/types';
+import { getAdGuard } from './get-adguard';
 
 /**
- * Gets the Pi-hole setup information from Home Assistant
+ * Gets the AdGuard setup information from Home Assistant
  * @param hass - The Home Assistant instance
  * @param config - The configuration object
- * @returns The Pi-hole setup object or undefined if no devices are found
+ * @returns The AdGuard setup object or undefined if no devices are found
  */
-export const getPiSetup = (
+export const getAdGuardSetup = (
   hass: HomeAssistant,
   config: Config,
-): PiHoleSetup | undefined => {
+): AdGuardSetup | undefined => {
   // Handle both string and array device IDs
   const deviceIds = Array.isArray(config.device_id)
     ? config.device_id
@@ -27,7 +27,7 @@ export const getPiSetup = (
   const spareSwitches: EntityInformation[] = [];
 
   const holes = deviceIds
-    .map((deviceId, i) => getPiHole(hass, config, deviceId))
+    .map((deviceId, i) => getAdGuard(hass, config, deviceId))
     .filter((hole) => hole !== undefined)
     .map((hole, i) => {
       if (i > 0) {

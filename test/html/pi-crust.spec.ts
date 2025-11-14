@@ -5,15 +5,15 @@ import * as stateDisplayModule from '@html/components/state-display';
 import { createCardHeader } from '@html/pi-crust';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice, PiHoleSetup } from '@type/types';
+import type { AdGuardDevice, AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { html, nothing, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('pi-crust.ts', () => {
   let mockHass: HomeAssistant;
-  let mockSetup: PiHoleSetup;
-  let mockDevice: PiHoleDevice;
+  let mockSetup: AdGuardSetup;
+  let mockDevice: AdGuardDevice;
   let mockConfig: Config;
   let mockElement: HTMLElement;
   let stateDisplayStub: sinon.SinonStub;
@@ -57,7 +57,7 @@ describe('pi-crust.ts', () => {
 
     // Mock device
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       status: {
         entity_id: 'binary_sensor.pi_hole_status',
         state: 'on',
@@ -68,7 +68,7 @@ describe('pi-crust.ts', () => {
       switches: [],
       controls: [],
       updates: [],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Setup with a single device
     mockSetup = {
@@ -77,7 +77,7 @@ describe('pi-crust.ts', () => {
 
     // Default mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
   });
 
@@ -127,12 +127,12 @@ describe('pi-crust.ts', () => {
 
     // Check default title
     const nameEl = el.querySelector('.name');
-    expect(nameEl?.textContent?.trim()).to.equal('Pi-hole');
+    expect(nameEl?.textContent?.trim()).to.equal('AdGuard');
 
     // Check default icon
     const iconEl = nameEl?.querySelector('ha-icon');
     expect(iconEl).to.exist;
-    expect(iconEl?.getAttribute('icon')).to.equal('mdi:pi-hole');
+    expect(iconEl?.getAttribute('icon')).to.equal('mdi:shield-check');
   });
 
   it('should render card header with custom title and icon', async () => {
@@ -284,13 +284,13 @@ describe('pi-crust.ts', () => {
     // Create a setup with multiple holes
     const secondDevice = {
       ...mockDevice,
-      device_id: 'pi_hole_device_2',
+      device_id: 'adguard_device_2',
       status: {
         ...mockDevice.status,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'on',
       },
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     mockSetup.holes.push(secondDevice);
 
@@ -312,13 +312,13 @@ describe('pi-crust.ts', () => {
     // Create a setup with one active and one inactive Pi-hole
     const secondDevice = {
       ...mockDevice,
-      device_id: 'pi_hole_device_2',
+      device_id: 'adguard_device_2',
       status: {
         ...mockDevice.status,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'off',
       },
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     mockSetup.holes.push(secondDevice);
 
@@ -344,23 +344,23 @@ describe('pi-crust.ts', () => {
     // Create a setup with multiple Pi-holes in different states
     const secondDevice = {
       ...mockDevice,
-      device_id: 'pi_hole_device_2',
+      device_id: 'adguard_device_2',
       status: {
         ...mockDevice.status,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'off',
       },
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     const thirdDevice = {
       ...mockDevice,
-      device_id: 'pi_hole_device_3',
+      device_id: 'adguard_device_3',
       status: {
         ...mockDevice.status,
         entity_id: 'binary_sensor.pi_hole_3_status',
         state: 'on',
       },
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     mockSetup.holes.push(secondDevice, thirdDevice);
 
@@ -382,7 +382,7 @@ describe('pi-crust.ts', () => {
     // Create a device with undefined status
     const deviceWithoutStatus = {
       ...mockDevice,
-      device_id: 'pi_hole_device_2',
+      device_id: 'adguard_device_2',
       status: undefined,
     };
 

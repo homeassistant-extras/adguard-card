@@ -1,12 +1,12 @@
-import { PiHoleCard } from '@cards/card';
+import { AdGuardCard } from '@cards/card';
 import { PauseComponent } from '@cards/components/pause/pause';
-import { PiHoleCardEditor } from '@cards/editor';
+import { AdGuardCardEditor } from '@cards/editor';
 import { SystemMetricsGraph } from '@html/components/system-metrics-graph';
 import { version } from '../package.json';
 
 // Register the custom elements with the browser
-customElements.define('pi-hole', PiHoleCard);
-customElements.define('pi-hole-editor', PiHoleCardEditor);
+customElements.define('adguard', AdGuardCard);
+customElements.define('adguard-editor', AdGuardCardEditor);
 customElements.define('pause-component', PauseComponent);
 customElements.define('system-metrics-graph', SystemMetricsGraph);
 
@@ -16,19 +16,19 @@ window.customCards = window.customCards || [];
 // Register the cards with Home Assistant's custom card registry
 window.customCards.push({
   // Unique identifier for the card type
-  type: 'pi-hole',
+  type: 'adguard',
 
   // Display name in the UI
-  name: 'Pi-hole Card',
+  name: 'AdGuard Card',
 
   // Card description for the UI
-  description: 'A card to summarize and control your Pi-hole instance.',
+  description: 'A card to summarize and control your AdGuard instance.',
 
   // Show a preview of the card in the UI
   preview: true,
 
   // URL for the card's documentation
-  documentationURL: 'https://github.com/homeassistant-extras/pi-hole-card',
+  documentationURL: 'https://github.com/homeassistant-extras/adguard-card',
 });
 
-console.info(`%c🐱 Poat's Tools: pi-hole-card - ${version}`, 'color: #CFC493;');
+console.info(`%c🐱 Poat's Tools: adguard-card - ${version}`, 'color: #CFC493;');

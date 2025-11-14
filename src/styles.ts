@@ -34,7 +34,7 @@ export const collapsibleStyles = css`
 `;
 
 /**
- * Static CSS styles for the Pi-hole Card
+ * Static CSS styles for the AdGuard Card
  * Modified to support grouped pairs of elements and background icons
  */
 export const styles = css`
@@ -160,7 +160,7 @@ export const styles = css`
     box-sizing: border-box;
   }
 
-  /* Dashboard boxes - muted versions of Pi-hole colors */
+  /* Dashboard boxes - muted versions of AdGuard colors */
   .queries-box {
     background-color: rgba(0, 192, 239, 0.85);
   }

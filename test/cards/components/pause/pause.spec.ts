@@ -1,4 +1,4 @@
-import { PauseComponent } from '@cards/components/pause/pause';
+import { PauseComponent } from '@/cards/components/pause/pause';
 import * as collapsedStateModule from '@common/collapsed-state';
 import * as convertTimeModule from '@common/convert-time';
 import * as showSectionModule from '@common/show-section';
@@ -8,7 +8,7 @@ import type { HomeAssistant } from '@hass/types';
 import * as localizeModule from '@localize/localize';
 import { fixture, html } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { nothing } from 'lit';
 import { restore, stub } from 'sinon';
@@ -16,7 +16,7 @@ import { restore, stub } from 'sinon';
 describe('PauseComponent', () => {
   let component: PauseComponent;
   let mockHass: HomeAssistant;
-  let mockSetup: PiHoleSetup;
+  let mockSetup: AdGuardSetup;
   let mockConfig: Config;
   let showSectionStub: sinon.SinonStub;
   let isCollapsedStub: sinon.SinonStub;
@@ -35,11 +35,11 @@ describe('PauseComponent', () => {
       language: 'en',
     } as HomeAssistant;
 
-    // Create mock PiHole setup with switches
+    // Create mock AdGuard setup with switches
     mockSetup = {
       holes: [
         {
-          device_id: 'pi_hole_device',
+          device_id: 'adguard_device',
           switches: [
             {
               entity_id: 'switch.pihole_1',
@@ -59,11 +59,11 @@ describe('PauseComponent', () => {
           updates: [],
         },
       ],
-    } as PiHoleSetup;
+    } as AdGuardSetup;
 
     // Create mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       pause_durations: [60, 300, 1800], // 1 min, 5 min, 30 min
     };
 

@@ -7,7 +7,7 @@ import { stub } from 'sinon';
 describe('card-entities.ts', () => {
   let mockHass: HomeAssistant;
   let getStateStub: sinon.SinonStub;
-  const DEVICE_ID = 'pi_hole_device_1';
+  const DEVICE_ID = 'adguard_device_1';
   const DEVICE_NAME = 'Pi-hole';
 
   beforeEach(() => {

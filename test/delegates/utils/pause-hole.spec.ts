@@ -1,13 +1,13 @@
 import { formatSecondsToHHMMSS } from '@common/convert-time';
 import { handlePauseClick } from '@delegates/utils/pause-hole';
 import type { HomeAssistant } from '@hass/types';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { stub } from 'sinon';
 
 describe('handle-pause-click.ts', () => {
   let mockHass: HomeAssistant;
-  let mockSetup: PiHoleSetup;
+  let mockSetup: AdGuardSetup;
   let callServiceStub: sinon.SinonStub;
   let formatTimeStub: sinon.SinonStub;
 
@@ -22,10 +22,10 @@ describe('handle-pause-click.ts', () => {
     mockSetup = {
       holes: [
         {
-          device_id: 'pi_hole_device_1',
+          device_id: 'adguard_device_1',
         },
       ],
-    } as PiHoleSetup;
+    } as AdGuardSetup;
 
     // Create a stub for formatSecondsToHHMMSS
     formatTimeStub = stub();
@@ -50,10 +50,10 @@ describe('handle-pause-click.ts', () => {
     // Assert
     expect(formatTimeStub.calledOnceWith(duration)).to.be.true;
     expect(callServiceStub.calledOnce).to.be.true;
-    expect(callServiceStub.firstCall.args[0]).to.equal('pi_hole_v6');
+    expect(callServiceStub.firstCall.args[0]).to.equal('adguard');
     expect(callServiceStub.firstCall.args[1]).to.equal('disable');
     expect(callServiceStub.firstCall.args[2]).to.deep.equal({
-      device_id: 'pi_hole_device_1',
+      device_id: 'adguard_device_1',
       duration: formattedTime,
     });
   });
@@ -70,10 +70,10 @@ describe('handle-pause-click.ts', () => {
     // Assert
     expect(formatTimeStub.calledOnceWith(duration)).to.be.true;
     expect(callServiceStub.calledOnce).to.be.true;
-    expect(callServiceStub.firstCall.args[0]).to.equal('pi_hole_v6');
+    expect(callServiceStub.firstCall.args[0]).to.equal('adguard');
     expect(callServiceStub.firstCall.args[1]).to.equal('disable');
     expect(callServiceStub.firstCall.args[2]).to.deep.equal({
-      device_id: 'pi_hole_device_1',
+      device_id: 'adguard_device_1',
       duration: formattedTime,
     });
   });
@@ -117,7 +117,7 @@ describe('handle-pause-click.ts', () => {
     // Assert
     expect(formatTimeStub.calledOnceWith(duration)).to.be.true;
     expect(callServiceStub.calledOnce).to.be.true;
-    expect(callServiceStub.firstCall.args[0]).to.equal('pi_hole_v6');
+    expect(callServiceStub.firstCall.args[0]).to.equal('adguard');
     expect(callServiceStub.firstCall.args[1]).to.equal('disable');
     expect(callServiceStub.firstCall.args[2]).to.deep.equal({
       duration: formattedTime,

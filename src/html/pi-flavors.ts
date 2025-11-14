@@ -3,27 +3,27 @@ import { show } from '@common/show-section';
 import type { HomeAssistant } from '@hass/types';
 import { localize } from '@localize/localize';
 import type { Config, SectionConfig } from '@type/config';
-import type { PiHoleDevice, PiHoleSetup } from '@type/types';
+import type { AdGuardDevice, AdGuardSetup } from '@type/types';
 import { html, nothing, type TemplateResult } from 'lit';
 import { toggleSection } from '../common/toggle-section';
 import { createActionButton } from './components/action-control';
 import { stateContent } from './components/state-content';
 
 /**
- * Renders the controls section for the Pi-hole card, including collapsible sections
+ * Renders the controls section for the AdGuard card, including collapsible sections
  * for switches and actions. Each section can be toggled open or closed, and displays
  * the relevant controls based on the provided configuration and device state.
  *
  * @param element - The root HTMLElement for the card.
  * @param hass - The Home Assistant instance.
- * @param device - The PiHoleDevice object containing switches and controls.
+ * @param device - The AdGuardDevice object containing switches and controls.
  * @param config - The configuration object for the card, including section visibility and entity order.
  * @returns A lit-html TemplateResult representing the controls UI, or `nothing` if the section is hidden.
  */
 const controls = (
   element: HTMLElement,
   hass: HomeAssistant,
-  device: PiHoleDevice,
+  device: AdGuardDevice,
   config: Config,
 ): TemplateResult | typeof nothing => {
   const sectionConfig: SectionConfig = config.controls ?? {
@@ -108,16 +108,16 @@ const controls = (
  * Creates the card actions section
  * @param element - The element to attach the actions to
  * @param hass - The Home Assistant instance
- * @param setup - The Pi-hole setup to be paused.
- * @param device - The Pi-hole device
+ * @param setup - The AdGuard setup to be paused.
+ * @param device - The AdGuard device
  * @param config - The configuration for the card
  * @returns TemplateResult
  */
 export const createCardActions = (
   element: HTMLElement,
   hass: HomeAssistant,
-  setup: PiHoleSetup,
-  device: PiHoleDevice,
+  setup: AdGuardSetup,
+  device: AdGuardDevice,
   config: Config,
 ): TemplateResult => {
   return html`

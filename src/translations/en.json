@@ -61,7 +61,7 @@
     "pause_60_seconds": "60 seconds",
     "pause_5_minutes": "5 minutes",
     "pause_15_minutes": "15 minutes",
-    "pi_hole_device": "Pi-hole Device",
+    "adguard_device": "AdGuard Device",
     "entity_display_order": "Entity display order (click in order)",
     "flex_default": "Flex (default)",
     "chart": "Chart",

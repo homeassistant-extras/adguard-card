@@ -24,7 +24,7 @@
       "hour": "heure"
     },
     "ui": {
-      "select_pi_or_group": "Sélectionner un Pi-hole ou un groupe",
+      "select_pi_or_group": "Sélectionner une instance AdGuard ou un groupe",
       "partial": "Partiel"
     }
   },
@@ -61,7 +61,7 @@
     "pause_60_seconds": "60 secondes",
     "pause_5_minutes": "5 minutes",
     "pause_15_minutes": "15 minutes",
-    "pi_hole_device": "Appareil Pi-hole",
+    "adguard_device": "Appareil AdGuard",
     "entity_display_order": "Ordre d'affichage des entités (cliquer dans l'ordre)",
     "flex_default": "Flexible (par défaut)",
     "chart": "Graphique",

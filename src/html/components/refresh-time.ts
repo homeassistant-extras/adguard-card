@@ -4,7 +4,7 @@ import {
 } from '@delegates/action-handler-delegate';
 import type { HomeAssistant } from '@hass/types';
 import type { SectionConfig } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { html, nothing, type TemplateResult } from 'lit';
 import { stateDisplay } from './state-display';
 
@@ -12,13 +12,13 @@ import { stateDisplay } from './state-display';
  * Renders the refresh time icon and last data refresh time
  * @param element - The HTML element to render the card into
  * @param hass - The Home Assistant instance
- * @param device - The Pi-hole device
+ * @param device - The AdGuard device
  * @returns TemplateResult
  */
 export const refreshTime = (
   element: HTMLElement,
   hass: HomeAssistant,
-  device: PiHoleDevice,
+  device: AdGuardDevice,
 ): TemplateResult => {
   const clickConfig: SectionConfig = {
     tap_action: {

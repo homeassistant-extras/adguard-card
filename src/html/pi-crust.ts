@@ -3,7 +3,7 @@ import { stateActive } from '@hass/common/entity/state_active';
 import type { HomeAssistant } from '@hass/types';
 import { localize } from '@localize/localize';
 import type { Config } from '@type/config';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 import { html, nothing, type TemplateResult } from 'lit';
 import { icon } from './components/pi-icon';
 import { stateDisplay } from './components/state-display';
@@ -11,14 +11,14 @@ import { stateDisplay } from './components/state-display';
 /**
  * Creates the card header section
  * @param element - The HTML element to render the card into
- * @param setup - The Pi-hole setup
+ * @param setup - The AdGuard setup
  * @param hass - The Home Assistant instance
  * @param config - The card configuration
  * @returns TemplateResult
  */
 export const createCardHeader = (
   element: HTMLElement,
-  setup: PiHoleSetup,
+  setup: AdGuardSetup,
   hass: HomeAssistant,
   config: Config,
 ): TemplateResult | typeof nothing => {
@@ -53,7 +53,7 @@ export const createCardHeader = (
   return html`
     <div class="card-header">
       <div class="name">
-        ${icon(element, config, setup)}${config.title ?? 'Pi-hole'}
+        ${icon(element, config, setup)}${config.title ?? 'AdGuard'}
         ${setup.holes.length > 1
           ? html`<span class="multi-status"
               >(${activeCount}/${setup.holes.length})</span

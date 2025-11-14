@@ -16,10 +16,10 @@ describe('get-config-device.ts', () => {
     mockHass = {
       callWS: callWSStub,
       devices: {
-        pi_hole_device_1: {
-          id: 'pi_hole_device_1',
-          name: 'Pi-hole',
-          config_entries: ['pi_hole_config_entry_1'],
+        adguard_device_1: {
+          id: 'adguard_device_1',
+          name: 'AdGuard',
+          config_entries: ['adguard_config_entry_1'],
           area_id: 'network',
         },
         other_device: {
@@ -32,28 +32,28 @@ describe('get-config-device.ts', () => {
     } as unknown as HomeAssistant;
   });
 
-  it('should return the Pi-hole device when config entry exists', async () => {
+  it('should return the AdGuard device when config entry exists', async () => {
     // Mock the callWS response for config entries
     callWSStub
       .withArgs({
         type: 'config_entries/get',
-        domain: 'pi_hole_v6',
+        domain: 'adguard',
       })
-      .resolves([{ entry_id: 'pi_hole_config_entry_1' }]);
+      .resolves([{ entry_id: 'adguard_config_entry_1' }]);
 
     const result = await getConfigDevice(mockHass);
 
-    // Should return the Pi-hole device
+    // Should return the AdGuard device
     expect(result).to.exist;
-    expect(result?.id).to.equal('pi_hole_device_1');
+    expect(result?.id).to.equal('adguard_device_1');
   });
 
-  it('should return undefined when no Pi-hole config entries exist', async () => {
+  it('should return undefined when no AdGuard config entries exist', async () => {
     // Mock empty config entries response
     callWSStub
       .withArgs({
         type: 'config_entries/get',
-        domain: 'pi_hole_v6',
+        domain: 'adguard',
       })
       .resolves([]);
 
@@ -68,7 +68,7 @@ describe('get-config-device.ts', () => {
     callWSStub
       .withArgs({
         type: 'config_entries/get',
-        domain: 'pi_hole_v6',
+        domain: 'adguard',
       })
       .resolves([{ entry_id: 'non_existent_config_entry' }]);
 
@@ -81,26 +81,26 @@ describe('get-config-device.ts', () => {
   it('should return the first matching device when multiple devices exist', async () => {
     // Create a second Pi-hole device
     (mockHass.devices as Record<string, DeviceRegistryEntry>)[
-      'pi_hole_device_2'
+      'adguard_device_2'
     ] = {
-      id: 'pi_hole_device_2',
-      config_entries: ['pi_hole_config_entry_1'],
-      name: 'Pi-hole 2',
+      id: 'adguard_device_2',
+      config_entries: ['adguard_config_entry_1'],
+      name: 'AdGuard 2',
     };
 
     // Mock config entry
     callWSStub
       .withArgs({
         type: 'config_entries/get',
-        domain: 'pi_hole_v6',
+        domain: 'adguard',
       })
-      .resolves([{ entry_id: 'pi_hole_config_entry_1' }]);
+      .resolves([{ entry_id: 'adguard_config_entry_1' }]);
 
     const result = await getConfigDevice(mockHass);
 
     // Should return the first matching device
     expect(result).to.exist;
-    expect(result?.id).to.equal('pi_hole_device_1');
+    expect(result?.id).to.equal('adguard_device_1');
   });
 
   it('should handle callWS errors gracefully', async () => {
@@ -108,7 +108,7 @@ describe('get-config-device.ts', () => {
     callWSStub
       .withArgs({
         type: 'config_entries/get',
-        domain: 'pi_hole_v6',
+        domain: 'adguard',
       })
       .rejects(new Error('WebSocket error'));
 

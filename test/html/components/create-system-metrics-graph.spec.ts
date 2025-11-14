@@ -4,7 +4,7 @@ import { createSystemMetricsGraph } from '@html/components/create-system-metrics
 import { SystemMetricsGraph } from '@html/components/system-metrics-graph';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import { nothing, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
@@ -17,7 +17,7 @@ describe('create-system-metrics-graph.ts', () => {
     }
   });
   let mockHass: HomeAssistant;
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockConfig: Config;
   let showSectionStub: sinon.SinonStub;
 
@@ -37,16 +37,16 @@ describe('create-system-metrics-graph.ts', () => {
     });
 
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       sensors: [
         createSensor('sensor.pi_hole_cpu_use'),
         createSensor('sensor.pi_hole_memory_use'),
         createSensor('sensor.seen_clients'),
       ],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
   });
 

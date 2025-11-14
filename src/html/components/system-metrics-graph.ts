@@ -1,7 +1,7 @@
 import { show } from '@common/show-section';
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { Chart, registerables } from 'chart.js';
 import { LitElement, css, html, nothing } from 'lit';
 import { property, state } from 'lit/decorators.js';
@@ -37,7 +37,7 @@ export class SystemMetricsGraph extends LitElement {
   hass!: HomeAssistant;
 
   @property({ attribute: false })
-  device!: PiHoleDevice;
+  device!: AdGuardDevice;
 
   @property({ attribute: false })
   config!: Config;

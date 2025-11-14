@@ -4,14 +4,14 @@ import { refreshTime } from '@html/components/refresh-time';
 import * as stateDisplayModule from '@html/components/state-display';
 import { fixture } from '@open-wc/testing-helpers';
 import type { SectionConfig } from '@type/config';
-import type { EntityInformation, PiHoleDevice } from '@type/types';
+import type { EntityInformation, AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import { html, type TemplateResult } from 'lit';
 import { restore, stub } from 'sinon';
 
 describe('refresh-time.ts', () => {
   let mockHass: HomeAssistant;
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockElement: HTMLElement;
   let actionHandlerStub: sinon.SinonStub;
   let handleClickActionStub: sinon.SinonStub;
@@ -55,14 +55,14 @@ describe('refresh-time.ts', () => {
     };
 
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       action_refresh_data: refreshDataEntity,
       latest_data_refresh: latestRefreshEntity,
       sensors: [],
       switches: [],
       controls: [],
       updates: [],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Stub the action handler functions
     actionHandlerStub = stub(actionHandlerModule, 'actionHandler').returns({});

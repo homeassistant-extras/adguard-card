@@ -34,8 +34,8 @@ describe('index.ts', () => {
   it('should register all custom elements', () => {
     require('@/index.ts');
     expect(customElementsStub.callCount).to.equal(4);
-    expect(customElementsStub.firstCall.args[0]).to.equal('pi-hole');
-    expect(customElementsStub.secondCall.args[0]).to.equal('pi-hole-editor');
+    expect(customElementsStub.firstCall.args[0]).to.equal('adguard');
+    expect(customElementsStub.secondCall.args[0]).to.equal('adguard-editor');
     expect(customElementsStub.thirdCall.args[0]).to.equal('pause-component');
     expect(customElementsStub.getCall(3).args[0]).to.equal(
       'system-metrics-graph',
@@ -56,11 +56,11 @@ describe('index.ts', () => {
 
     // Check device-card configuration
     expect(window.customCards[0]).to.deep.equal({
-      type: 'pi-hole',
-      name: 'Pi-hole Card',
-      description: 'A card to summarize and control your Pi-hole instance.',
+      type: 'adguard',
+      name: 'AdGuard Card',
+      description: 'A card to summarize and control your AdGuard instance.',
       preview: true,
-      documentationURL: 'https://github.com/homeassistant-extras/pi-hole-card',
+      documentationURL: 'https://github.com/homeassistant-extras/adguard-card',
     });
   });
 
@@ -97,7 +97,7 @@ describe('index.ts', () => {
     // Assert that it was called with the expected arguments
     expect(
       consoleInfoStub.calledWithExactly(
-        `%c🐱 Poat's Tools: pi-hole-card - ${version}`,
+        `%c🐱 Poat's Tools: adguard-card - ${version}`,
         'color: #CFC493;',
       ),
     ).to.be.true;

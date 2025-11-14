@@ -1,4 +1,4 @@
-import { PiHoleCardEditor } from '@cards/editor';
+import { AdGuardCardEditor } from '@cards/editor';
 import type { HomeAssistant } from '@hass/types';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
@@ -7,14 +7,14 @@ import { nothing, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('editor.ts', () => {
-  let card: PiHoleCardEditor;
+  let card: AdGuardCardEditor;
   let hass: HomeAssistant;
   let dispatchStub: sinon.SinonStub;
 
   beforeEach(async () => {
     // Create mock HomeAssistant instance
     hass = {} as HomeAssistant;
-    card = new PiHoleCardEditor();
+    card = new AdGuardCardEditor();
     dispatchStub = stub(card, 'dispatchEvent');
 
     card.hass = hass;
@@ -26,7 +26,7 @@ describe('editor.ts', () => {
 
   describe('initialization', () => {
     it('should be defined', () => {
-      expect(card).to.be.instanceOf(PiHoleCardEditor);
+      expect(card).to.be.instanceOf(AdGuardCardEditor);
     });
 
     it('should have default properties', () => {
@@ -84,16 +84,13 @@ describe('editor.ts', () => {
             device: {
               filter: [
                 {
-                  integration: 'pi_hole_v6',
-                },
-                {
-                  integration: 'pi_hole',
+                  integration: 'adguard',
                 },
               ],
             },
           },
           required: true,
-          label: `editor.pi_hole_device`,
+          label: `editor.adguard_device`,
         },
         {
           name: 'content',
@@ -116,7 +113,7 @@ describe('editor.ts', () => {
               label: 'editor.card_icon',
               selector: {
                 icon: {
-                  placeholder: 'mdi:pi-hole',
+                  placeholder: 'mdi:shield-check',
                 },
               },
             },
@@ -234,10 +231,7 @@ describe('editor.ts', () => {
                   multiple: true,
                   filter: [
                     {
-                      integration: 'pi_hole_v6',
-                    },
-                    {
-                      integration: 'pi_hole',
+                      integration: 'adguard',
                     },
                   ],
                 },
@@ -252,12 +246,7 @@ describe('editor.ts', () => {
                   multiple: true,
                   filter: [
                     {
-                      integration: 'pi_hole_v6',
-                      domain: ['button', 'sensor', 'switch'],
-                    },
-
-                    {
-                      integration: 'pi_hole',
+                      integration: 'adguard',
                       domain: ['button', 'sensor', 'switch'],
                     },
                   ],

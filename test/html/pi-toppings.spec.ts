@@ -4,13 +4,13 @@ import * as createAdditionalStatModule from '@html/components/additional-stat';
 import { createAdditionalStats } from '@html/pi-toppings';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import { html, nothing, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('pi-toppings.ts', () => {
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockElement: HTMLElement;
   let mockHass: HomeAssistant;
   let mockConfig: Config;
@@ -47,17 +47,17 @@ describe('pi-toppings.ts', () => {
     });
 
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       sensors: [
         createSensor('sensor.seen_clients'),
         createSensor('sensor.dns_unique_domains'),
         createSensor('sensor.dns_queries_cached'),
       ],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Mock config with info section
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       info: {
         tap_action: { action: 'more-info' },
       },

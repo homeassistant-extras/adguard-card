@@ -1,25 +1,25 @@
-# Pi-hole Card
+# AdGuard Card
 
 <p align="center">
     <img src="assets/pihole-card.png" align="center" width="50%">
 </p>
-<p align="center"><h1 align="center">Pi-hole Card</h1></p>
+<p align="center"><h1 align="center">AdGuard Card</h1></p>
 <p align="center">
-  <em>Complete Pi-hole monitoring and control for Home Assistant</em>
+  <em>Complete AdGuard monitoring and control for Home Assistant</em>
 </p>
 
 ![Home Assistant](https://img.shields.io/badge/home%20assistant-%2341BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-![GitHub Release](https://img.shields.io/github/v/release/homeassistant-extras/pi-hole-card?style=for-the-badge&logo=github)
-![GitHub Pre-Release](https://img.shields.io/github/v/release/homeassistant-extras/pi-hole-card?include_prereleases&style=for-the-badge&logo=github&label=PRERELEASE)
-![GitHub Tag](https://img.shields.io/github/v/tag/homeassistant-extras/pi-hole-card?style=for-the-badge&color=yellow)
-![GitHub branch status](https://img.shields.io/github/checks-status/homeassistant-extras/pi-hole-card/main?style=for-the-badge)
+![GitHub Release](https://img.shields.io/github/v/release/homeassistant-extras/adguard-card?style=for-the-badge&logo=github)
+![GitHub Pre-Release](https://img.shields.io/github/v/release/homeassistant-extras/adguard-card?include_prereleases&style=for-the-badge&logo=github&label=PRERELEASE)
+![GitHub Tag](https://img.shields.io/github/v/tag/homeassistant-extras/adguard-card?style=for-the-badge&color=yellow)
+![GitHub branch status](https://img.shields.io/github/checks-status/homeassistant-extras/adguard-card/main?style=for-the-badge)
 
-![stars](https://img.shields.io/github/stars/homeassistant-extras/pi-hole-card.svg?style=for-the-badge)
-![home](https://img.shields.io/github/last-commit/homeassistant-extras/pi-hole-card.svg?style=for-the-badge)
-![commits](https://img.shields.io/github/commit-activity/y/homeassistant-extras/pi-hole-card?style=for-the-badge)
-![license](https://img.shields.io/github/license/homeassistant-extras/pi-hole-card?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=0080ff)
+![stars](https://img.shields.io/github/stars/homeassistant-extras/adguard-card.svg?style=for-the-badge)
+![home](https://img.shields.io/github/last-commit/homeassistant-extras/adguard-card.svg?style=for-the-badge)
+![commits](https://img.shields.io/github/commit-activity/y/homeassistant-extras/adguard-card?style=for-the-badge)
+![license](https://img.shields.io/github/license/homeassistant-extras/adguard-card?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=0080ff)
 
 <p align="center">Built with the tools and technologies:</p>
 <p align="center">
@@ -33,13 +33,13 @@
 
 ## Overview
 
-A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad blocker directly from Home Assistant. The card provides real-time statistics and controls in an intuitive, dashboard-style interface that matches the Pi-hole visual identity.
+A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad blocker directly from Home Assistant. The card provides real-time statistics and controls in an intuitive, dashboard-style interface that matches the AdGuard visual identity.
 
 ## Features
 
 ### Dashboard Statistics
 
-- **Main Statistics Dashboard** - Four color-coded tiles showing your most important Pi-hole metrics:
+- **Main Statistics Dashboard** - Four color-coded tiles showing your most important AdGuard metrics:
   - Total DNS Queries
   - Queries Blocked
   - Block Percentage
@@ -59,7 +59,7 @@ A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad b
 
 ### System Metrics Chart
 
-- **CPU and Memory Usage Graph** - Visualize your Pi-hole's system resource usage over the last 24 hours:
+- **CPU and Memory Usage Graph** - Visualize your AdGuard's system resource usage over the last 24 hours:
   - Real-time CPU usage tracking
   - Memory consumption monitoring
   - Historical data visualization
@@ -71,12 +71,12 @@ A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad b
 
 ### Direct Controls
 
-- **Enable/Disable Controls** - Toggle Pi-hole filtering with a single click as well as Group Default
+- **Enable/Disable Controls** - Toggle AdGuard filtering with a single click as well as Group Default
 - **Pause Ad-Blocking** - Temporarily disable filtering for a specified duration:
   - Configurable durations (default: 60s, 5min, 15min)
   - Automatically re-enables filtering after time expires
   - Shows remaining time until blocking resumes
-  - Pause multiple Pi-holes if configured
+  - Pause multiple AdGuard instances if configured
 - **Action Buttons** - Quick access buttons for common maintenance tasks:
   - Restart DNS
   - Update Gravity
@@ -92,7 +92,7 @@ A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad b
 
 ### Version Information
 
-- **Component Versions** - Display installed versions for all Pi-hole components:
+- **Component Versions** - Display installed versions for all AdGuard components:
   - Core
   - Docker
   - FTL
@@ -104,7 +104,7 @@ A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad b
 
 ### Status Monitoring
 
-- **Real-time Status** - Visual indication of Pi-hole's current state
+- **Real-time Status** - Visual indication of AdGuard's current state
 - **Error Detection** - Automatic highlighting when issues are detected
 - **Update Indicators** - Clear notification when updates are available
 - **Block Time Remaining** - Shows remaining time until ad-blocking resumes when paused
@@ -133,28 +133,28 @@ A comprehensive dashboard card for managing and monitoring your Pi-hole DNS ad b
 
 ![filtering](assets/filtering.png)
 
-### Multi-Pi-hole Support
+### Multi-AdGuard Support
 
-- **Centralized Control** - Manage multiple Pi-hole instances from a single card
-- **Aggregated Status** - See at a glance how many of your Pi-holes are active
-- **Unified Control** - Centralized access to all switches from your Pi-hole instances
+- **Centralized Control** - Manage multiple AdGuard instances from a single card
+- **Aggregated Status** - See at a glance how many of your AdGuard instances are active
+- **Unified Control** - Centralized access to all switches from your AdGuard instances
 - **Intelligent Status Indicators** - Status automatically adjusts based on collective state:
   - Shows "Running" when all instances are active
   - Shows "Partial" when some instances are active and some are inactive
   - Shows count of active instances (e.g., "2/3")
 
 Example of Partial
-![Multi Pi-hole Status](assets/multi-pihole-partial.png)
+![Multi AdGuard Status](assets/multi-pihole-partial.png)
 
 Example of all Running
-![Multi Pi-hole All Running](assets/multi-pihole-running.png)
+![Multi AdGuard All Running](assets/multi-pihole-running.png)
 
 > [!NOTE]  
-> The multi-Pi-hole feature currently has some limitations:
+> The multi-AdGuard feature currently has some limitations:
 >
-> - Statistics shown are from the first Pi-hole in the list only
-> - All switches from all Pi-holes are displayed in a single list
-> - Only header status reflects the multi-Pi-hole state
+> - Statistics shown are from the first AdGuard instance in the list only
+> - All switches from all AdGuard instances are displayed in a single list
+> - Only header status reflects the multi-AdGuard state
 
 ### Responsive Design
 
@@ -169,28 +169,28 @@ Example of all Running
 ### Prerequisites
 
 > [!WARNING]  
-> Before using this card, please ensure you have the [Pi-hole v6 integration](https://github.com/bastgau/ha-pi-hole-v6) installed in your Home Assistant instance.
+> Before using this card, please ensure you have the AdGuard integration installed in your Home Assistant instance.
 
 ### HACS (Recommended)
 
-[![HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=homeassistant-extras&repository=pi-hole-card&category=dashboard)
+[![HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=homeassistant-extras&repository=adguard-card&category=dashboard)
 
 1. Open HACS in your Home Assistant instance
 2. Click the menu icon in the top right and select "Custom repositories"
 3. Add this repository URL and select "Dashboard" as the category
-   - `https://github.com/homeassistant-extras/pi-hole-card`
+   - `https://github.com/homeassistant-extras/adguard-card`
 4. Click "Install"
 
 ### Manual Installation
 
-1. Download the `pi-hole-card.js` file from the latest release in the Releases tab.
-2. Copy it to your `www/community/pi-hole-card/` folder
+1. Download the `adguard-card.js` file from the latest release in the Releases tab.
+2. Copy it to your `www/community/adguard-card/` folder
 3. Add the following to your `configuration.yaml` (or add as a resource in dashboards menu)
 
 ```yaml
 lovelace:
   resources:
-    - url: /local/community/pi-hole-card/pi-hole-card.js
+    - url: /local/community/adguard-card/adguard-card.js
       type: module
 ```
 
@@ -202,7 +202,7 @@ Add the card to your dashboard using the UI editor or YAML:
 
 The card is fully configurable through the card editor, allowing you to customize:
 
-- Pi-hole device selection (single or multiple)
+- AdGuard device selection (single or multiple)
 - Card title and icon
 - Custom actions for statistics, info panels, and control buttons
 
@@ -213,52 +213,52 @@ The card is fully configurable through the card editor, allowing you to customiz
 This is the most minimal configuration needed to get started:
 
 ```yaml
-type: custom:pi-hole
-device_id: your_pihole_device_id
+type: custom:adguard
+device_id: your_adguard_device_id
 ```
 
-For multiple Pi-hole instances:
+For multiple AdGuard instances:
 
 ```yaml
-type: custom:pi-hole
+type: custom:adguard
 device_id:
-  - your_first_pihole_device_id
-  - your_second_pihole_device_id
+  - your_first_adguard_device_id
+  - your_second_adguard_device_id
   - etc..
 ```
 
 The card will automatically:
 
-- Detect all Pi-hole entities associated with the device(s)
+- Detect all AdGuard entities associated with the device(s)
 - Organize statistics in the dashboard layout
 - Display control buttons for common actions
 - Show version information for all components
-- For multiple Pi-holes: combine switches and show aggregated status
+- For multiple AdGuard instances: combine switches and show aggregated status
 
 ### Finding Your Device ID
 
-If you're unsure what your Pi-hole device ID is, here are several ways to find it:
+If you're unsure what your AdGuard device ID is, here are several ways to find it:
 
 #### Method 1: Use the Card Editor (Recommended)
 
 1. Add the card through the visual editor
-2. Select your Pi-hole device from the dropdown
+2. Select your AdGuard device from the dropdown
 3. Click "Show Code Editor" or "View YAML" to see the generated configuration
 4. Copy the `device_id` value for use in manual YAML configuration
 
 #### Method 2: Devices Page
 
 1. Go to **Settings** → **Devices & Services** → **Devices**
-2. Search for "Pi-hole" or browse to find your Pi-hole device
+2. Search for "AdGuard" or browse to find your AdGuard device
 3. Click on the device and look at the URL - the device ID will be in the URL path
 
 ## Configuration Options
 
 | Name               | Type            | Default      | Description                                                        |
 | ------------------ | --------------- | ------------ | ------------------------------------------------------------------ |
-| device_id          | string or array | **Required** | The ID(s) of your Pi-hole device(s) in Home Assistant              |
-| title              | string          | Pi-Hole      | Custom title for the card header                                   |
-| icon               | string          | mdi:pi-hole  | Custom icon for the card header                                    |
+| device_id          | string or array | **Required** | The ID(s) of your AdGuard device(s) in Home Assistant              |
+| title              | string          | AdGuard      | Custom title for the card header                                   |
+| icon               | string          | mdi:shield-check | Custom icon for the card header                                    |
 | badge              | object          | _none_       | Configure actions for the card icon/badge                          |
 | pause_durations    | array           | [60,300,900] | Durations for pause buttons (supports numbers, strings with units) |
 | stats              | object          | _none_       | Configure actions for statistics tiles                             |
@@ -336,7 +336,7 @@ The `chart` option allows you to customize the appearance of the system metrics 
 
 ### Auto-discovery
 
-The card automatically discovers and identifies all Pi-hole entities based on:
+The card automatically discovers and identifies all AdGuard entities based on:
 
 - Entity naming patterns
 - Translation keys
@@ -349,26 +349,26 @@ This includes sensors, buttons, switches, binary sensors, and update entities.
 ### Basic Configuration
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 ```
 
-### Multiple Pi-hole Configuration
+### Multiple AdGuard Configuration
 
 ```yaml
-type: custom:pi-hole
+type: custom:adguard
 device_id:
-  - pi_hole_device_1
-  - pi_hole_device_2
-title: 'My Pi-hole Network'
+  - adguard_device_1
+  - adguard_device_2
+title: 'My AdGuard Network'
 ```
 
 ### With Custom Title and Icon
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
-title: 'My Pi-hole Server'
+type: custom:adguard
+device_id: adguard_device_1
+title: 'My AdGuard Server'
 icon: 'mdi:shield-check'
 ```
 
@@ -377,8 +377,8 @@ icon: 'mdi:shield-check'
 The `pause_durations` configuration supports various formats for specifying time:
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 pause_durations:
   - 60 # 1 minute
   - 300 # 5 minutes
@@ -414,25 +414,25 @@ features:
 
 ### Group Pausing Feature
 
-The group pausing feature is **enabled by default**. When enabled, the pause section will show a dropdown to select which pi or client group to pause, allowing you to pause individual instances or client groups. This is useful for targeting specific Pi-hole instances or client groups.
+The group pausing feature is **enabled by default**. When enabled, the pause section will show a dropdown to select which instance or client group to pause, allowing you to pause individual instances or client groups. This is useful for targeting specific AdGuard instances or client groups.
 
 ![group-pause](assets/group-pause.gif)
 
-When enabled you can pause the Pi instance as well
+When enabled you can pause the instance as well
 
 ![pi-pause](assets/pi-pause.gif)
 
 > [!NOTE]  
-> **Prerequisites**: This feature requires the [Pi-hole v6 integration](https://github.com/bastgau/ha-pi-hole-v6) to be installed in your Home Assistant instance.
+> **Prerequisites**: This feature requires the AdGuard integration to be installed in your Home Assistant instance.
 
 > [!WARNING]  
-> **HA Core Integration**: This feature has not been tested with the Home Assistant Core Pi-hole integration and may not work as expected.
+> **HA Core Integration**: This feature has not been tested with the Home Assistant Core AdGuard integration and may not work as expected.
 
-To disable the group pausing feature and use the legacy device-based service call (which pauses all Pi-hole devices). This is reccomended for multi-pi situations:
+To disable the group pausing feature and use the legacy device-based service call (which pauses all AdGuard devices). This is reccomended for multi-instance situations:
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 features:
   - disable_group_pausing
 ```
@@ -440,21 +440,21 @@ features:
 ### Excluding Sections & Entities
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 exclude_sections:
   - sensors
   - switches
 exclude_entities:
-  - button.pi_hole_action_refresh_data
-  - sensor.pi_hole_latest_data_refresh
+  - button.adguard_action_refresh_data
+  - sensor.adguard_latest_data_refresh
 ```
 
 ### With Custom Actions
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 title: 'Network Protection'
 stats:
   tap_action:
@@ -474,45 +474,45 @@ controls:
 The card icon/badge supports custom actions that can override the default diagnostic message behavior:
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 badge:
   tap_action:
     action: navigate
-    navigation_path: /lovelace/pi-hole-dashboard
+    navigation_path: /lovelace/adguard-dashboard
   hold_action:
     action: call-service
     perform_action: browser_mod.popup
     data:
-      title: Pi-hole Status
-      content: 'Quick overview of Pi-hole status'
+      title: AdGuard Status
+      content: 'Quick overview of AdGuard status'
   double_tap_action:
     action: more-info
-    entity_id: sensor.pi_hole_status
+    entity_id: sensor.adguard_status
 ```
 
 ### With Switch Toggle and Pause Actions
 
-For quick Pi-hole control, you can configure the badge to toggle the main switch on tap and pause for 30 seconds on hold:
+For quick AdGuard control, you can configure the badge to toggle the main switch on tap and pause for 30 seconds on hold:
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 badge:
   tap_action:
     action: perform-action
     perform_action: switch.toggle
     target:
-      entity_id: switch.pi_hole
+      entity_id: switch.adguard
   hold_action:
     action: perform-action
-    perform_action: pi_hole_v6.disable
+    perform_action: adguard.disable
     data:
-      device_id: pi_hole_device_1
+      device_id: adguard_device_1
       duration: '00:00:30'
   double_tap_action:
     action: more-info
-    entity_id: switch.pi_hole
+    entity_id: switch.adguard
 ```
 
 > [!NOTE]  
@@ -524,27 +524,27 @@ badge:
 > **Requirements**: Both `purge_diagnosis_messages` and `info_message_count` entities must be enabled for the default behavior to work.
 
 > [!WARNING]  
-> **Multi-Pi-hole Action Behavior**: When using multiple Pi-hole instances, actions are executed for each configured Pi-hole. This can lead to unexpected behavior:
+> **Multi-AdGuard Action Behavior**: When using multiple AdGuard instances, actions are executed for each configured AdGuard instance. This can lead to unexpected behavior:
 >
-> - **More-info actions**: Only one dialog can be open at a time, so you may only see info for the first or last Pi-hole
+> - **More-info actions**: Only one dialog can be open at a time, so you may only see info for the first or last AdGuard instance
 > - **Navigation actions**: Multiple navigation attempts may conflict with each other
-> - **Service calls**: Will be executed for all Pi-holes, which may or may not be desired
+> - **Service calls**: Will be executed for all AdGuard instances, which may or may not be desired
 >
-> Consider using single-entity actions or service calls with specific targeting when configuring multi-Pi-hole setups.
+> Consider using single-entity actions or service calls with specific targeting when configuring multi-AdGuard setups.
 
 ### Custom Actions for All Sections
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 # Configure stat box actions
 stats:
   tap_action:
     action: call-service
     perform_action: browser_mod.popup
     data:
-      title: Pi-hole Statistics
-      content: 'Detailed view of Pi-hole stats'
+      title: AdGuard Statistics
+      content: 'Detailed view of AdGuard stats'
   hold_action:
     action: navigate
     navigation_path: /lovelace/network-monitoring
@@ -564,35 +564,35 @@ controls:
     action: call-service
     perform_action: browser_mod.popup
     data:
-      title: Pi-hole Controls
-      content: 'Advanced Pi-hole control panel'
+      title: AdGuard Controls
+      content: 'Advanced AdGuard control panel'
 ```
 
 ### Custom Entity Order & Switch Spacing
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 switch_spacing: 'space-around'
 entity_order:
-  - button.pi_hole_action_refresh_data
-  - sensor.pi_hole_dns_queries_today
-  - sensor.pi_hole_ads_blocked_today
-  - switch.pi_hole
+  - button.adguard_action_refresh_data
+  - sensor.adguard_dns_queries_today
+  - sensor.adguard_ads_blocked_today
+  - switch.adguard
 ```
 
 ### Entity Order with Dividers
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 entity_order:
-  - button.pi_hole_action_refresh_data
+  - button.adguard_action_refresh_data
   - divider
-  - sensor.pi_hole_dns_queries_today
-  - sensor.pi_hole_ads_blocked_today
+  - sensor.adguard_dns_queries_today
+  - sensor.adguard_ads_blocked_today
   - divider
-  - switch.pi_hole
+  - switch.adguard
 ```
 
 ![divider1](assets/divider-1.png)
@@ -601,8 +601,8 @@ entity_order:
 ### Collapsed Sections
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 collapsed_sections:
   - actions
   - switches
@@ -612,8 +612,8 @@ collapsed_sections:
 ### Chart Configuration
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 chart:
   line_type: gradient # Options: normal, gradient, gradient_no_fill, no_fill
 ```
@@ -621,8 +621,8 @@ chart:
 ### Excluding Chart Section
 
 ```yaml
-type: custom:pi-hole
-device_id: pi_hole_device_1
+type: custom:adguard
+device_id: adguard_device_1
 exclude_sections:
   - chart # Hide the system metrics chart
 ```
@@ -630,16 +630,16 @@ exclude_sections:
 ## Project Roadmap
 
 - [x] **`Initial design`**: create initial card design
-- [x] **`Auto-discovery`**: automatic detection of Pi-hole entities
+- [x] **`Auto-discovery`**: automatic detection of AdGuard entities
 - [x] **`Dashboard statistics`**: visual representation of key metrics
-- [x] **`Control buttons`**: quick actions for common Pi-hole tasks
+- [x] **`Control buttons`**: quick actions for common AdGuard tasks
 - [x] **`Version info`**: display component versions
 - [x] **`Custom actions`**: tap/hold/double-tap actions for all elements - thanks @dunxd
 - [x] **`Card customization`**: custom title and icon options
 - [x] **`Performance optimizations`**: improved code structure and efficiency
 - [x] **`Enhanced entity mapping`**: **⭐ First contributor ⭐** better entity identification with translation keys - thanks @bastgau
 - [x] **`Translations`**: ability to add translations - thanks @ajavibp
-- [x] **`Multi-Pi-hole support`**: manage and monitor multiple Pi-hole instances - thanks @Drudoo
+- [x] **`Multi-AdGuard support`**: manage and monitor multiple AdGuard instances - thanks @Drudoo
 - [x] **`Collapsible sections`**: collapse/expand card sections to save space - thanks @Teleportist
 - [x] **`Additional visualization options`**: using HA native more-info, etc. - thanks @dunxd
 - [x] **`Pause ad-blocking`**: temporarily disable filtering for specified durations - thanks @StuartHaire, @VVRud
@@ -656,9 +656,9 @@ exclude_sections:
 
 ## Contributing
 
-- **💬 [Join the Discussions](https://github.com/homeassistant-extras/pi-hole-card/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/homeassistant-extras/pi-hole-card/issues)**: Submit bugs found or log feature requests for the `pi-hole` project.
-- **💡 [Submit Pull Requests](https://github.com/homeassistant-extras/pi-hole-card/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **💬 [Join the Discussions](https://github.com/homeassistant-extras/adguard-card/discussions)**: Share your insights, provide feedback, or ask questions.
+- **🐛 [Report Issues](https://github.com/homeassistant-extras/adguard-card/issues)**: Submit bugs found or log feature requests for the `adguard` project.
+- **💡 [Submit Pull Requests](https://github.com/homeassistant-extras/adguard-card/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
 - **📣 [Check out discord](https://discord.gg/NpH4Pt8Jmr)**: Need further help, have ideas, want to chat?
 - **🃏 [Check out my other cards!](https://github.com/orgs/homeassistant-extras/repositories)** Maybe you have an integration that I made cards for.
 
@@ -668,7 +668,7 @@ exclude_sections:
 1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
    ```sh
-   git clone https://github.com/homeassistant-extras/pi-hole-card
+   git clone https://github.com/homeassistant-extras/adguard-card
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
@@ -689,7 +689,7 @@ exclude_sections:
 
 ## Translations
 
-The Pi-hole card supports multiple languages to provide a better experience for users worldwide.
+The AdGuard card supports multiple languages to provide a better experience for users worldwide.
 
 ### Currently supported languages:
 
@@ -707,10 +707,10 @@ This project is protected under the MIT License. For more details, refer to the 
 ## Acknowledgments
 
 - Built using [LitElement](https://lit.dev/)
-- Inspired by Pi-hole's own dashboard design
+- Inspired by AdGuard's own dashboard design
 - Thanks to all contributors!
 
-[![contributors](https://contrib.rocks/image?repo=homeassistant-extras/pi-hole-card)](https://github.com/homeassistant-extras/pi-hole-card/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=homeassistant-extras/adguard-card)](https://github.com/homeassistant-extras/adguard-card/graphs/contributors)
 
 [![ko-fi](https://img.shields.io/badge/buy%20me%20a%20coffee-72A5F2?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/N4N71AQZQG)
 
@@ -720,36 +720,36 @@ Forgive me and my badges..
 
 Stats
 
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=bugs)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=coverage)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=bugs)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=coverage)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
 
 Ratings
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_pi-hole-card&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_pi-hole-card)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=homeassistant-extras_adguard-card&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=homeassistant-extras_adguard-card)
 
 ## Build Status
 
 ### Main
 
-[![CodeQL](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/github-code-scanning/codeql)
-[![Dependabot Updates](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/dependabot/dependabot-updates)
-[![Main Branch CI](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/main-ci.yaml/badge.svg?branch=main)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/main-ci.yaml)
-[![Fast Forward Check](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/pull_request.yaml/badge.svg?branch=main)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/pull_request.yaml)
+[![CodeQL](https://github.com/homeassistant-extras/adguard-card/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/github-code-scanning/codeql)
+[![Dependabot Updates](https://github.com/homeassistant-extras/adguard-card/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/dependabot/dependabot-updates)
+[![Main Branch CI](https://github.com/homeassistant-extras/adguard-card/actions/workflows/main-ci.yaml/badge.svg?branch=main)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/main-ci.yaml)
+[![Fast Forward Check](https://github.com/homeassistant-extras/adguard-card/actions/workflows/pull_request.yaml/badge.svg?branch=main)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/pull_request.yaml)
 
 ### Release
 
-[![Release & Deploy](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/release-cd.yaml/badge.svg)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/release-cd.yaml)
-[![Merge](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/merge.yaml/badge.svg)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/merge.yaml)
+[![Release & Deploy](https://github.com/homeassistant-extras/adguard-card/actions/workflows/release-cd.yaml/badge.svg)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/release-cd.yaml)
+[![Merge](https://github.com/homeassistant-extras/adguard-card/actions/workflows/merge.yaml/badge.svg)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/merge.yaml)
 
 ### Other
 
-[![Issue assignment](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/assign.yaml/badge.svg)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/assign.yaml)
-[![Manual Release](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/manual-release.yaml/badge.svg)](https://github.com/homeassistant-extras/pi-hole-card/actions/workflows/manual-release.yaml)
+[![Issue assignment](https://github.com/homeassistant-extras/adguard-card/actions/workflows/assign.yaml/badge.svg)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/assign.yaml)
+[![Manual Release](https://github.com/homeassistant-extras/adguard-card/actions/workflows/manual-release.yaml/badge.svg)](https://github.com/homeassistant-extras/adguard-card/actions/workflows/manual-release.yaml)

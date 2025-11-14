@@ -1,22 +1,22 @@
 import { formatSecondsToHHMMSS } from '@common/convert-time';
 import type { HomeAssistant } from '@hass/types';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 
 /**
- * Pauses the specified Pi-hole device for a given duration.
+ * Pauses the specified AdGuard device for a given duration.
  *
  * @param hass - The Home Assistant instance used to call services.
- * @param setup - The Pi-hole setup to be paused.
+ * @param setup - The AdGuard setup to be paused.
  * @param seconds - The duration to pause the device, in seconds.
  * @param entityId - Optional entity ID to target a specific switch instead of the device.
  */
 export const handlePauseClick = (
   hass: HomeAssistant,
-  setup: PiHoleSetup,
+  setup: AdGuardSetup,
   seconds: number,
   entityId?: string,
 ) => {
-  const domain = 'pi_hole_v6';
+  const domain = 'adguard';
   const service = 'disable';
 
   if (entityId) {

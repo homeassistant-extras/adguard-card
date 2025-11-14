@@ -10,7 +10,7 @@ import type { EntityInformation } from '@type/types';
 import { type TemplateResult, html, nothing } from 'lit';
 
 /**
- * Creates a stat box for the Pi-hole dashboard
+ * Creates a stat box for the AdGuard dashboard
  * @param element - The element to attach the action to
  * @param hass - The Home Assistant object
  * @param entity - The entity information

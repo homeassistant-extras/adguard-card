@@ -2,14 +2,14 @@ import * as mapEntitiesModule from '@common/map-entities';
 import * as skipEntityModule from '@common/skip-entity';
 import { getDevice } from '@delegates/retrievers/device';
 import * as cardEntitiesModule from '@delegates/utils/card-entities';
-import { getPiHole } from '@delegates/utils/get-pihole';
+import { getAdGuard } from '@delegates/utils/get-adguard';
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
 import type { EntityInformation } from '@type/types';
 import { expect } from 'chai';
 import { restore, stub } from 'sinon';
 
-describe('get-pihole.ts', () => {
+describe('get-adguard.ts', () => {
   let mockHass: HomeAssistant;
   let mockConfig: Config;
   let getDeviceStub: sinon.SinonStub;
@@ -17,8 +17,8 @@ describe('get-pihole.ts', () => {
   let mapEntitiesByTranslationKeyStub: sinon.SinonStub;
   let shouldSkipEntityStub: sinon.SinonStub;
 
-  const DEVICE_ID = 'pi_hole_device_1';
-  const DEVICE_NAME = 'Pi-hole';
+  const DEVICE_ID = 'adguard_device_1';
+  const DEVICE_NAME = 'AdGuard';
 
   beforeEach(() => {
     // Create mock config
@@ -57,7 +57,7 @@ describe('get-pihole.ts', () => {
   });
 
   it('should return undefined when device is not found', () => {
-    const result = getPiHole(mockHass, mockConfig, 'non_existent_device');
+    const result = getAdGuard(mockHass, mockConfig, 'non_existent_device');
     expect(result).to.be.undefined;
   });
 
@@ -65,7 +65,7 @@ describe('get-pihole.ts', () => {
     // Mock an empty array of entities
     getDeviceEntitiesStub.returns([]);
 
-    const result = getPiHole(
+    const result = getAdGuard(
       mockHass,
       mockConfig,
       mockConfig.device_id as string,
@@ -95,7 +95,7 @@ describe('get-pihole.ts', () => {
       return !!entity.translation_key;
     });
 
-    const result = getPiHole(
+    const result = getAdGuard(
       mockHass,
       mockConfig,
       mockConfig.device_id as string,
@@ -126,7 +126,7 @@ describe('get-pihole.ts', () => {
     // Configure mapEntitiesByTranslationKey to return false (so the entity goes to other arrays)
     mapEntitiesByTranslationKeyStub.returns(false);
 
-    const result = getPiHole(
+    const result = getAdGuard(
       mockHass,
       mockConfig,
       mockConfig.device_id as string,
@@ -165,7 +165,7 @@ describe('get-pihole.ts', () => {
     shouldSkipEntityStub.returns(false);
 
     // Get the result
-    const result = getPiHole(mockHass, mockConfig, DEVICE_ID);
+    const result = getAdGuard(mockHass, mockConfig, DEVICE_ID);
 
     // Verify that entities were processed in the order specified by entity_order
     // Check calls to mapEntitiesByTranslationKey which should reflect processing order

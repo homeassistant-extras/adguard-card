@@ -61,7 +61,7 @@
     "pause_60_seconds": "60 секунди",
     "pause_5_minutes": "5 минути",
     "pause_15_minutes": "15 минути",
-    "pi_hole_device": "Pi-hole устройство",
+    "adguard_device": "AdGuard устройство",
     "entity_display_order": "Ред на показване на обектите (кликване в ред)",
     "flex_default": "Flex (по подразбиране)",
     "chart": "Графика",

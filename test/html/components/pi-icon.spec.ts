@@ -2,14 +2,14 @@ import * as actionHandlerDelegate from '@delegates/action-handler-delegate';
 import { icon } from '@html/components/pi-icon';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice, PiHoleSetup } from '@type/types';
+import type { AdGuardDevice, AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('icon.ts', () => {
   let mockConfig: Config;
-  let mockSetup: PiHoleSetup;
+  let mockSetup: AdGuardSetup;
   let mockElement: HTMLElement;
   let actionHandlerStub: sinon.SinonStub;
   let handleMultiPiClickActionStub: sinon.SinonStub;
@@ -17,19 +17,19 @@ describe('icon.ts', () => {
   beforeEach(() => {
     // Create basic mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
 
     // Create basic mock setup with no info messages
     mockSetup = {
       holes: [
         {
-          device_id: 'pi_hole_device_1',
+          device_id: 'adguard_device_1',
           sensors: [],
           switches: [],
           controls: [],
           updates: [],
-        } as PiHoleDevice,
+        } as AdGuardDevice,
       ],
     };
 
@@ -60,7 +60,7 @@ describe('icon.ts', () => {
       expect(el.classList.contains('badge')).to.be.true;
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
 
     it('should render custom icon when configured', async () => {
@@ -82,7 +82,7 @@ describe('icon.ts', () => {
 
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
 
     it('should render icon when info_message_count state is "0"', async () => {
@@ -98,7 +98,7 @@ describe('icon.ts', () => {
 
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
   });
 
@@ -123,8 +123,8 @@ describe('icon.ts', () => {
 
     it('should sum info messages from multiple devices', async () => {
       // Add a second device to the setup
-      const secondDevice: PiHoleDevice = {
-        device_id: 'pi_hole_device_2',
+      const secondDevice: AdGuardDevice = {
+        device_id: 'adguard_device_2',
         info_message_count: {
           entity_id: 'sensor.pi_hole_2_info_message_count',
           state: '2',
@@ -165,8 +165,8 @@ describe('icon.ts', () => {
       };
 
       // Second device has no info messages (undefined)
-      const secondDevice: PiHoleDevice = {
-        device_id: 'pi_hole_device_2',
+      const secondDevice: AdGuardDevice = {
+        device_id: 'adguard_device_2',
         sensors: [],
         switches: [],
         controls: [],
@@ -174,8 +174,8 @@ describe('icon.ts', () => {
       };
 
       // Third device has zero info messages
-      const thirdDevice: PiHoleDevice = {
-        device_id: 'pi_hole_device_3',
+      const thirdDevice: AdGuardDevice = {
+        device_id: 'adguard_device_3',
         info_message_count: {
           entity_id: 'sensor.pi_hole_3_info_message_count',
           state: '0',
@@ -215,7 +215,7 @@ describe('icon.ts', () => {
       // Should render icon since NaN check will exclude this value
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
 
     it('should handle empty string state values', async () => {
@@ -232,7 +232,7 @@ describe('icon.ts', () => {
       // Should render icon since empty string converts to 0, but NaN check should handle it
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
 
     it('should handle floating point numbers correctly', async () => {
@@ -261,7 +261,7 @@ describe('icon.ts', () => {
       // Should render icon since no info messages to count
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:pi-hole');
+      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
     });
   });
 
@@ -381,7 +381,7 @@ describe('icon.ts', () => {
       await fixture(result as TemplateResult);
 
       const actionConfig = actionHandlerStub.firstCall.args[0];
-      expect(actionConfig.entity).to.equal('pi_hole_device_1');
+      expect(actionConfig.entity).to.equal('adguard_device_1');
     });
 
     it('should handle multiple pi-holes with different configurations', async () => {
@@ -400,8 +400,8 @@ describe('icon.ts', () => {
       };
 
       // Second pi-hole with only status
-      const secondDevice: PiHoleDevice = {
-        device_id: 'pi_hole_device_2',
+      const secondDevice: AdGuardDevice = {
+        device_id: 'adguard_device_2',
         status: {
           entity_id: 'sensor.pi_hole_2_status',
           state: 'disabled',

@@ -5,14 +5,14 @@ import * as createVersionItemModule from '@html/components/version-item';
 import { createFooter } from '@html/pi-tin';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import { html, nothing, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('pi-footer.ts', () => {
   let mockHass: HomeAssistant;
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockElement: HTMLElement;
   let mockConfig: Config;
   let showSectionStub: sinon.SinonStub;
@@ -47,7 +47,7 @@ describe('pi-footer.ts', () => {
 
     // Mock device with updates array
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       updates: [
         {
           entity_id: 'update.pi_hole_core',
@@ -76,11 +76,11 @@ describe('pi-footer.ts', () => {
       sensors: [],
       switches: [],
       controls: [],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
   });
 

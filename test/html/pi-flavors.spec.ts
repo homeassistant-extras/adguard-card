@@ -6,15 +6,15 @@ import * as stateContentModule from '@html/components/state-content';
 import { createCardActions } from '@html/pi-flavors';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { EntityInformation, PiHoleDevice, PiHoleSetup } from '@type/types';
+import type { EntityInformation, AdGuardDevice, AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { html, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
 
 describe('pi-flavors.ts', () => {
   let mockHass: HomeAssistant;
-  let mockSetup: PiHoleSetup;
-  let mockDevice: PiHoleDevice;
+  let mockSetup: AdGuardSetup;
+  let mockDevice: AdGuardDevice;
   let mockElement: HTMLElement;
   let mockConfig: Config;
   let createActionButtonStub: sinon.SinonStub;
@@ -26,7 +26,7 @@ describe('pi-flavors.ts', () => {
     // Create mock element and hass
     mockElement = document.createElement('div');
     mockHass = {} as HomeAssistant;
-    mockSetup = {} as PiHoleSetup;
+    mockSetup = {} as AdGuardSetup;
 
     // Create stub for show function
     showSectionStub = stub(showSectionModule, 'show');
@@ -77,14 +77,14 @@ describe('pi-flavors.ts', () => {
     };
 
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       switches: [mockSwitch1, mockSwitch2],
       controls: [mockControl1, mockControl2],
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       controls: {
         tap_action: {
           action: 'more-info',
@@ -229,10 +229,10 @@ describe('pi-flavors.ts', () => {
   it('should handle empty arrays gracefully', async () => {
     // Create a device with empty switches and controls arrays
     const emptyDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       switches: [],
       controls: [],
-    } as any as PiHoleDevice;
+    } as any as AdGuardDevice;
 
     const result = createCardActions(
       mockElement,

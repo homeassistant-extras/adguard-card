@@ -2,7 +2,7 @@ import { css } from 'lit';
 import { collapsibleStyles } from '../../../styles';
 
 /**
- * Static CSS styles for the Pi-hole Pause Component
+ * Static CSS styles for the AdGuard Pause Component
  */
 export const pauseStyles = css`
   ${collapsibleStyles}

@@ -5,7 +5,7 @@ import * as createStatBoxModule from '@html/components/stat-box';
 import { createDashboardStats } from '@html/pi-fillings';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import { expect } from 'chai';
 import { html, nothing, type TemplateResult } from 'lit';
 import { restore, stub } from 'sinon';
@@ -13,7 +13,7 @@ import { restore, stub } from 'sinon';
 describe('pi-fillings.ts', () => {
   let mockElement: HTMLElement;
   let mockHass: HomeAssistant;
-  let mockDevice: PiHoleDevice;
+  let mockDevice: AdGuardDevice;
   let mockConfig: Config;
   let createStatBoxStub: sinon.SinonStub;
   let showSectionStub: sinon.SinonStub;
@@ -90,7 +90,7 @@ describe('pi-fillings.ts', () => {
 
     // Mock device with required stats
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       dns_queries_today: {
         entity_id: 'sensor.dns_queries_today',
         state: '12345',
@@ -121,11 +121,11 @@ describe('pi-fillings.ts', () => {
         attributes: {},
         translation_key: 'dns_unique_clients',
       },
-    } as PiHoleDevice;
+    } as AdGuardDevice;
 
     // Mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       stats: {
         tap_action: { action: 'more-info' },
       },

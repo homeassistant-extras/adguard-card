@@ -1,11 +1,11 @@
 {
-  "name": "pi-hole",
-  "version": "0.20.0",
+  "name": "adguard",
+  "version": "0.0.1",
   "author": "Patrick Masters",
   "license": "ISC",
-  "description": "UDPATE ME.",
+  "description": "Card to summarize information for, and to control your Adguard instance!",
   "source": "src/index.ts",
-  "module": "dist/pi-hole-card.js",
+  "module": "dist/adguard-card.js",
   "targets": {
     "module": {
       "includeNodeModules": true
@@ -29,9 +29,9 @@
     "@types/chai": "^5.2.3",
     "@types/jsdom": "^27.0.0",
     "@types/mocha": "^10.0.10",
-    "@types/sinon": "^17.0.4",
-    "chai": "^6.2.0",
-    "jsdom": "^27.1.0",
+    "@types/sinon": "^20.0.0",
+    "chai": "^6.2.1",
+    "jsdom": "^27.2.0",
     "mocha": "^11.7.5",
     "nyc": "^17.1.0",
     "parcel": "^2.16.1",

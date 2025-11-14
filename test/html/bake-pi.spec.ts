@@ -1,5 +1,5 @@
 import type { HomeAssistant } from '@hass/types';
-import { renderPiHoleCard } from '@html/bake-pi';
+import { renderAdGuardCard } from '@html/bake-pi';
 import * as piCrustModule from '@html/pi-crust';
 import * as piFillingsModule from '@html/pi-fillings';
 import * as piFlavorsModule from '@html/pi-flavors';
@@ -8,15 +8,15 @@ import * as piToppingsModule from '@html/pi-toppings';
 import * as systemMetricsGraphModule from '@html/components/create-system-metrics-graph';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { PiHoleDevice, PiHoleSetup } from '@type/types';
+import type { AdGuardDevice, AdGuardSetup } from '@type/types';
 import { expect } from 'chai';
 import { html } from 'lit';
 import { stub } from 'sinon';
 
 describe('bake-pi.ts', () => {
   let mockHass: HomeAssistant;
-  let mockSetup: PiHoleSetup;
-  let mockDevice: PiHoleDevice;
+  let mockSetup: AdGuardSetup;
+  let mockDevice: AdGuardDevice;
   let mockConfig: Config;
   let element: HTMLElement;
 
@@ -80,7 +80,7 @@ describe('bake-pi.ts', () => {
 
     // Mock device
     mockDevice = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
       updates: [
         {
           entity_id: 'update.pi_hole_core',
@@ -93,15 +93,15 @@ describe('bake-pi.ts', () => {
           },
         },
       ],
-    } as any as PiHoleDevice;
+    } as any as AdGuardDevice;
 
     mockSetup = {
       holes: [mockDevice],
-    } as PiHoleSetup;
+    } as AdGuardSetup;
 
     // Mock config
     mockConfig = {
-      device_id: 'pi_hole_device',
+      device_id: 'adguard_device',
     };
   });
 
@@ -115,9 +115,9 @@ describe('bake-pi.ts', () => {
     createSystemMetricsGraphStub.restore();
   });
 
-  it('should render a Pi-hole card with all main sections', async () => {
-    // Render the Pi-hole card
-    const result = renderPiHoleCard(element, mockHass, mockSetup, mockConfig);
+  it('should render an AdGuard card with all main sections', async () => {
+    // Render the AdGuard card
+    const result = renderAdGuardCard(element, mockHass, mockSetup, mockConfig);
     const el = await fixture(result);
 
     // Test main sections exist
@@ -130,8 +130,8 @@ describe('bake-pi.ts', () => {
   });
 
   it('should call all component functions with the correct parameters', async () => {
-    // Render the Pi-hole card
-    const result = renderPiHoleCard(element, mockHass, mockSetup, mockConfig);
+    // Render the AdGuard card
+    const result = renderAdGuardCard(element, mockHass, mockSetup, mockConfig);
     const el = await fixture(result);
 
     // Verify createCardHeader was called with the correct parameters

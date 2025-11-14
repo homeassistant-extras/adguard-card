@@ -1,9 +1,9 @@
 import type { ActionConfig } from '@hass/data/lovelace/config/action';
-import type { PiHoleDevice } from '@type/types';
+import type { AdGuardDevice } from '@type/types';
 import type { Translation, TranslationKey } from './locale';
 
 /**
- * Configuration settings for the pi-hole card
+ * Configuration settings for the AdGuard card
  */
 export interface Config {
   /** Unique identifier for the device */
@@ -85,8 +85,8 @@ export interface SectionConfig {
 }
 
 export interface DashboardStatConfig extends StatBoxConfig {
-  /** Key of the sensor in the PiHoleDevice */
-  sensorKey: keyof PiHoleDevice;
+  /** Key of the sensor in the AdGuardDevice */
+  sensorKey: keyof AdGuardDevice;
 }
 
 export interface StatBoxConfig {

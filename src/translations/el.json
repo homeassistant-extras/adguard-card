@@ -61,7 +61,7 @@
     "pause_60_seconds": "60 δευτερόλεπτα",
     "pause_5_minutes": "5 λεπτά",
     "pause_15_minutes": "15 λεπτά",
-    "pi_hole_device": "Συσκευή Pi-hole",
+    "adguard_device": "Συσκευή AdGuard",
     "entity_display_order": "Σειρά εμφάνισης οντοτήτων (κάντε κλικ με σειρά)",
     "flex_default": "Flex (προεπιλογή)",
     "chart": "Διάγραμμα",

@@ -7,7 +7,7 @@ import type { EntityInformation } from '@type/types';
 import { type TemplateResult, html } from 'lit';
 
 /**
- * Provide some default icons for the Pi-hole actions
+ * Provide some default icons for the AdGuard actions
  * @param entity
  * @returns
  */
@@ -34,7 +34,7 @@ const actionIcon = (entity: EntityInformation) => {
 };
 
 /**
- * Creates an action button for the Pi-hole card
+ * Creates an action button for the AdGuard card
  * @param element - The element to attach the action to
  * @param config - The section configuration
  * @param entity - The entity information

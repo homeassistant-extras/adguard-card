@@ -9,22 +9,15 @@ import { html, LitElement, nothing, type TemplateResult } from 'lit';
 import { state } from 'lit/decorators.js';
 
 // Constants for repeated patterns
-const PI_HOLE_INTEGRATION_FILTER = [
+const ADGUARD_INTEGRATION_FILTER = [
   {
-    integration: 'pi_hole_v6',
-  },
-  {
-    integration: 'pi_hole',
+    integration: 'adguard',
   },
 ];
 
-const PI_HOLE_ENTITY_FILTER = [
+const ADGUARD_ENTITY_FILTER = [
   {
-    integration: 'pi_hole_v6',
-    domain: ['button', 'sensor', 'switch'],
-  },
-  {
-    integration: 'pi_hole',
+    integration: 'adguard',
     domain: ['button', 'sensor', 'switch'],
   },
 ];
@@ -152,12 +145,12 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
       name: 'device_id',
       selector: {
         device: {
-          filter: PI_HOLE_INTEGRATION_FILTER,
+          filter: ADGUARD_INTEGRATION_FILTER,
           //multiple: true, breaks the drop down?
         },
       },
       required: true,
-      label: 'editor.pi_hole_device',
+      label: 'editor.adguard_device',
     },
     {
       name: 'content',
@@ -180,7 +173,7 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           label: 'editor.card_icon',
           selector: {
             icon: {
-              placeholder: 'mdi:pi-hole',
+              placeholder: 'mdi:shield-check',
             },
           },
         },
@@ -236,7 +229,7 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           selector: {
             entity: {
               multiple: true,
-              filter: PI_HOLE_INTEGRATION_FILTER,
+              filter: ADGUARD_INTEGRATION_FILTER,
             },
           },
         },
@@ -247,7 +240,7 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           selector: {
             entity: {
               multiple: true,
-              filter: PI_HOLE_ENTITY_FILTER,
+              filter: ADGUARD_ENTITY_FILTER,
             },
           },
         },
@@ -390,7 +383,7 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
   ];
 };
 
-export class PiHoleCardEditor extends LitElement {
+export class AdGuardCardEditor extends LitElement {
   /**
    * Card configuration object
    */

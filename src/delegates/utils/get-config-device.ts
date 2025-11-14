@@ -2,7 +2,7 @@ import type { DeviceRegistryEntry } from '@hass/data/device_registry';
 import type { HomeAssistant } from '@hass/types';
 
 /**
- * Gets the Pi-hole device information from Home Assistant
+ * Gets the AdGuard device information from Home Assistant
  * @param hass - The Home Assistant instance
  * @returns The device object or undefined if the device is not found
  */
@@ -11,7 +11,7 @@ export const getConfigDevice = async (
 ): Promise<DeviceRegistryEntry | undefined> => {
   const registries: { entry_id: string }[] = await hass.callWS({
     type: 'config_entries/get',
-    domain: 'pi_hole_v6',
+    domain: 'adguard',
   });
 
   const registry = registries[0];

@@ -1,6 +1,6 @@
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
-import type { PiHoleSetup } from '@type/types';
+import type { AdGuardSetup } from '@type/types';
 import { html, type TemplateResult } from 'lit';
 import { createSystemMetricsGraph } from './components/create-system-metrics-graph';
 import { createCardHeader } from './pi-crust';
@@ -10,17 +10,17 @@ import { createFooter } from './pi-tin';
 import { createAdditionalStats } from './pi-toppings';
 
 /**
- * Renders the Pi-hole card content
+ * Renders the AdGuard card content
  * @param element - The HTML element to render the card into
  * @param hass - The Home Assistant instance
- * @param setup - The Pi-hole setup
+ * @param setup - The AdGuard setup
  * @param config - The card configuration
  * @returns TemplateResult
  */
-export const renderPiHoleCard = (
+export const renderAdGuardCard = (
   element: HTMLElement,
   hass: HomeAssistant,
-  setup: PiHoleSetup,
+  setup: AdGuardSetup,
   config: Config,
 ): TemplateResult => {
   const primary = setup.holes[0]!;
