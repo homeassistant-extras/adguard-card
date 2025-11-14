@@ -1,6 +1,6 @@
 {
   "name": "adguard",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Patrick Masters",
   "license": "ISC",
   "description": "Card to summarize information for, and to control your Adguard instance!",
