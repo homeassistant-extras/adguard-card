@@ -32,11 +32,10 @@ export const createSystemMetricsGraph = (
   }
 
   return html`
-    <system-metrics-graph
+    <adguard-system-metrics-graph
       .hass=${hass}
       .device=${device}
       .config=${config}
-    ></system-metrics-graph>
+    ></adguard-system-metrics-graph>
   `;
 };
-

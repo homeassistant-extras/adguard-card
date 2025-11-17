@@ -10,8 +10,8 @@ import { restore, stub } from 'sinon';
 describe('SystemMetricsGraph', () => {
   // Register the custom element before tests
   before(() => {
-    if (!customElements.get('system-metrics-graph')) {
-      customElements.define('system-metrics-graph', SystemMetricsGraph);
+    if (!customElements.get('adguard-system-metrics-graph')) {
+      customElements.define('adguard-system-metrics-graph', SystemMetricsGraph);
     }
   });
 
@@ -62,7 +62,7 @@ describe('SystemMetricsGraph', () => {
     showSectionStub.withArgs(mockConfig, 'chart').returns(false);
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;
@@ -110,7 +110,7 @@ describe('SystemMetricsGraph', () => {
     });
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;
@@ -140,7 +140,7 @@ describe('SystemMetricsGraph', () => {
     });
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;
@@ -190,7 +190,7 @@ describe('SystemMetricsGraph', () => {
     });
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;
@@ -219,7 +219,7 @@ describe('SystemMetricsGraph', () => {
     });
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;
@@ -244,7 +244,7 @@ describe('SystemMetricsGraph', () => {
     });
 
     const el = await fixture<SystemMetricsGraph>(
-      `<system-metrics-graph></system-metrics-graph>`,
+      `<adguard-system-metrics-graph></adguard-system-metrics-graph>`,
     );
     el.hass = mockHass;
     el.device = mockDevice;

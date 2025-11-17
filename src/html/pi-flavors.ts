@@ -122,11 +122,11 @@ export const createCardActions = (
 ): TemplateResult => {
   return html`
     <div>
-      <pause-component
+      <adguard-pause-component
         .hass=${hass}
         .setup=${setup}
         .config=${config}
-      ></pause-component>
+      ></adguard-pause-component>
       ${controls(element, hass, device, config)}
     </div>
   `;

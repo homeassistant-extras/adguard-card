@@ -7,8 +7,8 @@ import { version } from '../package.json';
 // Register the custom elements with the browser
 customElements.define('adguard', AdGuardCard);
 customElements.define('adguard-editor', AdGuardCardEditor);
-customElements.define('pause-component', PauseComponent);
-customElements.define('system-metrics-graph', SystemMetricsGraph);
+customElements.define('adguard-pause-component', PauseComponent);
+customElements.define('adguard-system-metrics-graph', SystemMetricsGraph);
 
 // Ensure the customCards array exists on the window object
 window.customCards = window.customCards || [];
@@ -16,7 +16,7 @@ window.customCards = window.customCards || [];
 // Register the cards with Home Assistant's custom card registry
 window.customCards.push({
   // Unique identifier for the card type
-  type: 'adguard',
+  type: 'adguard-card',
 
   // Display name in the UI
   name: 'AdGuard Card',

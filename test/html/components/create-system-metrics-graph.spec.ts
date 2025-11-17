@@ -12,8 +12,8 @@ import { stub } from 'sinon';
 describe('create-system-metrics-graph.ts', () => {
   // Register the custom element before tests
   before(() => {
-    if (!customElements.get('system-metrics-graph')) {
-      customElements.define('system-metrics-graph', SystemMetricsGraph);
+    if (!customElements.get('adguard-system-metrics-graph')) {
+      customElements.define('adguard-system-metrics-graph', SystemMetricsGraph);
     }
   });
   let mockHass: HomeAssistant;
@@ -85,19 +85,21 @@ describe('create-system-metrics-graph.ts', () => {
 
     expect(result).to.not.equal(nothing);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
-    expect(el.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
+    expect(el.tagName.toLowerCase()).to.equal('adguard-system-metrics-graph');
   });
 
-  it('should pass correct properties to system-metrics-graph element', async () => {
+  it('should pass correct properties to adguard-system-metrics-graph element', async () => {
     showSectionStub.withArgs(mockConfig, 'chart').returns(true);
 
     const result = createSystemMetricsGraph(mockHass, mockDevice, mockConfig);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
     const graphElement = el as any;
 
-    expect(graphElement.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    expect(graphElement.tagName.toLowerCase()).to.equal(
+      'adguard-system-metrics-graph',
+    );
     expect(graphElement.hass).to.equal(mockHass);
     expect(graphElement.device).to.equal(mockDevice);
     expect(graphElement.config).to.equal(mockConfig);
@@ -118,8 +120,8 @@ describe('create-system-metrics-graph.ts', () => {
 
     expect(result).to.not.equal(nothing);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
-    expect(el.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
+    expect(el.tagName.toLowerCase()).to.equal('adguard-system-metrics-graph');
   });
 
   it('should work with only memory sensor', async () => {
@@ -137,8 +139,8 @@ describe('create-system-metrics-graph.ts', () => {
 
     expect(result).to.not.equal(nothing);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
-    expect(el.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
+    expect(el.tagName.toLowerCase()).to.equal('adguard-system-metrics-graph');
   });
 
   it('should work with both CPU and memory sensors', async () => {
@@ -162,8 +164,8 @@ describe('create-system-metrics-graph.ts', () => {
 
     expect(result).to.not.equal(nothing);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
-    expect(el.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
+    expect(el.tagName.toLowerCase()).to.equal('adguard-system-metrics-graph');
   });
 
   it('should filter out non-graph sensors correctly', async () => {
@@ -194,7 +196,7 @@ describe('create-system-metrics-graph.ts', () => {
     // Should still return HTML because graph sensors exist
     expect(result).to.not.equal(nothing);
     const el = await fixture(result as TemplateResult);
-    await customElements.whenDefined('system-metrics-graph');
-    expect(el.tagName.toLowerCase()).to.equal('system-metrics-graph');
+    await customElements.whenDefined('adguard-system-metrics-graph');
+    expect(el.tagName.toLowerCase()).to.equal('adguard-system-metrics-graph');
   });
 });

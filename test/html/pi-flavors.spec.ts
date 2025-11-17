@@ -6,7 +6,11 @@ import * as stateContentModule from '@html/components/state-content';
 import { createCardActions } from '@html/pi-flavors';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
-import type { EntityInformation, AdGuardDevice, AdGuardSetup } from '@type/types';
+import type {
+  AdGuardDevice,
+  AdGuardSetup,
+  EntityInformation,
+} from '@type/types';
 import { expect } from 'chai';
 import { html, type TemplateResult } from 'lit';
 import { stub } from 'sinon';
@@ -255,7 +259,7 @@ describe('pi-flavors.ts', () => {
     expect(createActionButtonStub.callCount).to.equal(0);
   });
 
-  it('should render pause-component with correct properties', async () => {
+  it('should render adguard-pause-component with correct properties', async () => {
     const result = createCardActions(
       mockElement,
       mockHass,
@@ -265,11 +269,11 @@ describe('pi-flavors.ts', () => {
     );
     const el = await fixture(result as TemplateResult);
 
-    // Check that pause-component is rendered
-    const pauseComponent: any = el.querySelector('pause-component');
+    // Check that adguard-pause-component is rendered
+    const pauseComponent: any = el.querySelector('adguard-pause-component');
     expect(pauseComponent).to.exist;
 
-    // Check that pause-component has the correct properties set
+    // Check that adguard-pause-component has the correct properties set
     expect(pauseComponent!.hass).to.not.be.null;
     expect(pauseComponent!.setup).to.not.be.null;
     expect(pauseComponent!.config).to.not.be.null;

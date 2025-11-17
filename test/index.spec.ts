@@ -36,9 +36,11 @@ describe('index.ts', () => {
     expect(customElementsStub.callCount).to.equal(4);
     expect(customElementsStub.firstCall.args[0]).to.equal('adguard');
     expect(customElementsStub.secondCall.args[0]).to.equal('adguard-editor');
-    expect(customElementsStub.thirdCall.args[0]).to.equal('pause-component');
+    expect(customElementsStub.thirdCall.args[0]).to.equal(
+      'adguard-pause-component',
+    );
     expect(customElementsStub.getCall(3).args[0]).to.equal(
-      'system-metrics-graph',
+      'adguard-system-metrics-graph',
     );
   });
 
@@ -56,7 +58,7 @@ describe('index.ts', () => {
 
     // Check device-card configuration
     expect(window.customCards[0]).to.deep.equal({
-      type: 'adguard',
+      type: 'adguard-card',
       name: 'AdGuard Card',
       description: 'A card to summarize and control your AdGuard instance.',
       preview: true,
