@@ -5,7 +5,7 @@ import { SystemMetricsGraph } from '@html/components/system-metrics-graph';
 import { version } from '../package.json';
 
 // Register the custom elements with the browser
-customElements.define('adguard', AdGuardCard);
+customElements.define('adguard-card', AdGuardCard);
 customElements.define('adguard-editor', AdGuardCardEditor);
 customElements.define('adguard-pause-component', PauseComponent);
 customElements.define('adguard-system-metrics-graph', SystemMetricsGraph);

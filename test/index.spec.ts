@@ -34,7 +34,7 @@ describe('index.ts', () => {
   it('should register all custom elements', () => {
     require('@/index.ts');
     expect(customElementsStub.callCount).to.equal(4);
-    expect(customElementsStub.firstCall.args[0]).to.equal('adguard');
+    expect(customElementsStub.firstCall.args[0]).to.equal('adguard-card');
     expect(customElementsStub.secondCall.args[0]).to.equal('adguard-editor');
     expect(customElementsStub.thirdCall.args[0]).to.equal(
       'adguard-pause-component',
