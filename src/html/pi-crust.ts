@@ -32,13 +32,6 @@ export const createCardHeader = (
     ).length;
   const mixedStatus = activeCount > 0 && activeCount < setup.holes.length;
 
-  // Check if we should display the remaining time
-  const hasRemainingTime =
-    primary.remaining_until_blocking_mode &&
-    primary.remaining_until_blocking_mode.state !== '0' &&
-    primary.remaining_until_blocking_mode.state !== 'unavailable' &&
-    primary.remaining_until_blocking_mode.state !== 'unknown';
-
   // Get status color based on active count and mixed status
   const getStatusColor = () => {
     if (mixedStatus) {
@@ -67,13 +60,6 @@ export const createCardHeader = (
         ${mixedStatus
           ? html`${localize(hass, 'card.ui.partial')}`
           : stateDisplay(hass, primary.status!)}
-        ${activeCount <= 0 && hasRemainingTime
-          ? html`${stateDisplay(
-              hass,
-              primary.remaining_until_blocking_mode!,
-              'remaining-time',
-            )}`
-          : ''}
       </div>
     </div>
   `;

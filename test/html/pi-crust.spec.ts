@@ -218,50 +218,6 @@ describe('pi-crust.ts', () => {
       .be.true;
   });
 
-  it('should display remaining time when Pi-hole is inactive and remaining time exists', async () => {
-    // Set status to 'off' and add remaining time
-    mockSetup.holes[0]!.status!.state = 'off';
-    mockSetup.holes[0]!.remaining_until_blocking_mode = {
-      entity_id: 'sensor.pi_hole_remaining_until_blocking_mode',
-      state: '300', // 5 minutes
-      attributes: { friendly_name: 'Remaining Time' },
-      translation_key: 'remaining_until_blocking_mode',
-    };
-
-    // Configure mock response for remaining time
-    stateDisplayStub
-      .withArgs(
-        mockHass,
-        mockSetup.holes[0]!.remaining_until_blocking_mode,
-        'remaining-time',
-      )
-      .returns(html`<div class="mocked-remaining-time">5 minutes</div>`);
-
-    // Render the card header
-    const result = createCardHeader(
-      mockElement,
-      mockSetup,
-      mockHass,
-      mockConfig,
-    );
-    const el = await fixture(result as TemplateResult);
-
-    // Verify stateDisplay was called for both status and remaining time
-    expect(stateDisplayStub.calledWith(mockHass, mockSetup.holes[0]!.status)).to
-      .be.true;
-    expect(
-      stateDisplayStub.calledWith(
-        mockHass,
-        mockSetup.holes[0]!.remaining_until_blocking_mode,
-        'remaining-time',
-      ),
-    ).to.be.true;
-
-    // Check that remaining time is rendered
-    const remainingTimeEl = el.querySelector('.mocked-remaining-time');
-    expect(remainingTimeEl).to.exist;
-    expect(remainingTimeEl?.textContent).to.equal('5 minutes');
-  });
 
   // New tests for multiple Pi-hole setup
 

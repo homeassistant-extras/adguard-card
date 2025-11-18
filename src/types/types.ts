@@ -19,15 +19,8 @@ export interface AdGuardDevice {
   /** Safe Searches Enforced */
   safe_searches_enforced?: EntityInformation;
 
-  // not vetted yet
   /** Total Ads Blocked Today */
   dns_queries_blocked?: EntityInformation;
-
-  /** Total Unique Clients Queried */
-  dns_unique_clients?: EntityInformation;
-
-  /** Remaining Time Until Blocking Mode */
-  remaining_until_blocking_mode?: EntityInformation;
 
   /** Button to Refresh data */
   action_refresh_data?: EntityInformation;
