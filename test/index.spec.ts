@@ -33,14 +33,11 @@ describe('index.ts', () => {
 
   it('should register all custom elements', () => {
     require('@/index.ts');
-    expect(customElementsStub.callCount).to.equal(4);
+    expect(customElementsStub.callCount).to.equal(3);
     expect(customElementsStub.firstCall.args[0]).to.equal('adguard-card');
     expect(customElementsStub.secondCall.args[0]).to.equal('adguard-editor');
     expect(customElementsStub.thirdCall.args[0]).to.equal(
       'adguard-pause-component',
-    );
-    expect(customElementsStub.getCall(3).args[0]).to.equal(
-      'adguard-system-metrics-graph',
     );
   });
 
@@ -89,7 +86,7 @@ describe('index.ts', () => {
     require('@/index.ts');
 
     expect(window.customCards).to.have.lengthOf(1);
-    expect(customElementsStub.callCount).to.equal(4); // Called once for each component
+    expect(customElementsStub.callCount).to.equal(3); // Called once for each component
   });
 
   it('should log the version with proper formatting', () => {

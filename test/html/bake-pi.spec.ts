@@ -1,6 +1,5 @@
 import type { HomeAssistant } from '@hass/types';
 import { renderAdGuardCard } from '@html/bake-pi';
-import * as systemMetricsGraphModule from '@html/components/create-system-metrics-graph';
 import * as piCrustModule from '@html/pi-crust';
 import * as piFillingsModule from '@html/pi-fillings';
 import * as piFlavorsModule from '@html/pi-flavors';
@@ -26,7 +25,6 @@ describe('bake-pi.ts', () => {
   let createAdditionalStatsStub: sinon.SinonStub;
   let createCardActionsStub: sinon.SinonStub;
   let createFooterStub: sinon.SinonStub;
-  let createSystemMetricsGraphStub: sinon.SinonStub;
 
   beforeEach(() => {
     element = document.createElement('div');
@@ -55,16 +53,6 @@ describe('bake-pi.ts', () => {
     createFooterStub = stub(piTinModule, 'createFooter');
     createFooterStub.returns(
       html`<div class="mocked-footer">Mocked Footer</div>`,
-    );
-
-    createSystemMetricsGraphStub = stub(
-      systemMetricsGraphModule,
-      'createSystemMetricsGraph',
-    );
-    createSystemMetricsGraphStub.returns(
-      html`<div class="mocked-adguard-system-metrics-graph">
-        Mocked System Metrics Graph
-      </div>`,
     );
 
     // Mock HomeAssistant instance
@@ -114,7 +102,6 @@ describe('bake-pi.ts', () => {
     createAdditionalStatsStub.restore();
     createCardActionsStub.restore();
     createFooterStub.restore();
-    createSystemMetricsGraphStub.restore();
   });
 
   it('should render an AdGuard card with all main sections', async () => {
@@ -171,12 +158,6 @@ describe('bake-pi.ts', () => {
     expect(createFooterStub.firstCall.args[1]).to.equal(mockHass);
     expect(createFooterStub.firstCall.args[2]).to.equal(mockConfig);
     expect(createFooterStub.firstCall.args[3]).to.equal(mockDevice);
-
-    // Verify createSystemMetricsGraph was called with the correct parameters
-    expect(createSystemMetricsGraphStub.calledOnce).to.be.true;
-    expect(createSystemMetricsGraphStub.firstCall.args[0]).to.equal(mockHass);
-    expect(createSystemMetricsGraphStub.firstCall.args[1]).to.equal(mockDevice);
-    expect(createSystemMetricsGraphStub.firstCall.args[2]).to.equal(mockConfig);
 
     // Test that the rendered HTML contains the expected structure
     expect(el.querySelector('.mocked-card-header')).to.exist;

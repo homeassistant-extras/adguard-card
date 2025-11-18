@@ -63,12 +63,6 @@
     "pause_15_minutes": "15 minutos",
     "adguard_device": "Dispositivo AdGuard",
     "entity_display_order": "Orden de visualización de entidades (hacer clic en orden)",
-    "flex_default": "Flex (predeterminado)",
-    "chart": "Gráfico",
-    "chart_line_type": "Tipo de Línea",
-    "chart_line_type_normal": "Normal (Predeterminado)",
-    "chart_line_type_gradient": "Gradiente",
-    "chart_line_type_gradient_no_fill": "Gradiente Sin Relleno",
-    "chart_line_type_no_fill": "Sin Relleno"
+    "flex_default": "Flex (predeterminado)"
   }
 }

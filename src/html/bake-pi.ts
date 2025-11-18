@@ -2,7 +2,6 @@ import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
 import type { AdGuardSetup } from '@type/types';
 import { html, type TemplateResult } from 'lit';
-import { createSystemMetricsGraph } from './components/create-system-metrics-graph';
 import { createCardHeader } from './pi-crust';
 import { createDashboardStats } from './pi-fillings';
 import { createCardActions } from './pi-flavors';
@@ -33,7 +32,6 @@ export const renderAdGuardCard = (
       </div>
       ${createCardActions(element, hass, setup, primary, config)}
       ${createFooter(element, hass, config, primary)}
-      ${createSystemMetricsGraph(hass, primary, config)}
     </ha-card>
   `;
 };
