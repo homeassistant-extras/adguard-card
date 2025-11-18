@@ -7,7 +7,7 @@ import * as sinon from 'sinon';
 // These are actual translation keys we know exist in the app
 const VALID_KEYS: TranslationKey[] = [
   'card.stats.total_queries',
-  'card.stats.active_clients',
+  'card.stats.safe_searches',
   'card.stats.queries_blocked',
   'card.stats.list_blocked_queries',
   'card.stats.percentage_blocked',
@@ -88,8 +88,8 @@ describe('localize.ts', () => {
 
   describe('string replacement', () => {
     it('should replace placeholders in the localized string', () => {
-      // Use the active_clients key which typically has a placeholder
-      const key = 'card.stats.active_clients';
+      // Use the safe_searches key which typically has a placeholder
+      const key = 'card.stats.safe_searches';
       const originalText = localize(mockHass, key as TranslationKey, '', '');
 
       // Now with replacement

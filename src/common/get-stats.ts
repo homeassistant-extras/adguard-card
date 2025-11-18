@@ -2,20 +2,20 @@ import type { DashboardStatConfig } from '@type/config';
 
 /**
  * Creates the dashboard stats configuration
- * @param uniqueClientsCount - The number of unique clients
+ * @param safeSearchesEnforced - The number of safe searches enforced
  * @returns The dashboard stats configuration
  */
 export const getDashboardStats = (
-  uniqueClientsCount: string,
+  safeSearchesEnforced: string,
 ): DashboardStatConfig[][] => [
   [
     {
       sensorKey: 'dns_queries',
       title: 'card.stats.total_queries',
       footer: {
-        key: 'card.stats.active_clients',
+        key: 'card.stats.safe_searches',
         search: '{number}',
-        replace: uniqueClientsCount,
+        replace: safeSearchesEnforced,
       },
       className: 'queries-box',
       icon: 'mdi:earth',

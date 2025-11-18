@@ -1,14 +1,14 @@
 {
   "card": {
     "stats": {
-      "total_queries": "Peticiones totales",
-      "active_clients": "{number} clientes activos",
-      "queries_blocked": "Peticiones bloqueadas",
+      "total_queries": "Consultas DNS",
+      "safe_searches": "{number} safe searches",
+      "queries_blocked": "Bloqueadas por filtros",
       "list_blocked_queries": "Listar peticiones bloqueadas",
       "percentage_blocked": "Porcentaje bloqueos",
       "list_all_queries": "Listar todas las peticiones",
-      "average_processing_speed": "Velocidad de Procesamiento Promedio",
-      "processing_speed_info": "Tiempo promedio de procesamiento de consultas"
+      "average_processing_speed": "Velocidad de Procesamiento",
+      "processing_speed_info": "Tiempo de procesamiento"
     },
     "sections": {
       "pause": "Pausar Bloqueo de Anuncios",

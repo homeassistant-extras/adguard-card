@@ -16,6 +16,10 @@ export interface AdGuardDevice {
   /** Percentage of Ads Blocked Today */
   dns_queries_blocked_ratio?: EntityInformation;
 
+  /** Safe Searches Enforced */
+  safe_searches_enforced?: EntityInformation;
+
+  // not vetted yet
   /** Total Ads Blocked Today */
   dns_queries_blocked?: EntityInformation;
 

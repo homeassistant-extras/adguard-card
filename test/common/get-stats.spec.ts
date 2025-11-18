@@ -25,7 +25,7 @@ describe('dashboard-stats.ts', () => {
         icon: 'mdi:earth',
       });
       expect(result[0]![0]!.footer).to.deep.equal({
-        key: 'card.stats.active_clients',
+        key: 'card.stats.safe_searches',
         search: '{number}',
         replace: '42',
       });
@@ -52,7 +52,7 @@ describe('dashboard-stats.ts', () => {
         const dnsQueriesConfig = result[0]![0]!;
         expect(dnsQueriesConfig.footer).to.be.an('object');
         expect((dnsQueriesConfig.footer as Translation).key).to.equal(
-          'card.stats.active_clients',
+          'card.stats.safe_searches',
         );
         expect(dnsQueriesConfig.footer.search).to.equal('{number}');
         expect(dnsQueriesConfig.footer.replace).to.equal(clientCount);

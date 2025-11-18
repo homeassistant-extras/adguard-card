@@ -1,14 +1,14 @@
 {
   "card": {
     "stats": {
-      "total_queries": "Общ брой заявки",
-      "active_clients": "{number} активни клиенти",
-      "queries_blocked": "Блокирани заявки",
+      "total_queries": "DNS заявки",
+      "safe_searches": "{number} safe searches",
+      "queries_blocked": "Блокирани от филтри",
       "list_blocked_queries": "Списък с блокирани заявки",
       "percentage_blocked": "Процент блокирани",
       "list_all_queries": "Списък с всички заявки",
-      "average_processing_speed": "Средна Скорост на Обработка",
-      "processing_speed_info": "Средно време за обработка на заявки"
+      "average_processing_speed": "Скорост на Обработка",
+      "processing_speed_info": "Време за обработка"
     },
     "sections": {
       "pause": "Пауза на блокирането на реклами",

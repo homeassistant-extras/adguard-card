@@ -3,7 +3,7 @@
  */
 export type TranslationKey =
   | 'card.stats.total_queries'
-  | 'card.stats.active_clients'
+  | 'card.stats.safe_searches'
   | 'card.stats.queries_blocked'
   | 'card.stats.list_blocked_queries'
   | 'card.stats.percentage_blocked'

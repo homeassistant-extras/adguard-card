@@ -2,7 +2,7 @@ import { getDashboardStats } from '@common/get-stats';
 import { show } from '@common/show-section';
 import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
-import type { EntityInformation, AdGuardDevice } from '@type/types';
+import type { AdGuardDevice, EntityInformation } from '@type/types';
 import { html, nothing, type TemplateResult } from 'lit';
 import { createStatBox } from './components/stat-box';
 
@@ -23,10 +23,10 @@ export const createDashboardStats = (
   if (!show(config, 'statistics')) return nothing;
 
   // Get the unique clients count for the configuration
-  const uniqueClientsCount = device.dns_unique_clients?.state ?? '0';
+  const safeSearchesEnforced = device.safe_searches_enforced?.state ?? '0';
 
   // Get the stats configuration with the unique clients count
-  const statConfigs = getDashboardStats(uniqueClientsCount);
+  const statConfigs = getDashboardStats(safeSearchesEnforced);
 
   return html`
     <div class="dashboard-stats">

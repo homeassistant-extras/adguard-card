@@ -162,11 +162,11 @@ export const styles = css`
 
   /* Dashboard boxes - muted versions of AdGuard colors */
   .queries-box {
-    background-color: rgba(0, 192, 239, 0.85);
+    background-color: rgba(92, 127, 195, 0.85);
   }
 
   .blocked-box {
-    background-color: rgba(221, 75, 57, 0.85);
+    background-color: rgba(171, 43, 25, 0.85);
   }
 
   .percentage-box {

@@ -142,7 +142,7 @@ const translatedText = localize(hass, 'card.stats.total_queries');
 // With string replacement
 const clientsText = localize(
   hass,
-  'card.stats.active_clients',
+  'card.stats.safe_searches',
   '{number}',
   clientCount.toString(),
 );

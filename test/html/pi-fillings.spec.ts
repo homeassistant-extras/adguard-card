@@ -40,7 +40,7 @@ describe('pi-fillings.ts', () => {
           sensorKey: 'dns_queries',
           title: 'card.stats.total_queries',
           footer: {
-            key: 'card.stats.active_clients',
+            key: 'card.stats.safe_searches',
             search: '{number}',
             replace: '42',
           },

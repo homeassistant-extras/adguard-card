@@ -71,7 +71,7 @@ describe('stat-box.ts', () => {
     localizeStub.callsFake((hass, key, search, replace) => {
       // Simple mock implementation - return a predictable string based on key
       if (key === 'card.stats.total_queries') return 'Total Queries';
-      if (key === 'card.stats.active_clients') return 'Active Clients';
+      if (key === 'card.stats.safe_searches') return '{number} safe searches';
       if (key === 'card.stats.list_blocked_queries')
         return 'List Blocked Queries';
       // For footer texts
@@ -92,7 +92,7 @@ describe('stat-box.ts', () => {
     const configWithComplexFooter: StatBoxConfig = {
       ...mockStatBoxConfig,
       footer: {
-        key: 'card.stats.active_clients',
+        key: 'card.stats.safe_searches',
         search: '{number}',
         replace: '42',
       },
@@ -114,7 +114,7 @@ describe('stat-box.ts', () => {
     expect(
       localizeStub.calledWith(
         mockHass,
-        'card.stats.active_clients',
+        'card.stats.safe_searches',
         '{number}',
         '42',
       ),
