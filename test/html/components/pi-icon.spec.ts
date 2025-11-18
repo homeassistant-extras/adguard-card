@@ -20,7 +20,7 @@ describe('icon.ts', () => {
       device_id: 'adguard_device',
     };
 
-    // Create basic mock setup with no info messages
+    // Create basic mock setup
     mockSetup = {
       holes: [
         {
@@ -51,8 +51,8 @@ describe('icon.ts', () => {
     handleMultiPiClickActionStub.restore();
   });
 
-  describe('when there are no info messages', () => {
-    it('should render default pi-hole icon when no custom icon is configured', async () => {
+  describe('icon rendering', () => {
+    it('should render default icon when no custom icon is configured', async () => {
       const result = icon(mockElement, mockConfig, mockSetup);
       const el = await fixture(result as TemplateResult);
 
@@ -75,190 +75,13 @@ describe('icon.ts', () => {
       expect(haIcon!.getAttribute('icon')).to.equal('mdi:custom-icon');
     });
 
-    it('should render icon when info_message_count is undefined', async () => {
-      // info_message_count is undefined by default in our mock
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      const haIcon = el.querySelector('ha-icon');
-      expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
-    });
-
-    it('should render icon when info_message_count state is "0"', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '0',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      const haIcon = el.querySelector('ha-icon');
-      expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
-    });
-  });
-
-  describe('when there are info messages', () => {
-    it('should render warning badge for single device with info messages', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '3',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Check that warning badge is rendered inside badge div
-      expect(el.classList.contains('badge')).to.be.true;
-      const warningBadge = el.querySelector('.warning-badge');
-      expect(warningBadge).to.not.be.null;
-      expect(warningBadge!.textContent?.trim()).to.equal('3');
-    });
-
-    it('should sum info messages from multiple devices', async () => {
-      // Add a second device to the setup
-      const secondDevice: AdGuardDevice = {
-        device_id: 'adguard_device_2',
-        info_message_count: {
-          entity_id: 'sensor.pi_hole_2_info_message_count',
-          state: '2',
-          attributes: {},
-          translation_key: 'info_message_count',
-        },
-        sensors: [],
-        switches: [],
-        controls: [],
-        updates: [],
-      };
-
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '5',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      mockSetup.holes.push(secondDevice);
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Check that warning badge shows the sum (5 + 2 = 7)
-      const warningBadge = el.querySelector('.warning-badge');
-      expect(warningBadge).to.not.be.null;
-      expect(warningBadge!.textContent?.trim()).to.equal('7');
-    });
-
-    it('should handle mixed scenarios with some devices having info messages', async () => {
-      // First device has info messages
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '4',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      // Second device has no info messages (undefined)
-      const secondDevice: AdGuardDevice = {
-        device_id: 'adguard_device_2',
-        sensors: [],
-        switches: [],
-        controls: [],
-        updates: [],
-      };
-
-      // Third device has zero info messages
-      const thirdDevice: AdGuardDevice = {
-        device_id: 'adguard_device_3',
-        info_message_count: {
-          entity_id: 'sensor.pi_hole_3_info_message_count',
-          state: '0',
-          attributes: {},
-          translation_key: 'info_message_count',
-        },
-        sensors: [],
-        switches: [],
-        controls: [],
-        updates: [],
-      };
-
-      mockSetup.holes.push(secondDevice, thirdDevice);
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Should show warning badge with count of 4 (4 + 0 + 0)
-      const warningBadge = el.querySelector('.warning-badge');
-      expect(warningBadge).to.not.be.null;
-      expect(warningBadge!.textContent?.trim()).to.equal('4');
-    });
-  });
-
-  describe('edge cases', () => {
-    it('should handle non-numeric state values gracefully', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: 'unavailable',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Should render icon since NaN check will exclude this value
-      const haIcon = el.querySelector('ha-icon');
-      expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
-    });
-
-    it('should handle empty string state values', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Should render icon since empty string converts to 0, but NaN check should handle it
-      const haIcon = el.querySelector('ha-icon');
-      expect(haIcon).to.not.be.null;
-      expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
-    });
-
-    it('should handle floating point numbers correctly', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_message_count',
-        state: '2.5',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      const el = await fixture(result as TemplateResult);
-
-      // Should render warning badge with the number (2.5 converts to 2.5)
-      const warningBadge = el.querySelector('.warning-badge');
-      expect(warningBadge).to.not.be.null;
-      expect(warningBadge!.textContent?.trim()).to.equal('2.5');
-    });
-
     it('should handle empty holes array', async () => {
       mockSetup.holes = [];
 
       const result = icon(mockElement, mockConfig, mockSetup);
       const el = await fixture(result as TemplateResult);
 
-      // Should render icon since no info messages to count
+      // Should render icon
       const haIcon = el.querySelector('ha-icon');
       expect(haIcon).to.not.be.null;
       expect(haIcon!.getAttribute('icon')).to.equal('mdi:shield-check');
@@ -299,53 +122,15 @@ describe('icon.ts', () => {
         attributes: {},
         translation_key: 'status',
       };
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_count',
-        state: '0',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-      mockSetup.holes[0]!.purge_diagnosis_messages = {
-        entity_id: 'button.pi_hole_purge',
-        state: 'unknown',
-        attributes: {},
-        translation_key: 'purge_diagnosis_messages',
-      };
 
       const result = icon(mockElement, mockConfig, mockSetup);
       await fixture(result as TemplateResult);
 
       const actionConfig = actionHandlerStub.firstCall.args[0];
-      expect(actionConfig.entity).to.equal('sensor.pi_hole_info_count');
+      expect(actionConfig.entity).to.equal('sensor.pi_hole_status');
       expect(actionConfig.tap_action.action).to.equal('more-info');
       expect(actionConfig.hold_action.action).to.equal('more-info');
       expect(actionConfig.double_tap_action.action).to.equal('more-info');
-    });
-
-    it('should configure service call action when info messages exist and purge entity available', async () => {
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_count',
-        state: '3',
-        attributes: {},
-        translation_key: 'info_message_count',
-      };
-      mockSetup.holes[0]!.purge_diagnosis_messages = {
-        entity_id: 'button.pi_hole_purge',
-        state: 'unknown',
-        attributes: {},
-        translation_key: 'purge_diagnosis_messages',
-      };
-
-      const result = icon(mockElement, mockConfig, mockSetup);
-      await fixture(result as TemplateResult);
-
-      const actionConfig = actionHandlerStub.firstCall.args[0];
-      expect(actionConfig.entity).to.equal('sensor.pi_hole_info_count');
-      expect(actionConfig.tap_action.action).to.equal('call-service');
-      expect(actionConfig.tap_action.perform_action).to.equal('button.press');
-      expect(actionConfig.tap_action.target.entity_id).to.equal(
-        'button.pi_hole_purge',
-      );
     });
 
     it('should use custom badge configuration when provided', async () => {
@@ -358,25 +143,25 @@ describe('icon.ts', () => {
           action: 'toggle',
         },
       };
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_info_count',
-        state: '0',
+      mockSetup.holes[0]!.status = {
+        entity_id: 'sensor.pi_hole_status',
+        state: 'enabled',
         attributes: {},
-        translation_key: 'info_message_count',
+        translation_key: 'status',
       };
 
       const result = icon(mockElement, mockConfig, mockSetup);
       await fixture(result as TemplateResult);
 
       const actionConfig = actionHandlerStub.firstCall.args[0];
-      expect(actionConfig.entity).to.equal('sensor.pi_hole_info_count');
+      expect(actionConfig.entity).to.equal('sensor.pi_hole_status');
       expect(actionConfig.tap_action.action).to.equal('navigate');
       expect(actionConfig.tap_action.navigation_path).to.equal('/custom-path');
       expect(actionConfig.hold_action.action).to.equal('toggle');
     });
 
-    it('should fallback to device_id when no other entity available', async () => {
-      // No status or info_message_count entities
+    it('should fallback to device_id when no status entity available', async () => {
+      // No status entity
       const result = icon(mockElement, mockConfig, mockSetup);
       await fixture(result as TemplateResult);
 
@@ -384,30 +169,18 @@ describe('icon.ts', () => {
       expect(actionConfig.entity).to.equal('adguard_device_1');
     });
 
-    it('should handle multiple pi-holes with different configurations', async () => {
-      // First pi-hole with full entities
-      mockSetup.holes[0]!.info_message_count = {
-        entity_id: 'sensor.pi_hole_1_info_count',
-        state: '2',
+    it('should handle multiple AdGuard instances with different configurations', async () => {
+      // First AdGuard with status
+      mockSetup.holes[0]!.status = {
+        entity_id: 'sensor.adguard_1_status',
+        state: 'enabled',
         attributes: {},
-        translation_key: 'info_message_count',
-      };
-      mockSetup.holes[0]!.purge_diagnosis_messages = {
-        entity_id: 'button.pi_hole_1_purge',
-        state: 'unknown',
-        attributes: {},
-        translation_key: 'purge_diagnosis_messages',
+        translation_key: 'status',
       };
 
-      // Second pi-hole with only status
+      // Second AdGuard with only device_id
       const secondDevice: AdGuardDevice = {
         device_id: 'adguard_device_2',
-        status: {
-          entity_id: 'sensor.pi_hole_2_status',
-          state: 'disabled',
-          attributes: {},
-          translation_key: 'status',
-        },
         sensors: [],
         switches: [],
         controls: [],
@@ -421,10 +194,8 @@ describe('icon.ts', () => {
       // Verify multiple action configs were passed to handleMultiPiClickAction
       const multiClickArgs = handleMultiPiClickActionStub.firstCall.args;
       expect(multiClickArgs[1]).to.have.length(2);
-      expect(multiClickArgs[1][0].entity).to.equal(
-        'sensor.pi_hole_1_info_count',
-      );
-      expect(multiClickArgs[1][1].entity).to.equal('sensor.pi_hole_2_status');
+      expect(multiClickArgs[1][0].entity).to.equal('sensor.adguard_1_status');
+      expect(multiClickArgs[1][1].entity).to.equal('adguard_device_2');
     });
   });
 });

@@ -34,25 +34,9 @@ describe('map-entities.ts', () => {
       expect(device.dns_queries).to.equal(entity);
     });
 
-    it('should map action_ftl_purge_diagnosis_messages to purge_diagnosis_messages property', () => {
-      // Create test entity with the new translation key
-      const entity: EntityInformation = {
-        entity_id: 'button.purge_diagnosis_messages',
-        state: 'off',
-        attributes: { friendly_name: 'Purge Diagnosis Messages' },
-        translation_key: 'action_ftl_purge_diagnosis_messages',
-      };
-
-      // Map the entity to the device
-      const result = mapEntitiesByTranslationKey(entity, device);
-
-      // Check that the mapping was successful
-      expect(result).to.be.true;
-      expect(device.purge_diagnosis_messages).to.equal(entity);
-    });
-
     it('should map all supported translation keys correctly', () => {
       // Define all supported translation keys and their corresponding property names
+      // Only include keys that are actively mapped in map-entities.ts
       const supportedKeys = [
         { key: 'dns_queries', prop: 'dns_queries' },
         { key: 'average_processing_speed', prop: 'average_processing_speed' },
@@ -61,19 +45,16 @@ describe('map-entities.ts', () => {
           prop: 'dns_queries_blocked_ratio',
         },
         { key: 'dns_queries_blocked', prop: 'dns_queries_blocked' },
-        { key: 'dns_unique_clients', prop: 'dns_unique_clients' },
+        { key: 'safe_searches_enforced', prop: 'safe_searches_enforced' },
+        // Pi-hole compatibility mappings
+        { key: 'dns_queries_today', prop: 'dns_queries' },
+        { key: 'domains_blocked', prop: 'dns_queries_blocked' },
         {
-          key: 'remaining_until_blocking_mode',
-          prop: 'remaining_until_blocking_mode',
+          key: 'ads_percentage_blocked_today',
+          prop: 'dns_queries_blocked_ratio',
         },
-        { key: 'action_refresh_data', prop: 'action_refresh_data' },
-        { key: 'latest_data_refresh', prop: 'latest_data_refresh' },
-        { key: 'ftl_info_message_count', prop: 'info_message_count' },
-        { key: 'status', prop: 'status' },
-        {
-          key: 'action_ftl_purge_diagnosis_messages',
-          prop: 'purge_diagnosis_messages',
-        },
+        { key: 'ftl_info_message_count', prop: 'average_processing_speed' },
+        { key: 'dns_unique_clients', prop: 'safe_searches_enforced' },
       ];
 
       // Test each key

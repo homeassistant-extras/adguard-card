@@ -516,12 +516,7 @@ badge:
 ```
 
 > [!NOTE]  
-> **Default Badge Behavior**: If no custom `badge` actions are configured, the card will automatically:
->
-> - **Tap**: Purge diagnostic messages (when messages exist) or show more info (when no messages)
-> - **Hold/Double-tap**: Show more info about the diagnostic message entity
->
-> **Requirements**: Both `purge_diagnosis_messages` and `info_message_count` entities must be enabled for the default behavior to work.
+> **Default Badge Behavior**: If no custom `badge` actions are configured, the card will automatically show more info when tapping, holding, or double-tapping the badge icon.
 
 > [!WARNING]  
 > **Multi-AdGuard Action Behavior**: When using multiple AdGuard instances, actions are executed for each configured AdGuard instance. This can lead to unexpected behavior:

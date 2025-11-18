@@ -223,18 +223,6 @@ describe('get-setup.ts', () => {
     const device2 = {
       device_id: 'adguard_device_2',
       status: device2Status,
-      info_message_count: {
-        entity_id: 'sensor.pi_hole_2_info_messages',
-        state: '5',
-        attributes: {},
-        translation_key: undefined,
-      },
-      purge_diagnosis_messages: {
-        entity_id: 'button.pi_hole_2_purge_diagnosis',
-        state: 'off',
-        attributes: {},
-        translation_key: undefined,
-      },
       switches: [device2Switch1, device2Switch2],
       sensors: [
         {
@@ -291,15 +279,9 @@ describe('get-setup.ts', () => {
     expect(result?.holes[0]?.controls).to.have.lengthOf(1);
     expect(result?.holes[0]?.updates).to.have.lengthOf(1);
 
-    // Check second device only has device_id, status, info_message_count, and purge_diagnosis_messages, with empty arrays for other properties
+    // Check second device only has device_id and status, with empty arrays for other properties
     expect(result?.holes[1]?.device_id).to.equal('adguard_device_2');
     expect(result?.holes[1]?.status).to.deep.equal(device2Status);
-    expect(result?.holes[1]?.info_message_count).to.deep.equal(
-      device2.info_message_count,
-    );
-    expect(result?.holes[1]?.purge_diagnosis_messages).to.deep.equal(
-      device2.purge_diagnosis_messages,
-    );
     expect(result?.holes[1]?.switches).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.sensors).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.controls).to.be.an('array').with.lengthOf(0);

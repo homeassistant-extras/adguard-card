@@ -115,11 +115,11 @@ describe('pi-fillings.ts', () => {
         attributes: {},
         translation_key: 'average_processing_speed',
       },
-      dns_unique_clients: {
-        entity_id: 'sensor.dns_unique_clients',
+      safe_searches_enforced: {
+        entity_id: 'sensor.safe_searches_enforced',
         state: '42',
         attributes: {},
-        translation_key: 'dns_unique_clients',
+        translation_key: 'safe_searches_enforced',
       },
     } as AdGuardDevice;
 
@@ -159,11 +159,11 @@ describe('pi-fillings.ts', () => {
     expect(createStatBoxStub.called).to.be.false;
   });
 
-  it('should call getDashboardStats with correct unique clients count', async () => {
+  it('should call getDashboardStats with correct safe searches enforced count', async () => {
     // Call createDashboardStats
     createDashboardStats(mockElement, mockHass, mockDevice, mockConfig);
 
-    // Verify getDashboardStats was called with the correct unique clients count
+    // Verify getDashboardStats was called with the correct safe searches enforced count
     expect(getStatsStub.calledOnce).to.be.true;
     expect(getStatsStub.firstCall.args[0]).to.equal('42');
   });

@@ -35,12 +35,6 @@ export interface AdGuardDevice {
   /** Last Data Refresh Time */
   latest_data_refresh?: EntityInformation;
 
-  /** Info message count entity */
-  info_message_count?: EntityInformation;
-
-  /** Button to Purge Diagnosis Messages */
-  purge_diagnosis_messages?: EntityInformation;
-
   /** Status of AdGuard */
   status?: EntityInformation;
 

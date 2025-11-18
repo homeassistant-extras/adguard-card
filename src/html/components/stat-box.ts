@@ -27,7 +27,9 @@ export const createStatBox = (
 ): TemplateResult | typeof nothing => {
   if (!entity) return nothing;
 
-  const uom = entity.attributes?.unit_of_measurement === '%' ? '%' : '';
+  const uom = ['%', 'ms'].includes(entity.attributes?.unit_of_measurement ?? '')
+    ? entity.attributes?.unit_of_measurement
+    : '';
   const value = formatNumber(entity.state, undefined, {
     maximumFractionDigits: 1,
   });

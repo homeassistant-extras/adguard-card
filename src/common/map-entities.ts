@@ -20,12 +20,12 @@ export const mapEntitiesByTranslationKey = (
 
     // not vetted yet
     //dns_unique_clients: 'dns_unique_clients',
-    remaining_until_blocking_mode: 'remaining_until_blocking_mode',
-    action_refresh_data: 'action_refresh_data',
-    latest_data_refresh: 'latest_data_refresh',
+    // remaining_until_blocking_mode: 'remaining_until_blocking_mode',
+    // action_refresh_data: 'action_refresh_data',
+    // latest_data_refresh: 'latest_data_refresh',
     //ftl_info_message_count: 'info_message_count',
-    status: 'status',
-    action_ftl_purge_diagnosis_messages: 'purge_diagnosis_messages',
+    // status: 'status',
+    // action_ftl_purge_diagnosis_messages: 'purge_diagnosis_messages',
 
     // testing w/ pi-hole
     dns_queries_today: 'dns_queries',
