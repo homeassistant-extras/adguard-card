@@ -90,7 +90,7 @@ describe('icon.ts', () => {
 
   describe('action handler integration', () => {
     it('should call action handlers with correct configurations', async () => {
-      mockSetup.holes[0]!.status = {
+      mockSetup.holes[0]!.protection = {
         entity_id: 'sensor.pi_hole_status',
         state: 'enabled',
         attributes: {},
@@ -116,7 +116,7 @@ describe('icon.ts', () => {
     });
 
     it('should create default action configurations when no custom badge config', async () => {
-      mockSetup.holes[0]!.status = {
+      mockSetup.holes[0]!.protection = {
         entity_id: 'sensor.pi_hole_status',
         state: 'enabled',
         attributes: {},
@@ -143,7 +143,7 @@ describe('icon.ts', () => {
           action: 'toggle',
         },
       };
-      mockSetup.holes[0]!.status = {
+      mockSetup.holes[0]!.protection = {
         entity_id: 'sensor.pi_hole_status',
         state: 'enabled',
         attributes: {},
@@ -171,7 +171,7 @@ describe('icon.ts', () => {
 
     it('should handle multiple AdGuard instances with different configurations', async () => {
       // First AdGuard with status
-      mockSetup.holes[0]!.status = {
+      mockSetup.holes[0]!.protection = {
         entity_id: 'sensor.adguard_1_status',
         state: 'enabled',
         attributes: {},

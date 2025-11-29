@@ -29,7 +29,7 @@ export interface AdGuardDevice {
   latest_data_refresh?: EntityInformation;
 
   /** Status of AdGuard */
-  status?: EntityInformation;
+  protection?: EntityInformation;
 
   /** Sensors for the AdGuard */
   sensors: EntityInformation[];

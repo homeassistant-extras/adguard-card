@@ -58,7 +58,7 @@ describe('pi-crust.ts', () => {
     // Mock device
     mockDevice = {
       device_id: 'adguard_device',
-      status: {
+      protection: {
         entity_id: 'binary_sensor.pi_hole_status',
         state: 'on',
         attributes: { friendly_name: 'Pi-hole Status' },
@@ -161,7 +161,7 @@ describe('pi-crust.ts', () => {
 
   it('should display green status when Pi-hole is active', async () => {
     // Ensure status is 'on'
-    mockSetup.holes[0]!.status!.state = 'on';
+    mockSetup.holes[0]!.protection!.state = 'on';
 
     // Render the card header
     const result = createCardHeader(
@@ -186,7 +186,7 @@ describe('pi-crust.ts', () => {
 
   it('should display red status when Pi-hole is inactive', async () => {
     // Set status to 'off'
-    mockSetup.holes[0]!.status!.state = 'off';
+    mockSetup.holes[0]!.protection!.state = 'off';
 
     // Render the card header
     const result = createCardHeader(
@@ -214,10 +214,10 @@ describe('pi-crust.ts', () => {
     createCardHeader(mockElement, mockSetup, mockHass, mockConfig);
 
     // Verify stateDisplay was called with the correct parameters
-    expect(stateDisplayStub.calledWith(mockHass, mockSetup.holes[0]!.status)).to
-      .be.true;
+    expect(
+      stateDisplayStub.calledWith(mockHass, mockSetup.holes[0]!.protection),
+    ).to.be.true;
   });
-
 
   // New tests for multiple Pi-hole setup
 
@@ -241,8 +241,8 @@ describe('pi-crust.ts', () => {
     const secondDevice = {
       ...mockDevice,
       device_id: 'adguard_device_2',
-      status: {
-        ...mockDevice.status,
+      protection: {
+        ...mockDevice.protection,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'on',
       },
@@ -269,8 +269,8 @@ describe('pi-crust.ts', () => {
     const secondDevice = {
       ...mockDevice,
       device_id: 'adguard_device_2',
-      status: {
-        ...mockDevice.status,
+      protection: {
+        ...mockDevice.protection,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'off',
       },
@@ -301,8 +301,8 @@ describe('pi-crust.ts', () => {
     const secondDevice = {
       ...mockDevice,
       device_id: 'adguard_device_2',
-      status: {
-        ...mockDevice.status,
+      protection: {
+        ...mockDevice.protection,
         entity_id: 'binary_sensor.pi_hole_2_status',
         state: 'off',
       },
@@ -311,8 +311,8 @@ describe('pi-crust.ts', () => {
     const thirdDevice = {
       ...mockDevice,
       device_id: 'adguard_device_3',
-      status: {
-        ...mockDevice.status,
+      protection: {
+        ...mockDevice.protection,
         entity_id: 'binary_sensor.pi_hole_3_status',
         state: 'on',
       },
@@ -339,7 +339,7 @@ describe('pi-crust.ts', () => {
     const deviceWithoutStatus = {
       ...mockDevice,
       device_id: 'adguard_device_2',
-      status: undefined,
+      protection: undefined,
     };
 
     mockSetup.holes.push(deviceWithoutStatus);

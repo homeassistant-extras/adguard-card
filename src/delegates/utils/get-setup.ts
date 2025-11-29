@@ -36,7 +36,7 @@ export const getAdGuardSetup = (
         return {
           device_id: hole.device_id,
           // required for the setup state to work
-          status: hole.status,
+          protection: hole.protection,
           controls: [],
           sensors: [],
           switches: [],

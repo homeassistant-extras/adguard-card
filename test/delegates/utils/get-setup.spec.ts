@@ -217,12 +217,12 @@ describe('get-setup.ts', () => {
       entity_id: 'binary_sensor.pi_hole_status_2',
       state: 'on',
       attributes: { friendly_name: 'AdGuard Status 2' },
-      translation_key: undefined,
+      translation_key: 'protection',
     };
 
     const device2 = {
       device_id: 'adguard_device_2',
-      status: device2Status,
+      protection: device2Status,
       switches: [device2Switch1, device2Switch2],
       sensors: [
         {
@@ -281,7 +281,9 @@ describe('get-setup.ts', () => {
 
     // Check second device only has device_id and status, with empty arrays for other properties
     expect(result?.holes[1]?.device_id).to.equal('adguard_device_2');
-    expect(result?.holes[1]?.status).to.deep.equal(device2Status);
+    console.log(result?.holes[1]?.protection);
+    console.log(device2Status);
+    expect(result?.holes[1]?.protection).to.deep.equal(device2Status);
     expect(result?.holes[1]?.switches).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.sensors).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.controls).to.be.an('array').with.lengthOf(0);

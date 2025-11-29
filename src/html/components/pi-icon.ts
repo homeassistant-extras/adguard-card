@@ -24,7 +24,7 @@ export const icon = (
     // If user has custom badge config, apply it to all AdGuard instances
     if (config.badge) {
       return {
-        entity: h.status?.entity_id ?? h.device_id,
+        entity: h.protection?.entity_id ?? h.device_id,
         ...config.badge,
       };
     }
@@ -44,7 +44,7 @@ export const icon = (
 
     // For AdGuard instances, use the base config
     return {
-      entity: h.status?.entity_id ?? h.device_id,
+      entity: h.protection?.entity_id ?? h.device_id,
       ...baseConfig,
     };
   });

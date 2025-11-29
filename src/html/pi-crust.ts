@@ -26,7 +26,7 @@ export const createCardHeader = (
 
   const primary = setup.holes[0]!;
   const activeCount = setup.holes
-    .map((h) => h.status)
+    .map((h) => h.protection)
     .filter(
       (status) => status !== undefined && stateActive(status, status?.state),
     ).length;
@@ -59,7 +59,7 @@ export const createCardHeader = (
         ></ha-icon>
         ${mixedStatus
           ? html`${localize(hass, 'card.ui.partial')}`
-          : stateDisplay(hass, primary.status!)}
+          : stateDisplay(hass, primary.protection!)}
       </div>
     </div>
   `;

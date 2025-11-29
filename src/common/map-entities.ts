@@ -17,6 +17,7 @@ export const mapEntitiesByTranslationKey = (
     dns_queries_blocked_ratio: 'dns_queries_blocked_ratio',
     average_processing_speed: 'average_processing_speed',
     safe_searches_enforced: 'safe_searches_enforced',
+    protection: 'protection',
 
     // not vetted yet
     // action_refresh_data: 'action_refresh_data',
