@@ -56,10 +56,6 @@ const getSectionExcludeOptions = (hass: HomeAssistant): SelectOption[] => {
       value: 'header',
     },
     {
-      label: l('editor.pause_buttons'),
-      value: 'pause',
-    },
-    {
       label: l('editor.statistics'),
       value: 'statistics',
     },
@@ -78,34 +74,12 @@ const getCollapsedSectionOptions = (hass: HomeAssistant): SelectOption[] => {
   const l = (label: TranslationKey) => localize(hass, label);
   return [
     {
-      label: l('editor.pause_buttons'),
-      value: 'pause',
-    },
-    {
       label: l('editor.switches'),
       value: 'switches',
     },
     {
       label: l('editor.actions'),
       value: 'actions',
-    },
-  ];
-};
-
-const getPauseDurationOptions = (hass: HomeAssistant): SelectOption[] => {
-  const l = (label: TranslationKey) => localize(hass, label);
-  return [
-    {
-      label: l('editor.pause_60_seconds'),
-      value: '60s',
-    },
-    {
-      label: l('editor.pause_5_minutes'),
-      value: '5m',
-    },
-    {
-      label: l('editor.pause_15_minutes'),
-      value: '15m',
     },
   ];
 };
@@ -271,19 +245,6 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
       icon: 'mdi:gesture-tap',
       schema: [
         {
-          name: 'pause_durations',
-          label: 'editor.pause_durations',
-          required: false,
-          selector: {
-            select: {
-              multiple: true,
-              custom_value: true,
-              mode: 'list' as const,
-              options: getPauseDurationOptions(hass),
-            },
-          },
-        },
-        {
           name: 'badge',
           label: 'editor.badge',
           type: 'expandable',
@@ -310,32 +271,6 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           type: 'expandable',
           icon: 'mdi:remote',
           schema: ACTION_SCHEMA,
-        },
-      ],
-    },
-    {
-      name: 'features',
-      label: 'editor.features',
-      type: 'expandable' as const,
-      flatten: true,
-      icon: 'mdi:list-box',
-      schema: [
-        {
-          name: 'features',
-          label: 'editor.features',
-          required: false,
-          selector: {
-            select: {
-              multiple: true,
-              mode: 'list' as const,
-              options: [
-                {
-                  label: l('editor.disable_group_pausing'),
-                  value: 'disable_group_pausing',
-                },
-              ],
-            },
-          },
         },
       ],
     },

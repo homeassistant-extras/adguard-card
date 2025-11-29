@@ -11,7 +11,6 @@
       "processing_speed_info": "Време за обработка"
     },
     "sections": {
-      "pause": "Пауза на блокирането на реклами",
       "switches": "Ключове",
       "actions": "Действия"
     },
@@ -24,7 +23,6 @@
       "hour": "час"
     },
     "ui": {
-      "select_pi_or_group": "Изберете Pi или Група",
       "partial": "Частичен"
     }
   },
@@ -34,7 +32,6 @@
     "actions": "Действия",
     "footer": "Долна част",
     "header": "Горна част",
-    "pause_buttons": "Бутони за пауза",
     "statistics": "Статистика",
     "sensors": "Сензори",
     "switches": "Ключове",
@@ -52,15 +49,9 @@
     "styles": "Стилове",
     "switch_spacing": "Разстояние между ключовете",
     "interactions": "Взаимодействия",
-    "pause_durations": "Продължителност на пауза",
     "badge": "Значка",
     "information": "Информация",
     "controls": "Контроли",
-    "features": "Функции",
-    "disable_group_pausing": "Деактивиране на паузата за групи",
-    "pause_60_seconds": "60 секунди",
-    "pause_5_minutes": "5 минути",
-    "pause_15_minutes": "15 минути",
     "adguard_device": "AdGuard устройство",
     "entity_display_order": "Ред на показване на обектите (кликване в ред)",
     "flex_default": "Flex (по подразбиране)"

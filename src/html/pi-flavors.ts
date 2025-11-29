@@ -108,7 +108,7 @@ const controls = (
  * Creates the card actions section
  * @param element - The element to attach the actions to
  * @param hass - The Home Assistant instance
- * @param setup - The AdGuard setup to be paused.
+ * @param setup - The AdGuard setup
  * @param device - The AdGuard device
  * @param config - The configuration for the card
  * @returns TemplateResult
@@ -120,14 +120,5 @@ export const createCardActions = (
   device: AdGuardDevice,
   config: Config,
 ): TemplateResult => {
-  return html`
-    <div>
-      <adguard-pause-component
-        .hass=${hass}
-        .setup=${setup}
-        .config=${config}
-      ></adguard-pause-component>
-      ${controls(element, hass, device, config)}
-    </div>
-  `;
+  return html` <div>${controls(element, hass, device, config)}</div> `;
 };

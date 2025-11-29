@@ -11,7 +11,6 @@
       "processing_speed_info": "Χρόνος επεξεργασίας"
     },
     "sections": {
-      "pause": "Παύση Αποκλεισμού Διαφημίσεων",
       "switches": "Διακόπτες",
       "actions": "Ενέργειες"
     },
@@ -24,7 +23,6 @@
       "hour": "ώρα"
     },
     "ui": {
-      "select_pi_or_group": "Επιλέξτε Pi ή Ομάδα",
       "partial": "Μερικό"
     }
   },
@@ -34,7 +32,6 @@
     "actions": "Ενέργειες",
     "footer": "Υποσέλιδο",
     "header": "Κεφαλίδα",
-    "pause_buttons": "Κουμπιά Παύσης",
     "statistics": "Στατιστικά",
     "sensors": "Αισθητήρες",
     "switches": "Διακόπτες",
@@ -52,15 +49,9 @@
     "styles": "Στυλ",
     "switch_spacing": "Διάστημα Διακοπτών",
     "interactions": "Αλληλεπιδράσεις",
-    "pause_durations": "Διάρκειες παύσης",
     "badge": "Σήμα",
     "information": "Πληροφορίες",
     "controls": "Έλεγχοι",
-    "features": "Χαρακτηριστικά",
-    "disable_group_pausing": "Απενεργοποίηση παύσης ομάδας",
-    "pause_60_seconds": "60 δευτερόλεπτα",
-    "pause_5_minutes": "5 λεπτά",
-    "pause_15_minutes": "15 λεπτά",
     "adguard_device": "Συσκευή AdGuard",
     "entity_display_order": "Σειρά εμφάνισης οντοτήτων (κάντε κλικ με σειρά)",
     "flex_default": "Flex (προεπιλογή)"

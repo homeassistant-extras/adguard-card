@@ -11,7 +11,6 @@
       "processing_speed_info": "Tempo di elaborazione"
     },
     "sections": {
-      "pause": "Metti in pausa gli Ad-Blocking",
       "switches": "Opzioni",
       "actions": "Azioni"
     },
@@ -24,7 +23,6 @@
       "hour": "ora"
     },
     "ui": {
-      "select_pi_or_group": "Seleziona Pi o Gruppo",
       "partial": "Parziale"
     }
   },
@@ -34,7 +32,6 @@
     "actions": "Azioni",
     "footer": "Piè di pagina",
     "header": "Intestazione",
-    "pause_buttons": "Pulsanti di pausa",
     "statistics": "Statistiche",
     "sensors": "Sensori",
     "switches": "Opzioni",
@@ -52,15 +49,9 @@
     "styles": "Stili",
     "switch_spacing": "Spaziatura Switch",
     "interactions": "Interazioni",
-    "pause_durations": "Durata delle pause",
     "badge": "Badge",
     "information": "Informazioni",
     "controls": "Controlli",
-    "features": "Opzioni",
-    "disable_group_pausing": "Disabilita la pausa per i gruppi",
-    "pause_60_seconds": "60 secondi",
-    "pause_5_minutes": "5 minuti",
-    "pause_15_minutes": "15 minuti",
     "adguard_device": "Dispositivo AdGuard",
     "entity_display_order": "Ordine delle Entità (cliccare in ordine)",
     "flex_default": "Flex (default)"

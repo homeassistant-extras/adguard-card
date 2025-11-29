@@ -72,19 +72,12 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 ### Direct Controls
 
 - **Enable/Disable Controls** - Toggle AdGuard filtering with a single click as well as Group Default
-- **Pause Ad-Blocking** - Temporarily disable filtering for a specified duration:
-  - Configurable durations (default: 60s, 5min, 15min)
-  - Automatically re-enables filtering after time expires
-  - Shows remaining time until blocking resumes
-  - Pause multiple AdGuard instances if configured
 - **Action Buttons** - Quick access buttons for common maintenance tasks:
   - Restart DNS
   - Update Gravity
   - Flush ARP
   - Flush Logs
 - **Customizable Actions** - Configure custom actions for the control buttons in this section
-
-![Pause Ad-Blocking](assets/pause.png)
 
 ![Control Buttons](assets/control-buttons.png)
 
@@ -107,7 +100,6 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 - **Real-time Status** - Visual indication of AdGuard's current state
 - **Error Detection** - Automatic highlighting when issues are detected
 - **Update Indicators** - Clear notification when updates are available
-- **Block Time Remaining** - Shows remaining time until ad-blocking resumes when paused
 - **FTL Diagnostic Message Count** - Shows diagnostic message count when more than 0
 - **Interactive Diagnostic Management** - Smart icon behavior based on diagnostic message count:
   - **When diagnostic messages exist**: Tap to purge diagnostic messages, hold/double-tap for more info
@@ -127,7 +119,6 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 - **Collapsible Sections** - Ability to collapse/expand sections to save space:
   - Switches section (on/off toggles)
   - Actions section (control buttons)
-  - Pause section (pause durations)
 
 ![collapse](assets/collapse.png)
 
@@ -260,7 +251,6 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 | title              | string          | AdGuard          | Custom title for the card header                                   |
 | icon               | string          | mdi:shield-check | Custom icon for the card header                                    |
 | badge              | object          | _none_           | Configure actions for the card icon/badge                          |
-| pause_durations    | array           | [60,300,900]     | Durations for pause buttons (supports numbers, strings with units) |
 | stats              | object          | _none_           | Configure actions for statistics tiles                             |
 | info               | object          | _none_           | Configure actions for additional info items                        |
 | controls           | object          | _none_           | Configure actions for control buttons                              |
@@ -298,7 +288,6 @@ The following section names can be used with `exclude_sections`:
 - chart
 - footer
 - header
-- pause
 - statistics
 - sensors
 - switches
@@ -309,7 +298,6 @@ The following section names can be used with `collapsed_sections`:
 
 - actions
 - switches
-- pause
 
 ### Switch Spacing Options
 
@@ -372,71 +360,6 @@ title: 'My AdGuard Server'
 icon: 'mdi:shield-check'
 ```
 
-### With Custom Pause Durations
-
-The `pause_durations` configuration supports various formats for specifying time:
-
-```yaml
-type: custom:adguard
-device_id: adguard_device_1
-pause_durations:
-  - 60 # 1 minute
-  - 300 # 5 minutes
-  - 10s # 10 seconds
-  - 5m # 5 minutes
-  - 1h # 1 hour
-  - '4h:20m:69s' # 15669 seconds (complex format)
-```
-
-**Supported time formats:**
-
-- **Numbers**: Interpreted as seconds (e.g., `300` = 5 minutes)
-- **Number strings**: Quoted numbers treated as seconds (e.g., `"60"` = 1 minute)
-- **Simple units**: Time with single unit (e.g., `"10s"`, `"5m"`, `"1h"`)
-- **Complex format**: Colon-separated with units (e.g., `"1h:30m:45s"`)
-
-The UI will automatically display these in human-readable format (e.g., "5 minutes", "1 hour").
-
-![Pause Ad-Blocking](assets/custom-pause.png)
-
-## Feature Flags
-
-Use feature flags to customize card behavior:
-
-```yaml
-features:
-  - disable_group_pausing
-```
-
-| Feature               | Description                   |
-| --------------------- | ----------------------------- |
-| disable_group_pausing | Disable group pausing feature |
-
-### Group Pausing Feature
-
-The group pausing feature is **enabled by default**. When enabled, the pause section will show a dropdown to select which instance or client group to pause, allowing you to pause individual instances or client groups. This is useful for targeting specific AdGuard instances or client groups.
-
-![group-pause](assets/group-pause.gif)
-
-When enabled you can pause the instance as well
-
-![pi-pause](assets/pi-pause.gif)
-
-> [!NOTE]  
-> **Prerequisites**: This feature requires the AdGuard integration to be installed in your Home Assistant instance.
-
-> [!WARNING]  
-> **HA Core Integration**: This feature has not been tested with the Home Assistant Core AdGuard integration and may not work as expected.
-
-To disable the group pausing feature and use the legacy device-based service call (which pauses all AdGuard devices). This is reccomended for multi-instance situations:
-
-```yaml
-type: custom:adguard
-device_id: adguard_device_1
-features:
-  - disable_group_pausing
-```
-
 ### Excluding Sections & Entities
 
 ```yaml
@@ -489,30 +412,6 @@ badge:
   double_tap_action:
     action: more-info
     entity_id: sensor.adguard_status
-```
-
-### With Switch Toggle and Pause Actions
-
-For quick AdGuard control, you can configure the badge to toggle the main switch on tap and pause for 30 seconds on hold:
-
-```yaml
-type: custom:adguard
-device_id: adguard_device_1
-badge:
-  tap_action:
-    action: perform-action
-    perform_action: switch.toggle
-    target:
-      entity_id: switch.adguard
-  hold_action:
-    action: perform-action
-    perform_action: adguard.disable
-    data:
-      device_id: adguard_device_1
-      duration: '00:00:30'
-  double_tap_action:
-    action: more-info
-    entity_id: switch.adguard
 ```
 
 > [!NOTE]  
@@ -601,7 +500,6 @@ device_id: adguard_device_1
 collapsed_sections:
   - actions
   - switches
-  - pause # Start with pause section collapsed
 ```
 
 ### Chart Configuration
@@ -637,16 +535,13 @@ exclude_sections:
 - [x] **`Multi-AdGuard support`**: manage and monitor multiple AdGuard instances - thanks @Drudoo
 - [x] **`Collapsible sections`**: collapse/expand card sections to save space - thanks @Teleportist
 - [x] **`Additional visualization options`**: using HA native more-info, etc. - thanks @dunxd
-- [x] **`Pause ad-blocking`**: temporarily disable filtering for specified durations - thanks @StuartHaire, @VVRud
 - [x] **`Entity ordering`**: customize the order of displayed entities - thanks @Teleportist
 - [x] **`Section hiding`**: ability to disable sections or entities - thanks @pcnate, @bastgau, @Anto79-ops
 - [x] **`Visual separators`**: add dividers for switches - thanks @Teleportist
 - [x] **`Diagnostics info indicator`**: show diagnostic messages count - thanks @WalterPepeka
 - [x] **`Greek translation`**: **⭐ Second contributor ⭐** added Greek language support - thanks @ChriZathens
 - [x] **`Customizable badge actions`**: configurable tap/hold/double-tap actions for card badge - thanks @moshoari
-- [x] **`Enhanced pause durations`**: flexible time formats and human-readable display for pause buttons - thanks @moshoari
 - [x] **`Backwards compatibility`**: maintained Home Assistant integration backwards compatibility - thanks @ccheath
-- [x] **`Group pause feature`**: enhanced pause functionality with group support - thanks @bastgau
 - [x] **`System metrics chart`**: visualize CPU and memory usage over time with customizable line styles - thanks me!
 
 ## Contributing

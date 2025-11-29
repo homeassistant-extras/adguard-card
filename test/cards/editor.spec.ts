@@ -1,10 +1,11 @@
 import { AdGuardCardEditor } from '@cards/editor';
 import type { HomeAssistant } from '@hass/types';
+import * as localizeModule from '@localize/localize';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
 import { expect } from 'chai';
 import { nothing, type TemplateResult } from 'lit';
-import { stub } from 'sinon';
+import * as sinon from 'sinon';
 
 describe('editor.ts', () => {
   let card: AdGuardCardEditor;
@@ -12,10 +13,43 @@ describe('editor.ts', () => {
   let dispatchStub: sinon.SinonStub;
 
   beforeEach(async () => {
-    // Create mock HomeAssistant instance
-    hass = {} as HomeAssistant;
+    // Create mock HomeAssistant instance with language set
+    hass = {
+      language: 'en',
+    } as HomeAssistant;
     card = new AdGuardCardEditor();
-    dispatchStub = stub(card, 'dispatchEvent');
+    dispatchStub = sinon.stub(card, 'dispatchEvent');
+
+    // Configure the existing localize stub (created by convert-time.spec.ts) with additional translations
+    const localizeStub = localizeModule.localize as sinon.SinonStub;
+    if (localizeStub && localizeStub.withArgs) {
+      localizeStub.withArgs(sinon.match.any, 'editor.actions').returns('Actions');
+      localizeStub.withArgs(sinon.match.any, 'editor.footer').returns('Footer');
+      localizeStub.withArgs(sinon.match.any, 'editor.header').returns('Header');
+      localizeStub.withArgs(sinon.match.any, 'editor.statistics').returns('Statistics');
+      localizeStub.withArgs(sinon.match.any, 'editor.sensors').returns('Sensors');
+      localizeStub.withArgs(sinon.match.any, 'editor.switches').returns('Switches');
+      localizeStub.withArgs(sinon.match.any, 'editor.flex_default').returns('Flex (default)');
+      localizeStub.withArgs(sinon.match.any, 'editor.space_around').returns('Space Around');
+      localizeStub.withArgs(sinon.match.any, 'editor.space_between').returns('Space Between');
+      localizeStub.withArgs(sinon.match.any, 'editor.card_title').returns('Card Title');
+      // Add fallback for any editor.* keys not explicitly handled
+      localizeStub.withArgs(sinon.match.any, sinon.match(/^editor\./)).callsFake((hass, key) => {
+        const translations: Record<string, string> = {
+          'editor.actions': 'Actions',
+          'editor.footer': 'Footer',
+          'editor.header': 'Header',
+          'editor.statistics': 'Statistics',
+          'editor.sensors': 'Sensors',
+          'editor.switches': 'Switches',
+          'editor.flex_default': 'Flex (default)',
+          'editor.space_around': 'Space Around',
+          'editor.space_between': 'Space Between',
+          'editor.card_title': 'Card Title',
+        };
+        return translations[key as string] || (key as string);
+      });
+    }
 
     card.hass = hass;
   });
@@ -148,10 +182,6 @@ describe('editor.ts', () => {
                       value: 'header',
                     },
                     {
-                      label: 'Pause Buttons',
-                      value: 'pause',
-                    },
-                    {
                       label: 'Statistics',
                       value: 'statistics',
                     },
@@ -177,14 +207,9 @@ describe('editor.ts', () => {
                   mode: 'list' as const,
                   options: [
                     {
-                      label: 'Pause Buttons',
-                      value: 'pause',
-                    },
-                    {
                       label: 'Switches',
                       value: 'switches',
                     },
-
                     {
                       label: 'Actions',
                       value: 'actions',
@@ -292,32 +317,6 @@ describe('editor.ts', () => {
           flatten: true,
           icon: 'mdi:gesture-tap',
           schema: [
-            {
-              name: 'pause_durations',
-              label: 'editor.pause_durations',
-              required: false,
-              selector: {
-                select: {
-                  multiple: true,
-                  custom_value: true,
-                  mode: 'list' as const,
-                  options: [
-                    {
-                      label: '60 seconds',
-                      value: '60s',
-                    },
-                    {
-                      label: '5 minutes',
-                      value: '5m',
-                    },
-                    {
-                      label: '15 minutes',
-                      value: '15m',
-                    },
-                  ],
-                },
-              },
-            },
             {
               name: 'badge',
               label: 'editor.badge',
@@ -436,32 +435,6 @@ describe('editor.ts', () => {
             },
           ],
         },
-        {
-          name: 'features',
-          label: 'editor.features',
-          type: 'expandable' as const,
-          flatten: true,
-          icon: 'mdi:list-box',
-          schema: [
-            {
-              name: 'features',
-              label: 'editor.features',
-              required: false,
-              selector: {
-                select: {
-                  multiple: true,
-                  mode: 'list' as const,
-                  options: [
-                    {
-                      label: 'Disable group pausing',
-                      value: 'disable_group_pausing',
-                    },
-                  ],
-                },
-              },
-            },
-          ],
-        },
       ]);
     });
   });
@@ -477,15 +450,16 @@ describe('editor.ts', () => {
       const computeLabelFn = (el as any).computeLabel;
       expect(computeLabelFn).to.be.a('function');
 
-      // Test the compute label function
-      const testSchema = { name: 'test', label: 'Test Label' };
+      // Test the compute label function - it should localize the label
+      const testSchema = { name: 'test', label: 'editor.card_title' };
       const result = computeLabelFn(testSchema);
-      expect(result).to.equal('Test Label');
+      // The result should be the localized string
+      expect(result).to.equal('Card Title');
     });
   });
 
   describe('_valueChanged', () => {
-    it('should fire config-changed event with config when features are present', () => {
+    it('should fire config-changed event with config', () => {
       const testConfig: Config = {
         device_id: 'device_1',
       };
@@ -509,13 +483,13 @@ describe('editor.ts', () => {
       });
     });
 
-    it('should handle config without features property', () => {
+    it('should handle config with minimal properties', () => {
       const testConfig: Config = {
         device_id: 'device_1',
       };
       card.setConfig(testConfig);
 
-      // Simulate value-changed event without features
+      // Simulate value-changed event
       const detail = {
         value: {
           device_id: 'device_1',
@@ -560,7 +534,7 @@ describe('editor.ts', () => {
       const event = new CustomEvent('value-changed', { detail });
       card['_valueChanged'](event);
 
-      // Verify event was dispatched with features property removed
+      // Verify event was dispatched with empty properties removed
       expect(dispatchStub.calledOnce).to.be.true;
       expect(dispatchStub.firstCall.args[0].type).to.equal('config-changed');
       expect(dispatchStub.firstCall.args[0].detail.config).to.deep.equal({

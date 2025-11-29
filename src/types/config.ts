@@ -39,29 +39,19 @@ export interface Config {
   /** Sections that should be collapsed by default */
   collapsed_sections?: CollapsibleSections[];
 
-  /** Custom pause durations (optional) - can be numbers in seconds or strings with time units */
-  pause_durations?: (number | string)[];
-
   /** Style for the switches */
   switch_spacing?: SwitchSpacing;
-
-  /** Options to enable disable features */
-  features?: Features[];
 }
 
 export type SwitchSpacing = 'flex' | 'space-around' | 'space-between';
-export type CollapsibleSections = 'actions' | 'pause' | 'switches';
+export type CollapsibleSections = 'actions' | 'switches';
 export type Sections =
   | 'actions'
   | 'footer'
   | 'header'
-  | 'pause'
   | 'statistics'
   | 'sensors'
   | 'switches';
-
-/** Features to enable or disable functionality */
-export type Features = 'disable_group_pausing';
 
 export interface SectionConfig {
   /** Action to perform on tap */

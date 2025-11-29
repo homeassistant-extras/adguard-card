@@ -11,7 +11,6 @@
       "processing_speed_info": "Temps de traitement"
     },
     "sections": {
-      "pause": "Pause du bloqueur de pubs",
       "switches": "Interrupteurs",
       "actions": "Actions"
     },
@@ -24,7 +23,6 @@
       "hour": "heure"
     },
     "ui": {
-      "select_pi_or_group": "Sélectionner une instance AdGuard ou un groupe",
       "partial": "Partiel"
     }
   },
@@ -34,7 +32,6 @@
     "actions": "Actions",
     "footer": "Pied de page",
     "header": "En-tête",
-    "pause_buttons": "Boutons de pause",
     "statistics": "Statistiques",
     "sensors": "Capteurs",
     "switches": "Interrupteurs",
@@ -52,15 +49,9 @@
     "styles": "Styles",
     "switch_spacing": "Espacement des interrupteurs",
     "interactions": "Interactions",
-    "pause_durations": "Durées de pause",
     "badge": "Badge",
     "information": "Informations",
     "controls": "Contrôles",
-    "features": "Fonctionnalités",
-    "disable_group_pausing": "Désactiver la pause de groupe",
-    "pause_60_seconds": "60 secondes",
-    "pause_5_minutes": "5 minutes",
-    "pause_15_minutes": "15 minutes",
     "adguard_device": "Appareil AdGuard",
     "entity_display_order": "Ordre d'affichage des entités (cliquer dans l'ordre)",
     "flex_default": "Flexible (par défaut)"
