@@ -24,7 +24,6 @@ describe('editor.ts', () => {
     const localizeStub = localizeModule.localize as sinon.SinonStub;
     if (localizeStub && localizeStub.withArgs) {
       localizeStub.withArgs(sinon.match.any, 'editor.actions').returns('Actions');
-      localizeStub.withArgs(sinon.match.any, 'editor.footer').returns('Footer');
       localizeStub.withArgs(sinon.match.any, 'editor.header').returns('Header');
       localizeStub.withArgs(sinon.match.any, 'editor.statistics').returns('Statistics');
       localizeStub.withArgs(sinon.match.any, 'editor.sensors').returns('Sensors');
@@ -37,7 +36,6 @@ describe('editor.ts', () => {
       localizeStub.withArgs(sinon.match.any, sinon.match(/^editor\./)).callsFake((hass, key) => {
         const translations: Record<string, string> = {
           'editor.actions': 'Actions',
-          'editor.footer': 'Footer',
           'editor.header': 'Header',
           'editor.statistics': 'Statistics',
           'editor.sensors': 'Sensors',
@@ -172,10 +170,6 @@ describe('editor.ts', () => {
                     {
                       label: 'Actions',
                       value: 'actions',
-                    },
-                    {
-                      label: 'Footer',
-                      value: 'footer',
                     },
                     {
                       label: 'Header',

@@ -218,29 +218,6 @@ export const styles = css`
     justify-content: space-between;
   }
 
-  /* Version information styles */
-  .version-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 8px 16px 16px;
-    font-size: 0.85rem;
-    color: var(--secondary-text-color);
-    border-top: 1px solid var(--divider-color, rgba(0, 0, 0, 0.12));
-    gap: 12px;
-  }
-
-  .version-item {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-  }
-
-  .version-label {
-    margin-right: 4px;
-    font-weight: 700;
-  }
-
   /* Very small screen adjustments */
   @media (max-width: 400px) {
     .stat-group {
@@ -303,20 +280,6 @@ export const styles = css`
 
   .space-between > state-card-content {
     width: 100%;
-  }
-
-  /* Refresh time styles */
-  .refresh-time {
-    display: flex;
-    font-size: 0.85rem;
-    color: var(--secondary-text-color);
-    justify-content: center;
-  }
-
-  .refresh-time ha-icon {
-    margin-right: 4px;
-    color: var(--switch-checked-color);
-    cursor: pointer;
   }
 
   /* Status icon styles */

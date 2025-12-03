@@ -47,7 +47,6 @@ export type SwitchSpacing = 'flex' | 'space-around' | 'space-between';
 export type CollapsibleSections = 'actions' | 'switches';
 export type Sections =
   | 'actions'
-  | 'footer'
   | 'header'
   | 'statistics'
   | 'sensors'

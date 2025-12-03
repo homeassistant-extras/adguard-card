@@ -25,7 +25,6 @@ export const getAdGuard = (
     controls: [],
     sensors: [],
     switches: [],
-    updates: [],
   };
 
   const hassDevice = getDevice(hass, device.device_id);
@@ -59,17 +58,7 @@ export const getAdGuard = (
       case 'switch':
         device.switches.push(entity);
         break;
-      case 'update':
-        device.updates.push(entity);
-        break;
     }
-  });
-
-  // Sort updates by title (using nullish coalescing for cleaner code)
-  device.updates.sort((a, b) => {
-    const aTitle = a.attributes.title ?? 'z';
-    const bTitle = b.attributes.title ?? 'z';
-    return aTitle.localeCompare(bTitle);
   });
 
   return device;

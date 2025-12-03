@@ -26,8 +26,6 @@ const actionIcon = (entity: EntityInformation) => {
       return 'mdi:earth';
     case 'action_restartdns':
       return 'mdi:restart';
-    case 'action_refresh_data':
-      return 'mdi:refresh';
     default:
       return 'mdi:button-pointer';
   }

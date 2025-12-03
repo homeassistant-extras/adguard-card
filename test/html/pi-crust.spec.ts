@@ -67,7 +67,6 @@ describe('pi-crust.ts', () => {
       sensors: [],
       switches: [],
       controls: [],
-      updates: [],
     } as AdGuardDevice;
 
     // Setup with a single device

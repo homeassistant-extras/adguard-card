@@ -48,10 +48,6 @@ const getSectionExcludeOptions = (hass: HomeAssistant): SelectOption[] => {
       value: 'actions',
     },
     {
-      label: l('editor.footer'),
-      value: 'footer',
-    },
-    {
       label: l('editor.header'),
       value: 'header',
     },

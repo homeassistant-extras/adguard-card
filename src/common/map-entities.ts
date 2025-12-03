@@ -19,26 +19,13 @@ export const mapEntitiesByTranslationKey = (
     safe_searches_enforced: 'safe_searches_enforced',
     protection: 'protection',
 
-    // not vetted yet
-    // action_refresh_data: 'action_refresh_data',
-    // latest_data_refresh: 'latest_data_refresh',
-    //ftl_info_message_count: 'info_message_count',
-    // status: 'status',
-    // action_ftl_purge_diagnosis_messages: 'purge_diagnosis_messages',
-
     // testing w/ pi-hole
     dns_queries_today: 'dns_queries',
     domains_blocked: 'dns_queries_blocked',
     ads_percentage_blocked_today: 'dns_queries_blocked_ratio',
     ftl_info_message_count: 'average_processing_speed',
     dns_unique_clients: 'safe_searches_enforced',
-
-    // backwards compatibility for HA integration
-    // dns_queries: 'dns_queries',
-    // ads_blocked: 'dns_queries_blocked',
-    // percent_ads_blocked: 'dns_queries_blocked_ratio',
-    // ads_percentage_today: 'dns_queries_blocked_ratio',
-    // domains_being_blocked: 'domains_blocked',
+    status: 'protection',
   };
 
   const key = entity.translation_key;

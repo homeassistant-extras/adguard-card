@@ -22,12 +22,6 @@ export interface AdGuardDevice {
   /** Total Ads Blocked Today */
   dns_queries_blocked?: EntityInformation;
 
-  /** Button to Refresh data */
-  action_refresh_data?: EntityInformation;
-
-  /** Last Data Refresh Time */
-  latest_data_refresh?: EntityInformation;
-
   /** Status of AdGuard */
   protection?: EntityInformation;
 
@@ -39,9 +33,6 @@ export interface AdGuardDevice {
 
   /** Control entities for the device */
   controls: EntityInformation[];
-
-  /** Update entities for the device */
-  updates: EntityInformation[];
 }
 
 export interface EntityInformation extends EntityState {

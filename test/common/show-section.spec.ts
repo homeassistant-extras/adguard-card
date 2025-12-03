@@ -17,7 +17,6 @@ describe('section-display.ts', () => {
       expect(show(config, 'sensors')).to.be.true;
       expect(show(config, 'actions')).to.be.true;
       expect(show(config, 'switches')).to.be.true;
-      expect(show(config, 'footer')).to.be.true;
     });
 
     it('should return true when section is not in exclude_sections', () => {
@@ -30,14 +29,13 @@ describe('section-display.ts', () => {
       // Act & Assert
       expect(show(config, 'header')).to.be.true;
       expect(show(config, 'actions')).to.be.true;
-      expect(show(config, 'footer')).to.be.true;
     });
 
     it('should return false when section is in exclude_sections', () => {
       // Arrange
       const config: Config = {
         device_id: 'test_device',
-        exclude_sections: ['header', 'statistics', 'footer'],
+        exclude_sections: ['header', 'statistics'],
       };
 
       // Act & Assert
@@ -45,7 +43,6 @@ describe('section-display.ts', () => {
       // instead of using the provided section parameter
       expect(show(config, 'header')).to.be.false;
       expect(show(config, 'statistics')).to.be.false; // This will fail due to the bug
-      expect(show(config, 'footer')).to.be.false; // This will fail due to the bug
     });
 
     it('should handle empty exclude_sections array', () => {
@@ -61,7 +58,6 @@ describe('section-display.ts', () => {
       expect(show(config, 'sensors')).to.be.true;
       expect(show(config, 'actions')).to.be.true;
       expect(show(config, 'switches')).to.be.true;
-      expect(show(config, 'footer')).to.be.true;
     });
   });
 });

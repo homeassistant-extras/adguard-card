@@ -76,16 +76,13 @@ describe('get-adguard.ts', () => {
     expect(result?.controls).to.be.an('array').with.lengthOf(0);
     expect(result?.sensors).to.be.an('array').with.lengthOf(0);
     expect(result?.switches).to.be.an('array').with.lengthOf(0);
-    expect(result?.updates).to.be.an('array').with.lengthOf(0);
   });
 
-  it('should map entities using mapEntitiesByTranslationKey and sort updates', () => {
+  it('should map entities using mapEntitiesByTranslationKey', () => {
     // Create some test entities
     const mockEntities = [
       createEntity('sensor.test_1', 'dns_queries', '10000'),
-      createEntity('button.test_2', 'action_refresh_data'),
-      createEntity('update.test_3', undefined, 'off', { title: 'Core' }),
-      createEntity('update.test_4', undefined, 'off', { title: 'FTL' }),
+      createEntity('button.test_2', undefined),
     ];
 
     getDeviceEntitiesStub.returns(mockEntities);
@@ -105,9 +102,6 @@ describe('get-adguard.ts', () => {
     expect(mapEntitiesByTranslationKeyStub.callCount).to.equal(
       mockEntities.length,
     );
-
-    // Verify updates are sorted by title (though we don't need to check specific order)
-    expect(result?.updates).to.have.lengthOf(2);
   });
 
   it('should filter out entities that should be skipped', () => {
@@ -144,7 +138,7 @@ describe('get-adguard.ts', () => {
   it('should respect entity_order in config for entity ordering', () => {
     // Create test entities in a specific order
     const mockEntities = [
-      createEntity('button.test_1', 'action_refresh_data', 'on'),
+      createEntity('button.test_1', undefined, 'on'),
       createEntity('sensor.test_2', 'dns_queries', '1000'),
       createEntity('switch.test_3', undefined, 'on'),
       createEntity('button.test_4', undefined, 'off'),

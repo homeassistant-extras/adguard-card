@@ -10,11 +10,10 @@ describe('map-entities.ts', () => {
       // Reset the device object before each test
       device = {
         device_id: 'test_device',
-        controls: [],
-        sensors: [],
-        switches: [],
-        updates: [],
-      } as AdGuardDevice;
+      controls: [],
+      sensors: [],
+      switches: [],
+    } as AdGuardDevice;
     });
 
     it('should map entity with known translation key to correct device property', () => {

@@ -3,7 +3,6 @@ import { renderAdGuardCard } from '@html/bake-pi';
 import * as piCrustModule from '@html/pi-crust';
 import * as piFillingsModule from '@html/pi-fillings';
 import * as piFlavorsModule from '@html/pi-flavors';
-import * as piTinModule from '@html/pi-tin';
 import * as piToppingsModule from '@html/pi-toppings';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
@@ -24,7 +23,6 @@ describe('bake-pi.ts', () => {
   let createDashboardStatsStub: sinon.SinonStub;
   let createAdditionalStatsStub: sinon.SinonStub;
   let createCardActionsStub: sinon.SinonStub;
-  let createFooterStub: sinon.SinonStub;
 
   beforeEach(() => {
     element = document.createElement('div');
@@ -50,11 +48,6 @@ describe('bake-pi.ts', () => {
       html`<div class="mocked-card-actions">Mocked Card Actions</div>`,
     );
 
-    createFooterStub = stub(piTinModule, 'createFooter');
-    createFooterStub.returns(
-      html`<div class="mocked-footer">Mocked Footer</div>`,
-    );
-
     // Mock HomeAssistant instance
     mockHass = {
       states: {
@@ -71,18 +64,6 @@ describe('bake-pi.ts', () => {
     // Mock device
     mockDevice = {
       device_id: 'adguard_device',
-      updates: [
-        {
-          entity_id: 'update.pi_hole_core',
-          state: 'off',
-          translation_key: undefined,
-          attributes: {
-            friendly_name: 'Pi-hole Core Update',
-            title: 'Core',
-            installed_version: 'v5.14.2',
-          },
-        },
-      ],
     } as any as AdGuardDevice;
 
     mockSetup = {
@@ -101,7 +82,6 @@ describe('bake-pi.ts', () => {
     createDashboardStatsStub.restore();
     createAdditionalStatsStub.restore();
     createCardActionsStub.restore();
-    createFooterStub.restore();
   });
 
   it('should render an AdGuard card with all main sections', async () => {
@@ -115,7 +95,6 @@ describe('bake-pi.ts', () => {
     expect(el.querySelector('.mocked-dashboard-stats')).to.exist;
     expect(el.querySelector('.mocked-additional-stats')).to.exist;
     expect(el.querySelector('.mocked-card-actions')).to.exist;
-    expect(el.querySelector('.mocked-footer')).to.exist;
   });
 
   it('should call all component functions with the correct parameters', async () => {
@@ -152,19 +131,11 @@ describe('bake-pi.ts', () => {
     expect(createCardActionsStub.firstCall.args[3]).to.equal(mockDevice);
     expect(createCardActionsStub.firstCall.args[4]).to.equal(mockConfig);
 
-    // Verify createFooter was called with the correct parameters
-    expect(createFooterStub.calledOnce).to.be.true;
-    expect(createFooterStub.firstCall.args[0]).to.equal(element);
-    expect(createFooterStub.firstCall.args[1]).to.equal(mockHass);
-    expect(createFooterStub.firstCall.args[2]).to.equal(mockConfig);
-    expect(createFooterStub.firstCall.args[3]).to.equal(mockDevice);
-
     // Test that the rendered HTML contains the expected structure
     expect(el.querySelector('.mocked-card-header')).to.exist;
     expect(el.querySelector('.card-content')).to.exist;
     expect(el.querySelector('.mocked-dashboard-stats')).to.exist;
     expect(el.querySelector('.mocked-additional-stats')).to.exist;
     expect(el.querySelector('.mocked-card-actions')).to.exist;
-    expect(el.querySelector('.mocked-footer')).to.exist;
   });
 });

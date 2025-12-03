@@ -154,7 +154,6 @@ describe('action-control.ts', () => {
         },
         { key: 'action_gravity', expectedIcon: 'mdi:earth' },
         { key: 'action_restartdns', expectedIcon: 'mdi:restart' },
-        { key: 'action_refresh_data', expectedIcon: 'mdi:refresh' },
         { key: 'unknown_action', expectedIcon: 'mdi:button-pointer' },
       ];
 

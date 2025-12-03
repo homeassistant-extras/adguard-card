@@ -245,22 +245,22 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 
 ## Configuration Options
 
-| Name               | Type            | Default          | Description                                                        |
-| ------------------ | --------------- | ---------------- | ------------------------------------------------------------------ |
-| device_id          | string or array | **Required**     | The ID(s) of your AdGuard device(s) in Home Assistant              |
-| title              | string          | AdGuard          | Custom title for the card header                                   |
-| icon               | string          | mdi:shield-check | Custom icon for the card header                                    |
-| badge              | object          | _none_           | Configure actions for the card icon/badge                          |
-| stats              | object          | _none_           | Configure actions for statistics tiles                             |
-| info               | object          | _none_           | Configure actions for additional info items                        |
-| controls           | object          | _none_           | Configure actions for control buttons                              |
-| exclude_sections   | list            | _none_           | Sections of entities to exclude. See below.                        |
-| exclude_entities   | list            | _none_           | Entities to remove from the card.                                  |
-| entity_order       | list            | _none_           | Custom order for switch, button, sensor entities or dividers.      |
-| collapsed_sections | list            | _none_           | Sections to be initially collapsed. See below.                     |
-| switch_spacing     | string          | flex             | Layout style for switches: flex, space-around, space-between       |
-| chart              | object          | _none_           | Chart configuration options. See below.                            |
-| features           | list            | See below        | Optional flags to toggle different features                        |
+| Name               | Type            | Default          | Description                                                   |
+| ------------------ | --------------- | ---------------- | ------------------------------------------------------------- |
+| device_id          | string or array | **Required**     | The ID(s) of your AdGuard device(s) in Home Assistant         |
+| title              | string          | AdGuard          | Custom title for the card header                              |
+| icon               | string          | mdi:shield-check | Custom icon for the card header                               |
+| badge              | object          | _none_           | Configure actions for the card icon/badge                     |
+| stats              | object          | _none_           | Configure actions for statistics tiles                        |
+| info               | object          | _none_           | Configure actions for additional info items                   |
+| controls           | object          | _none_           | Configure actions for control buttons                         |
+| exclude_sections   | list            | _none_           | Sections of entities to exclude. See below.                   |
+| exclude_entities   | list            | _none_           | Entities to remove from the card.                             |
+| entity_order       | list            | _none_           | Custom order for switch, button, sensor entities or dividers. |
+| collapsed_sections | list            | _none_           | Sections to be initially collapsed. See below.                |
+| switch_spacing     | string          | flex             | Layout style for switches: flex, space-around, space-between  |
+| chart              | object          | _none_           | Chart configuration options. See below.                       |
+| features           | list            | See below        | Optional flags to toggle different features                   |
 
 ### Action Configuration
 
@@ -522,7 +522,7 @@ exclude_sections:
 
 ## Project Roadmap
 
-- [x] **`Initial design`**: create initial card design
+- [x] **`Initial redesign`**: create initial card design
 - [x] **`Auto-discovery`**: automatic detection of AdGuard entities
 - [x] **`Dashboard statistics`**: visual representation of key metrics
 - [x] **`Control buttons`**: quick actions for common AdGuard tasks
@@ -543,6 +543,7 @@ exclude_sections:
 - [x] **`Customizable badge actions`**: configurable tap/hold/double-tap actions for card badge - thanks @moshoari
 - [x] **`Backwards compatibility`**: maintained Home Assistant integration backwards compatibility - thanks @ccheath
 - [x] **`System metrics chart`**: visualize CPU and memory usage over time with customizable line styles - thanks me!
+- [x] **`Adguard conversion`**: helping make the card work w/ AG - thanks @pqpxo
 
 ## Contributing
 
