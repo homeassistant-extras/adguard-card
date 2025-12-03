@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: gensecaihq/Shai-Hulud-2.0-Detector@v2
         with:
-          fail-on-critical: true
+          fail-on-any: true
 
   sonarqube:
     name: 'Sonar Qube Scan'
