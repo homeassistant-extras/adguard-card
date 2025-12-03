@@ -80,7 +80,7 @@ const getCollapsedSectionOptions = (hass: HomeAssistant): SelectOption[] => {
   ];
 };
 
-const ACTION_SCHEMA = [
+const ACTION_SCHEMA: HaFormSchema[] = [
   {
     name: 'tap_action',
     label: 'editor.tap_action',
@@ -214,9 +214,9 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
     },
     {
       name: 'styles',
-      label: 'editor.styles',
-      type: 'expandable',
+      label: 'editor.styles.label',
       flatten: true,
+      type: 'expandable',
       icon: 'mdi:brush-variant',
       schema: [
         {
@@ -230,6 +230,28 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
               options: getSwitchSpacingOptions(hass),
             },
           },
+        },
+        {
+          name: 'styles',
+          label: 'editor.styles.css_styles',
+          type: 'expandable',
+          icon: 'mdi:spray',
+          schema: [
+            {
+              name: 'card',
+              label: 'editor.styles.card_styles',
+              selector: {
+                object: {},
+              },
+            },
+            {
+              name: 'section',
+              label: 'editor.styles.section_styles',
+              selector: {
+                object: {},
+              },
+            },
+          ],
         },
       ],
     },

@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Свити секции по подразбиране",
     "style_for_switches": "Стил на ключове",
     "entities_to_exclude": "Обекти за изключване",
-    "styles": "Стилове",
+    "styles": {
+      "label": "Стилове",
+      "css_styles": "Вашите CSS стилове",
+      "card_styles": "Стилове на картата",
+      "section_styles": "Стилове на секцията"
+    },
     "switch_spacing": "Разстояние между ключовете",
     "interactions": "Взаимодействия",
     "badge": "Значка",

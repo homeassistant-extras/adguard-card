@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Secciones colapsadas por defecto",
     "style_for_switches": "Estilo para interruptores",
     "entities_to_exclude": "Entidades a excluir",
-    "styles": "Estilos",
+    "styles": {
+      "label": "Estilos",
+      "css_styles": "Tus Estilos CSS",
+      "card_styles": "Estilos de Tarjeta",
+      "section_styles": "Estilos de Sección"
+    },
     "switch_spacing": "Espaciado de Interruptores",
     "interactions": "Interacciones",
     "badge": "Insignia",

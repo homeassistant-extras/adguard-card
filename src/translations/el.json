@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Ενότητες που συμπτύσσονται από προεπιλογή",
     "style_for_switches": "Στυλ για διακόπτες",
     "entities_to_exclude": "Οντότητες προς εξαίρεση",
-    "styles": "Στυλ",
+    "styles": {
+      "label": "Στυλ",
+      "css_styles": "Τα CSS Στυλ σας",
+      "card_styles": "Στυλ Κάρτας",
+      "section_styles": "Στυλ Ενότητας"
+    },
     "switch_spacing": "Διάστημα Διακοπτών",
     "interactions": "Αλληλεπιδράσεις",
     "badge": "Σήμα",

@@ -2,6 +2,7 @@ import type { HomeAssistant } from '@hass/types';
 import type { Config } from '@type/config';
 import type { AdGuardSetup } from '@type/types';
 import { html, type TemplateResult } from 'lit';
+import { styleMap } from 'lit/directives/style-map.js';
 import { createCardHeader } from './pi-crust';
 import { createDashboardStats } from './pi-fillings';
 import { createCardActions } from './pi-flavors';
@@ -22,8 +23,10 @@ export const renderAdGuardCard = (
   config: Config,
 ): TemplateResult => {
   const primary = setup.holes[0]!;
+  const cardStyles = config.styles?.card || {};
+
   return html`
-    <ha-card>
+    <ha-card style=${styleMap(cardStyles)}>
       ${createCardHeader(element, setup, hass, config)}
       <div class="card-content">
         ${createDashboardStats(element, hass, primary, config)}

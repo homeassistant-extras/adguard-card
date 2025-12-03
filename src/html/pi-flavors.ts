@@ -5,6 +5,7 @@ import { localize } from '@localize/localize';
 import type { Config, SectionConfig } from '@type/config';
 import type { AdGuardDevice, AdGuardSetup } from '@type/types';
 import { html, nothing, type TemplateResult } from 'lit';
+import { styleMap } from 'lit/directives/style-map.js';
 import { toggleSection } from '../common/toggle-section';
 import { createActionButton } from './components/action-control';
 import { stateContent } from './components/state-content';
@@ -40,9 +41,10 @@ const controls = (
 
   const switchCollapsed = isCollapsed(config, 'switches');
   const actionsCollapsed = isCollapsed(config, 'actions');
+  const sectionStyles = config.styles?.section || {};
 
   return html`${show(config, 'switches')
-    ? html`<div class="collapsible-section">
+    ? html`<div class="collapsible-section" style=${styleMap(sectionStyles)}>
         <div
           class="section-header"
           @click=${(e: Event) => toggleSection(e, '.switches')}
@@ -83,7 +85,7 @@ const controls = (
       </div>`
     : nothing}
   ${show(config, 'actions')
-    ? html`<div class="collapsible-section">
+    ? html`<div class="collapsible-section" style=${styleMap(sectionStyles)}>
         <div
           class="section-header"
           @click=${(e: Event) => toggleSection(e, '.actions')}

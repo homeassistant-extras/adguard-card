@@ -23,30 +23,48 @@ describe('editor.ts', () => {
     // Configure the existing localize stub (created by convert-time.spec.ts) with additional translations
     const localizeStub = localizeModule.localize as sinon.SinonStub;
     if (localizeStub && localizeStub.withArgs) {
-      localizeStub.withArgs(sinon.match.any, 'editor.actions').returns('Actions');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.actions')
+        .returns('Actions');
       localizeStub.withArgs(sinon.match.any, 'editor.header').returns('Header');
-      localizeStub.withArgs(sinon.match.any, 'editor.statistics').returns('Statistics');
-      localizeStub.withArgs(sinon.match.any, 'editor.sensors').returns('Sensors');
-      localizeStub.withArgs(sinon.match.any, 'editor.switches').returns('Switches');
-      localizeStub.withArgs(sinon.match.any, 'editor.flex_default').returns('Flex (default)');
-      localizeStub.withArgs(sinon.match.any, 'editor.space_around').returns('Space Around');
-      localizeStub.withArgs(sinon.match.any, 'editor.space_between').returns('Space Between');
-      localizeStub.withArgs(sinon.match.any, 'editor.card_title').returns('Card Title');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.statistics')
+        .returns('Statistics');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.sensors')
+        .returns('Sensors');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.switches')
+        .returns('Switches');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.flex_default')
+        .returns('Flex (default)');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.space_around')
+        .returns('Space Around');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.space_between')
+        .returns('Space Between');
+      localizeStub
+        .withArgs(sinon.match.any, 'editor.card_title')
+        .returns('Card Title');
       // Add fallback for any editor.* keys not explicitly handled
-      localizeStub.withArgs(sinon.match.any, sinon.match(/^editor\./)).callsFake((hass, key) => {
-        const translations: Record<string, string> = {
-          'editor.actions': 'Actions',
-          'editor.header': 'Header',
-          'editor.statistics': 'Statistics',
-          'editor.sensors': 'Sensors',
-          'editor.switches': 'Switches',
-          'editor.flex_default': 'Flex (default)',
-          'editor.space_around': 'Space Around',
-          'editor.space_between': 'Space Between',
-          'editor.card_title': 'Card Title',
-        };
-        return translations[key as string] || (key as string);
-      });
+      localizeStub
+        .withArgs(sinon.match.any, sinon.match(/^editor\./))
+        .callsFake((hass, key) => {
+          const translations: Record<string, string> = {
+            'editor.actions': 'Actions',
+            'editor.header': 'Header',
+            'editor.statistics': 'Statistics',
+            'editor.sensors': 'Sensors',
+            'editor.switches': 'Switches',
+            'editor.flex_default': 'Flex (default)',
+            'editor.space_around': 'Space Around',
+            'editor.space_between': 'Space Between',
+            'editor.card_title': 'Card Title',
+          };
+          return translations[key as string] || (key as string);
+        });
     }
 
     card.hass = hass;
@@ -272,7 +290,7 @@ describe('editor.ts', () => {
         },
         {
           name: 'styles',
-          label: 'editor.styles',
+          label: 'editor.styles.label',
           type: 'expandable',
           flatten: true,
           icon: 'mdi:brush-variant',
@@ -301,6 +319,28 @@ describe('editor.ts', () => {
                   ],
                 },
               },
+            },
+            {
+              name: 'styles',
+              label: 'editor.styles.css_styles',
+              type: 'expandable',
+              icon: 'mdi:spray',
+              schema: [
+                {
+                  name: 'card',
+                  label: 'editor.styles.card_styles',
+                  selector: {
+                    object: {},
+                  },
+                },
+                {
+                  name: 'section',
+                  label: 'editor.styles.section_styles',
+                  selector: {
+                    object: {},
+                  },
+                },
+              ],
             },
           ],
         },

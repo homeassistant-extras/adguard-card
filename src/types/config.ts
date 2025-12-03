@@ -41,6 +41,15 @@ export interface Config {
 
   /** Style for the switches */
   switch_spacing?: SwitchSpacing;
+
+  /** Custom styling configuration */
+  styles?: {
+    /** CSS properties for the card container */
+    card?: Record<string, string>;
+
+    /** CSS properties for collapsible sections */
+    section?: Record<string, string>;
+  };
 }
 
 export type SwitchSpacing = 'flex' | 'space-around' | 'space-between';

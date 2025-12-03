@@ -3,6 +3,7 @@
  */
 
 import type { Selector } from '@hass/data/selector';
+import type { TranslationKey } from '@type/locale';
 
 export type HaFormSchema =
   | HaFormSelector
@@ -13,7 +14,7 @@ export interface HaFormBaseSchema {
   name: string;
   required?: boolean;
   // custom field to ease some pain
-  label: string;
+  label: TranslationKey;
 }
 
 export interface HaFormGridSchema extends HaFormBaseSchema {

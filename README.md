@@ -544,6 +544,7 @@ exclude_sections:
 - [x] **`Backwards compatibility`**: maintained Home Assistant integration backwards compatibility - thanks @ccheath
 - [x] **`System metrics chart`**: visualize CPU and memory usage over time with customizable line styles - thanks me!
 - [x] **`Adguard conversion`**: helping make the card work w/ AG - thanks @pqpxo
+- [x] **`Custom Styles`**: apply custom CSS styles - thanks @pqpxo
 
 ## Contributing
 

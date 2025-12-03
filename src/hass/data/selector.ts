@@ -8,6 +8,7 @@ export type Selector =
   | DeviceSelector
   | EntitySelector
   | IconSelector
+  | ObjectSelector
   | SelectSelector
   | StringSelector
   | UiActionSelector;
@@ -43,6 +44,15 @@ export interface IconSelector {
   icon: {
     placeholder?: string;
     fallbackPath?: string;
+  } | null;
+}
+
+export interface ObjectSelector {
+  object?: {
+    label_field?: string;
+    description_field?: string;
+    translation_key?: string;
+    multiple?: boolean;
   } | null;
 }
 

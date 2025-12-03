@@ -23,6 +23,7 @@ export const collapsibleStyles = css`
 
   .caret-icon {
     transition: transform 0.3s ease;
+    display: var(--user--section--caret--display, block);
   }
 
   .hidden {

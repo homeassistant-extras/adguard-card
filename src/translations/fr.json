@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Sections repliées par défaut",
     "style_for_switches": "Style des interrupteurs",
     "entities_to_exclude": "Entités à exclure",
-    "styles": "Styles",
+    "styles": {
+      "label": "Styles",
+      "css_styles": "Vos Styles CSS",
+      "card_styles": "Styles de Carte",
+      "section_styles": "Styles de Section"
+    },
     "switch_spacing": "Espacement des interrupteurs",
     "interactions": "Interactions",
     "badge": "Badge",

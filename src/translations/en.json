@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Sections collapsed by default",
     "style_for_switches": "Style for switches",
     "entities_to_exclude": "Entities to exclude",
-    "styles": "Styles",
+    "styles": {
+      "label": "Styles",
+      "css_styles": "Your CSS Styles",
+      "card_styles": "Card Styles",
+      "section_styles": "Section Styles"
+    },
     "switch_spacing": "Switch Spacing",
     "interactions": "Interactions",
     "badge": "Badge",

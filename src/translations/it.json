@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Sezioni nascoste di default",
     "style_for_switches": "Stile degli switch",
     "entities_to_exclude": "Entità da escludere",
-    "styles": "Stili",
+    "styles": {
+      "label": "Stili",
+      "css_styles": "I Tuoi Stili CSS",
+      "card_styles": "Stili Card",
+      "section_styles": "Stili Sezione"
+    },
     "switch_spacing": "Spaziatura Switch",
     "interactions": "Interazioni",
     "badge": "Badge",

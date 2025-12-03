@@ -45,7 +45,12 @@
     "sections_collapsed_by_default": "Standardmäßig eingeklappte Abschnitte",
     "style_for_switches": "Stil für Schalter",
     "entities_to_exclude": "Auszuschließende Entitäten",
-    "styles": "Stile",
+    "styles": {
+      "label": "Stile",
+      "css_styles": "Ihre CSS-Stile",
+      "card_styles": "Karten-Stile",
+      "section_styles": "Abschnitts-Stile"
+    },
     "switch_spacing": "Schalter-Abstand",
     "interactions": "Interaktionen",
     "badge": "Abzeichen",
