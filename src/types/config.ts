@@ -24,9 +24,6 @@ export interface Config {
   /** actions for info section */
   info?: SectionConfig;
 
-  /** actions for controls */
-  controls?: SectionConfig;
-
   /** The entities to exclude */
   exclude_entities?: string[];
 
@@ -53,13 +50,8 @@ export interface Config {
 }
 
 export type SwitchSpacing = 'flex' | 'space-around' | 'space-between';
-export type CollapsibleSections = 'actions' | 'switches';
-export type Sections =
-  | 'actions'
-  | 'header'
-  | 'statistics'
-  | 'sensors'
-  | 'switches';
+export type CollapsibleSections = 'switches';
+export type Sections = 'header' | 'statistics' | 'sensors' | 'switches';
 
 export interface SectionConfig {
   /** Action to perform on tap */

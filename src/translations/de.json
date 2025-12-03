@@ -11,8 +11,7 @@
       "processing_speed_info": "Verarbeitungszeit"
     },
     "sections": {
-      "switches": "Schalter",
-      "actions": "Aktionen"
+      "switches": "Schalter"
     },
     "units": {
       "seconds": "Sekunden",
@@ -29,7 +28,6 @@
   "editor": {
     "space_around": "Platz umher",
     "space_between": "Platz dazwischen",
-    "actions": "Aktionen",
     "header": "Kopfzeile",
     "statistics": "Statistiken",
     "sensors": "Sensoren",
@@ -55,7 +53,6 @@
     "interactions": "Interaktionen",
     "badge": "Abzeichen",
     "information": "Informationen",
-    "controls": "Steuerungen",
     "adguard_device": "AdGuard Gerät",
     "entity_display_order": "Entitäts-Anzeigereihenfolge (in Reihenfolge klicken)",
     "flex_default": "Flex (Standard)"

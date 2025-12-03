@@ -22,7 +22,6 @@ export const getAdGuard = (
 ): AdGuardDevice | undefined => {
   const device: AdGuardDevice = {
     device_id: deviceId,
-    controls: [],
     sensors: [],
     switches: [],
   };
@@ -49,9 +48,6 @@ export const getAdGuard = (
     // Handle other entities by domain
     const domain = computeDomain(entity.entity_id);
     switch (domain) {
-      case 'button':
-        device.controls.push(entity);
-        break;
       case 'sensor':
         device.sensors.push(entity);
         break;

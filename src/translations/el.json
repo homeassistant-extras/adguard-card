@@ -11,8 +11,7 @@
       "processing_speed_info": "Χρόνος επεξεργασίας"
     },
     "sections": {
-      "switches": "Διακόπτες",
-      "actions": "Ενέργειες"
+      "switches": "Διακόπτες"
     },
     "units": {
       "seconds": "δευτερόλεπτα",
@@ -29,7 +28,6 @@
   "editor": {
     "space_around": "Χώρος Γύρω",
     "space_between": "Χώρος Ανάμεσα",
-    "actions": "Ενέργειες",
     "header": "Κεφαλίδα",
     "statistics": "Στατιστικά",
     "sensors": "Αισθητήρες",
@@ -55,7 +53,6 @@
     "interactions": "Αλληλεπιδράσεις",
     "badge": "Σήμα",
     "information": "Πληροφορίες",
-    "controls": "Έλεγχοι",
     "adguard_device": "Συσκευή AdGuard",
     "entity_display_order": "Σειρά εμφάνισης οντοτήτων (κάντε κλικ με σειρά)",
     "flex_default": "Flex (προεπιλογή)"

@@ -27,7 +27,6 @@ describe('get-setup.ts', () => {
       device_id: 'adguard_device_1',
       sensors: [],
       switches: [],
-      controls: [],
     });
 
     // Default behavior returns undefined for this second device ID
@@ -40,7 +39,6 @@ describe('get-setup.ts', () => {
       device_id: 'adguard_device_2',
       sensors: [],
       switches: [],
-      controls: [],
     });
   });
 
@@ -178,14 +176,6 @@ describe('get-setup.ts', () => {
           translation_key: 'dns_queries',
         },
       ],
-      controls: [
-        {
-          entity_id: 'button.pi_hole_1_refresh',
-          state: 'off',
-          attributes: {},
-          translation_key: 'refresh',
-        },
-      ],
     };
 
     // Create second device with two switches
@@ -222,14 +212,6 @@ describe('get-setup.ts', () => {
           translation_key: 'dns_queries',
         },
       ],
-      controls: [
-        {
-          entity_id: 'button.pi_hole_2_refresh',
-          state: 'off',
-          attributes: {},
-          translation_key: 'refresh',
-        },
-      ],
     };
 
     // Set up the stub responses
@@ -258,7 +240,6 @@ describe('get-setup.ts', () => {
 
     // Check first device still has all its original properties
     expect(result?.holes[0]?.sensors).to.have.lengthOf(1);
-    expect(result?.holes[0]?.controls).to.have.lengthOf(1);
 
     // Check second device only has device_id and status, with empty arrays for other properties
     expect(result?.holes[1]?.device_id).to.equal('adguard_device_2');
@@ -267,6 +248,5 @@ describe('get-setup.ts', () => {
     expect(result?.holes[1]?.protection).to.deep.equal(device2Status);
     expect(result?.holes[1]?.switches).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.sensors).to.be.an('array').with.lengthOf(0);
-    expect(result?.holes[1]?.controls).to.be.an('array').with.lengthOf(0);
   });
 });

@@ -23,9 +23,6 @@ describe('editor.ts', () => {
     // Configure the existing localize stub (created by convert-time.spec.ts) with additional translations
     const localizeStub = localizeModule.localize as sinon.SinonStub;
     if (localizeStub && localizeStub.withArgs) {
-      localizeStub
-        .withArgs(sinon.match.any, 'editor.actions')
-        .returns('Actions');
       localizeStub.withArgs(sinon.match.any, 'editor.header').returns('Header');
       localizeStub
         .withArgs(sinon.match.any, 'editor.statistics')
@@ -53,7 +50,6 @@ describe('editor.ts', () => {
         .withArgs(sinon.match.any, sinon.match(/^editor\./))
         .callsFake((hass, key) => {
           const translations: Record<string, string> = {
-            'editor.actions': 'Actions',
             'editor.header': 'Header',
             'editor.statistics': 'Statistics',
             'editor.sensors': 'Sensors',
@@ -186,10 +182,6 @@ describe('editor.ts', () => {
                   mode: 'list' as const,
                   options: [
                     {
-                      label: 'Actions',
-                      value: 'actions',
-                    },
-                    {
                       label: 'Header',
                       value: 'header',
                     },
@@ -221,10 +213,6 @@ describe('editor.ts', () => {
                     {
                       label: 'Switches',
                       value: 'switches',
-                    },
-                    {
-                      label: 'Actions',
-                      value: 'actions',
                     },
                   ],
                 },
@@ -438,35 +426,6 @@ describe('editor.ts', () => {
                 },
               ],
             },
-            {
-              name: 'controls',
-              label: 'editor.controls',
-              type: 'expandable',
-              icon: 'mdi:remote',
-              schema: [
-                {
-                  name: 'tap_action',
-                  label: 'editor.tap_action',
-                  selector: {
-                    ui_action: {},
-                  },
-                },
-                {
-                  name: 'hold_action',
-                  label: 'editor.hold_action',
-                  selector: {
-                    ui_action: {},
-                  },
-                },
-                {
-                  name: 'double_tap_action',
-                  label: 'editor.double_tap_action',
-                  selector: {
-                    ui_action: {},
-                  },
-                },
-              ],
-            },
           ],
         },
       ]);
@@ -546,7 +505,6 @@ describe('editor.ts', () => {
         device_id: 'device_1',
         stats: {},
         info: {},
-        controls: {},
         badge: {},
       };
       card.setConfig(testConfig);
@@ -557,7 +515,6 @@ describe('editor.ts', () => {
           device_id: 'device_2',
           stats: {},
           info: {},
-          controls: {},
           badge: {},
           exclude_entities: [],
           exclude_sections: [],
@@ -577,8 +534,6 @@ describe('editor.ts', () => {
       expect(dispatchStub.firstCall.args[0].detail.config.stats).to.be
         .undefined;
       expect(dispatchStub.firstCall.args[0].detail.config.info).to.be.undefined;
-      expect(dispatchStub.firstCall.args[0].detail.config.controls).to.be
-        .undefined;
       expect(dispatchStub.firstCall.args[0].detail.config.badge).to.be
         .undefined;
       expect(dispatchStub.firstCall.args[0].detail.config.exclude_entities).to

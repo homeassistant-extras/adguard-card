@@ -8,12 +8,11 @@ describe('is-collapsed.ts', () => {
       // Arrange
       const config: Config = {
         device_id: 'test_device',
-        collapsed_sections: ['switches', 'actions'],
+        collapsed_sections: ['switches'],
       };
 
       // Act & Assert
       expect(isCollapsed(config, 'switches')).to.be.true;
-      expect(isCollapsed(config, 'actions')).to.be.true;
     });
 
     it('should return false when section is not in collapsed_sections array', () => {
@@ -24,7 +23,6 @@ describe('is-collapsed.ts', () => {
       };
 
       // Act & Assert
-      expect(isCollapsed(config, 'actions')).to.be.false;
       expect(isCollapsed(config, 'switches')).to.be.true;
     });
 
@@ -37,7 +35,6 @@ describe('is-collapsed.ts', () => {
 
       // Act & Assert
       expect(isCollapsed(config, 'switches')).to.be.false;
-      expect(isCollapsed(config, 'actions')).to.be.false;
     });
 
     it('should return false when collapsed_sections is an empty array', () => {
@@ -49,7 +46,6 @@ describe('is-collapsed.ts', () => {
 
       // Act & Assert
       expect(isCollapsed(config, 'switches')).to.be.false;
-      expect(isCollapsed(config, 'actions')).to.be.false;
     });
   });
 });

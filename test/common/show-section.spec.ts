@@ -15,7 +15,6 @@ describe('section-display.ts', () => {
       expect(show(config, 'header')).to.be.true;
       expect(show(config, 'statistics')).to.be.true;
       expect(show(config, 'sensors')).to.be.true;
-      expect(show(config, 'actions')).to.be.true;
       expect(show(config, 'switches')).to.be.true;
     });
 
@@ -28,7 +27,7 @@ describe('section-display.ts', () => {
 
       // Act & Assert
       expect(show(config, 'header')).to.be.true;
-      expect(show(config, 'actions')).to.be.true;
+      expect(show(config, 'switches')).to.be.true;
     });
 
     it('should return false when section is in exclude_sections', () => {
@@ -56,7 +55,6 @@ describe('section-display.ts', () => {
       expect(show(config, 'header')).to.be.true;
       expect(show(config, 'statistics')).to.be.true;
       expect(show(config, 'sensors')).to.be.true;
-      expect(show(config, 'actions')).to.be.true;
       expect(show(config, 'switches')).to.be.true;
     });
   });

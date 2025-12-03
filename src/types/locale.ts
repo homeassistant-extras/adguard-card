@@ -11,7 +11,6 @@ export type TranslationKey =
   | 'card.stats.average_processing_speed'
   | 'card.stats.processing_speed_info'
   | 'card.sections.switches'
-  | 'card.sections.actions'
   | 'card.units.seconds'
   | 'card.units.second'
   | 'card.units.minutes'
@@ -21,7 +20,6 @@ export type TranslationKey =
   | 'card.ui.partial'
   | 'editor.space_around'
   | 'editor.space_between'
-  | 'editor.actions'
   | 'editor.header'
   | 'editor.statistics'
   | 'editor.sensors'
@@ -46,7 +44,6 @@ export type TranslationKey =
   | 'editor.interactions'
   | 'editor.badge'
   | 'editor.information'
-  | 'editor.controls'
   | 'editor.adguard_device'
   | 'editor.entity_display_order'
   | 'editor.flex_default';

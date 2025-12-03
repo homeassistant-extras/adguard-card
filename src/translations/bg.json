@@ -11,8 +11,7 @@
       "processing_speed_info": "Време за обработка"
     },
     "sections": {
-      "switches": "Ключове",
-      "actions": "Действия"
+      "switches": "Ключове"
     },
     "units": {
       "seconds": "секунди",
@@ -29,7 +28,6 @@
   "editor": {
     "space_around": "Пространство около",
     "space_between": "Пространство между",
-    "actions": "Действия",
     "header": "Горна част",
     "statistics": "Статистика",
     "sensors": "Сензори",
@@ -55,7 +53,6 @@
     "interactions": "Взаимодействия",
     "badge": "Значка",
     "information": "Информация",
-    "controls": "Контроли",
     "adguard_device": "AdGuard устройство",
     "entity_display_order": "Ред на показване на обектите (кликване в ред)",
     "flex_default": "Flex (по подразбиране)"

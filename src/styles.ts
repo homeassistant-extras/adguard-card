@@ -204,18 +204,10 @@ export const styles = css`
     color: var(--secondary-text-color);
   }
 
-  .switches,
-  .actions {
+  .switches {
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-  }
-
-  .actions {
-    justify-content: space-around;
-  }
-
-  .switches {
     justify-content: space-between;
   }
 
@@ -242,26 +234,6 @@ export const styles = css`
 
   mwc-button ha-icon {
     margin-right: 3px;
-  }
-
-  /* Actions button hover effects */
-  .actions mwc-button {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    transition:
-      transform 0.2s ease,
-      filter 0.2s ease,
-      box-shadow 0.2s ease;
-    will-change: transform, filter;
-  }
-
-  .actions mwc-button:hover,
-  .actions mwc-button:focus-visible {
-    transform: translateY(-1px) scale(1.03);
-    filter: brightness(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    border-color: var(--success-color);
   }
 
   /* Switch styles */

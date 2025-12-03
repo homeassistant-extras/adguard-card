@@ -44,10 +44,6 @@ const getSectionExcludeOptions = (hass: HomeAssistant): SelectOption[] => {
   const l = (label: TranslationKey) => localize(hass, label);
   return [
     {
-      label: l('editor.actions'),
-      value: 'actions',
-    },
-    {
       label: l('editor.header'),
       value: 'header',
     },
@@ -72,10 +68,6 @@ const getCollapsedSectionOptions = (hass: HomeAssistant): SelectOption[] => {
     {
       label: l('editor.switches'),
       value: 'switches',
-    },
-    {
-      label: l('editor.actions'),
-      value: 'actions',
     },
   ];
 };
@@ -283,13 +275,6 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           icon: 'mdi:information-outline',
           schema: ACTION_SCHEMA,
         },
-        {
-          name: 'controls',
-          label: 'editor.controls',
-          type: 'expandable',
-          icon: 'mdi:remote',
-          schema: ACTION_SCHEMA,
-        },
       ],
     },
   ];
@@ -349,9 +334,6 @@ export class AdGuardCardEditor extends LitElement {
     }
     if (shouldDelete(config.info)) {
       delete config.info;
-    }
-    if (shouldDelete(config.controls)) {
-      delete config.controls;
     }
     if (shouldDelete(config.badge)) {
       delete config.badge;

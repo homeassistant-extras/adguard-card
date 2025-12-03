@@ -33,7 +33,7 @@
 
 ## Overview
 
-A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad blocker directly from Home Assistant. The card provides real-time statistics and controls in an intuitive, dashboard-style interface that matches the AdGuard visual identity.
+A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad blocker directly from Home Assistant. The card provides real-time statistics in an intuitive, dashboard-style interface that matches the AdGuard visual identity.
 
 ## Features
 
@@ -72,16 +72,6 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 ### Direct Controls
 
 - **Enable/Disable Controls** - Toggle AdGuard filtering with a single click as well as Group Default
-- **Action Buttons** - Quick access buttons for common maintenance tasks:
-  - Restart DNS
-  - Update Gravity
-  - Flush ARP
-  - Flush Logs
-- **Customizable Actions** - Configure custom actions for the control buttons in this section
-
-![Control Buttons](assets/control-buttons.png)
-
-![Control Buttons](assets/control-buttons-wide.png)
 
 ### Version Information
 
@@ -118,7 +108,6 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 - **Entity Filtering** - Ability to exclude specific entities or entire sections
 - **Collapsible Sections** - Ability to collapse/expand sections to save space:
   - Switches section (on/off toggles)
-  - Actions section (control buttons)
 
 ![collapse](assets/collapse.png)
 
@@ -195,7 +184,7 @@ The card is fully configurable through the card editor, allowing you to customiz
 
 - AdGuard device selection (single or multiple)
 - Card title and icon
-- Custom actions for statistics, info panels, and control buttons
+- Custom actions for statistics and info panels
 
 ![editor](assets/editor.png)
 
@@ -222,7 +211,6 @@ The card will automatically:
 
 - Detect all AdGuard entities associated with the device(s)
 - Organize statistics in the dashboard layout
-- Display control buttons for common actions
 - Show version information for all components
 - For multiple AdGuard instances: combine switches and show aggregated status
 
@@ -253,7 +241,6 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 | badge              | object          | _none_           | Configure actions for the card icon/badge                     |
 | stats              | object          | _none_           | Configure actions for statistics tiles                        |
 | info               | object          | _none_           | Configure actions for additional info items                   |
-| controls           | object          | _none_           | Configure actions for control buttons                         |
 | exclude_sections   | list            | _none_           | Sections of entities to exclude. See below.                   |
 | exclude_entities   | list            | _none_           | Entities to remove from the card.                             |
 | entity_order       | list            | _none_           | Custom order for switch, button, sensor entities or dividers. |
@@ -264,7 +251,7 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 
 ### Action Configuration
 
-Each section (stats, info, controls) supports the following action types:
+Each section (stats, info) supports the following action types:
 
 | Name              | Type   | Default    | Description                          |
 | ----------------- | ------ | ---------- | ------------------------------------ |
@@ -284,7 +271,6 @@ Actions can be configured to perform various operations such as:
 
 The following section names can be used with `exclude_sections`:
 
-- actions
 - chart
 - footer
 - header
@@ -296,7 +282,6 @@ The following section names can be used with `exclude_sections`:
 
 The following section names can be used with `collapsed_sections`:
 
-- actions
 - switches
 
 ### Switch Spacing Options
@@ -369,7 +354,6 @@ exclude_sections:
   - sensors
   - switches
 exclude_entities:
-  - button.adguard_action_refresh_data
   - sensor.adguard_latest_data_refresh
 ```
 
@@ -385,11 +369,6 @@ stats:
   hold_action:
     action: navigate
     navigation_path: /lovelace/network
-controls:
-  tap_action:
-    action: toggle
-  hold_action:
-    action: more-info
 ```
 
 ### With Custom Badge Actions
@@ -448,18 +427,6 @@ info:
     action: more-info
   double_tap_action:
     action: toggle
-# Configure control button actions
-controls:
-  tap_action:
-    action: toggle
-  hold_action:
-    action: more-info
-  double_tap_action:
-    action: call-service
-    perform_action: browser_mod.popup
-    data:
-      title: AdGuard Controls
-      content: 'Advanced AdGuard control panel'
 ```
 
 ### Custom Entity Order & Switch Spacing
@@ -481,7 +448,6 @@ entity_order:
 type: custom:adguard
 device_id: adguard_device_1
 entity_order:
-  - button.adguard_action_refresh_data
   - divider
   - sensor.adguard_dns_queries
   - sensor.adguard_dns_queries_blocked
@@ -498,7 +464,6 @@ entity_order:
 type: custom:adguard
 device_id: adguard_device_1
 collapsed_sections:
-  - actions
   - switches
 ```
 
@@ -525,7 +490,6 @@ exclude_sections:
 - [x] **`Initial redesign`**: create initial card design
 - [x] **`Auto-discovery`**: automatic detection of AdGuard entities
 - [x] **`Dashboard statistics`**: visual representation of key metrics
-- [x] **`Control buttons`**: quick actions for common AdGuard tasks
 - [x] **`Version info`**: display component versions
 - [x] **`Custom actions`**: tap/hold/double-tap actions for all elements - thanks @dunxd
 - [x] **`Card customization`**: custom title and icon options

@@ -11,8 +11,7 @@
       "processing_speed_info": "Tempo di elaborazione"
     },
     "sections": {
-      "switches": "Opzioni",
-      "actions": "Azioni"
+      "switches": "Opzioni"
     },
     "units": {
       "seconds": "secondi",
@@ -29,7 +28,6 @@
   "editor": {
     "space_around": "Spazi prima e dopo",
     "space_between": "Spazi in mezzo",
-    "actions": "Azioni",
     "header": "Intestazione",
     "statistics": "Statistiche",
     "sensors": "Sensori",
@@ -55,7 +53,6 @@
     "interactions": "Interazioni",
     "badge": "Badge",
     "information": "Informazioni",
-    "controls": "Controlli",
     "adguard_device": "Dispositivo AdGuard",
     "entity_display_order": "Ordine delle Entità (cliccare in ordine)",
     "flex_default": "Flex (default)"

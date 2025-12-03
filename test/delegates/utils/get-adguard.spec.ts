@@ -73,7 +73,6 @@ describe('get-adguard.ts', () => {
 
     expect(result).to.exist;
     expect(result?.device_id).to.equal(DEVICE_ID);
-    expect(result?.controls).to.be.an('array').with.lengthOf(0);
     expect(result?.sensors).to.be.an('array').with.lengthOf(0);
     expect(result?.switches).to.be.an('array').with.lengthOf(0);
   });
