@@ -246,6 +246,7 @@ If you're unsure what your AdGuard device ID is, here are several ways to find i
 | entity_order       | list            | _none_           | Custom order for switch, button, sensor entities or dividers. |
 | collapsed_sections | list            | _none_           | Sections to be initially collapsed. See below.                |
 | switch_spacing     | string          | flex             | Layout style for switches: flex, space-around, space-between  |
+| styles             | object          | _none_           | Custom CSS styles for card and sections. See below.           |
 | chart              | object          | _none_           | Chart configuration options. See below.                       |
 | features           | list            | See below        | Optional flags to toggle different features                   |
 
@@ -291,6 +292,40 @@ The `switch_spacing` option controls how switches are arranged in the switches s
 - flex (default): Switches flow naturally with standard flexbox behavior
 - space-around: Equal space around each switch
 - space-between: Maximum space between switches, no space at edges
+
+### Custom Styles
+
+The card supports custom CSS styles for different areas, allowing you to completely customize the appearance:
+
+```yaml
+type: custom:adguard
+device_id: adguard_device_1
+styles:
+  card:
+    border-radius: 20px
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+  section:
+    background-color: rgba(0, 0, 0, 0.1)
+    border-radius: 8px
+```
+
+#### CSS Variables
+
+The following CSS variables can be used within the `styles` configuration for advanced customization:
+
+| Variable                            | Area    | Description                                               | Default |
+| ----------------------------------- | ------- | --------------------------------------------------------- | ------- |
+| `--user--section--caret--display`   | section | Control visibility of section caret icons                 | `block` |
+
+**Example:**
+
+```yaml
+styles:
+  section:
+    --user--section--caret--display: none # Hide the collapse/expand arrows
+    background-color: rgba(0, 0, 0, 0.1)
+    padding: 10px
+```
 
 ### Chart Configuration
 
