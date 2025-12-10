@@ -107,7 +107,7 @@ export const handleClickAction = (
   };
 };
 
-export const handleMultiPiClickAction = (
+export const handleMultiInstanceClickAction = (
   element: HTMLElement,
   actionConfigs: ActionConfigParams[],
 ): { handleEvent: (ev: ActionHandlerEvent) => void } => {

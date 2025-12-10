@@ -18,6 +18,9 @@ export interface Config {
   /** actions for badge */
   badge?: SectionConfig;
 
+  /** actions for status */
+  status?: SectionConfig;
+
   /** actions for stats boxes */
   stats?: SectionConfig;
 

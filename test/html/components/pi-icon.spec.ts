@@ -12,7 +12,7 @@ describe('icon.ts', () => {
   let mockSetup: AdGuardSetup;
   let mockElement: HTMLElement;
   let actionHandlerStub: sinon.SinonStub;
-  let handleMultiPiClickActionStub: sinon.SinonStub;
+  let handleMultiInstanceClickActionStub: sinon.SinonStub;
 
   beforeEach(() => {
     // Create basic mock config
@@ -38,15 +38,15 @@ describe('icon.ts', () => {
     actionHandlerStub = stub(actionHandlerDelegate, 'actionHandler').returns(
       () => {},
     );
-    handleMultiPiClickActionStub = stub(
+    handleMultiInstanceClickActionStub = stub(
       actionHandlerDelegate,
-      'handleMultiPiClickAction',
+      'handleMultiInstanceClickAction',
     ).returns({ handleEvent: () => {} });
   });
 
   afterEach(() => {
     actionHandlerStub.restore();
-    handleMultiPiClickActionStub.restore();
+    handleMultiInstanceClickActionStub.restore();
   });
 
   describe('icon rendering', () => {
@@ -107,8 +107,8 @@ describe('icon.ts', () => {
       expect(firstCallArgs).to.have.property('double_tap_action');
 
       // Verify handleMultiPiClickAction was called with element and action configs
-      expect(handleMultiPiClickActionStub.calledOnce).to.be.true;
-      const multiClickArgs = handleMultiPiClickActionStub.firstCall.args;
+      expect(handleMultiInstanceClickActionStub.calledOnce).to.be.true;
+      const multiClickArgs = handleMultiInstanceClickActionStub.firstCall.args;
       expect(multiClickArgs[0]).to.equal(mockElement);
       expect(multiClickArgs[1]).to.be.an('array');
     });
@@ -188,7 +188,7 @@ describe('icon.ts', () => {
       await fixture(result as TemplateResult);
 
       // Verify multiple action configs were passed to handleMultiPiClickAction
-      const multiClickArgs = handleMultiPiClickActionStub.firstCall.args;
+      const multiClickArgs = handleMultiInstanceClickActionStub.firstCall.args;
       expect(multiClickArgs[1]).to.have.length(2);
       expect(multiClickArgs[1][0].entity).to.equal('sensor.adguard_1_status');
       expect(multiClickArgs[1][1].entity).to.equal('adguard_device_2');

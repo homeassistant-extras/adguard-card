@@ -262,6 +262,13 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
           schema: ACTION_SCHEMA,
         },
         {
+          name: 'status',
+          label: 'editor.status',
+          type: 'expandable',
+          icon: 'mdi:check-circle-outline',
+          schema: ACTION_SCHEMA,
+        },
+        {
           name: 'stats',
           label: 'editor.statistics',
           type: 'expandable',
@@ -337,6 +344,9 @@ export class AdGuardCardEditor extends LitElement {
     }
     if (shouldDelete(config.badge)) {
       delete config.badge;
+    }
+    if (shouldDelete(config.status)) {
+      delete config.status;
     }
 
     if (!config.exclude_entities?.length) {

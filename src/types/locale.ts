@@ -43,6 +43,7 @@ export type TranslationKey =
   | 'editor.switch_spacing'
   | 'editor.interactions'
   | 'editor.badge'
+  | 'editor.status'
   | 'editor.information'
   | 'editor.adguard_device'
   | 'editor.entity_display_order'

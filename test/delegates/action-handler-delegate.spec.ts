@@ -1,7 +1,7 @@
 import {
   actionHandler,
   handleClickAction,
-  handleMultiPiClickAction,
+  handleMultiInstanceClickAction,
 } from '@delegates/action-handler-delegate';
 import * as fireEventModule from '@hass/common/dom/fire_event';
 import type { ActionHandlerEvent } from '@hass/data/lovelace/action_handler';
@@ -235,7 +235,7 @@ describe('action-handler-delegate.ts', () => {
           tap_action: { action: 'toggle' },
         },
       ] as ActionConfigParams[];
-      const handler = handleMultiPiClickAction(element, actionConfigs);
+      const handler = handleMultiInstanceClickAction(element, actionConfigs);
       const event = { detail: {} } as ActionHandlerEvent;
 
       // Act
@@ -260,7 +260,7 @@ describe('action-handler-delegate.ts', () => {
           double_tap_action: { action: 'more-info' },
         },
       ] as ActionConfigParams[];
-      const handler = handleMultiPiClickAction(element, actionConfigs);
+      const handler = handleMultiInstanceClickAction(element, actionConfigs);
       const event = { detail: { action: 'tap' } } as ActionHandlerEvent;
 
       // Act
@@ -301,7 +301,7 @@ describe('action-handler-delegate.ts', () => {
           double_tap_action: { action: 'none' },
         },
       ] as ActionConfigParams[];
-      const handler = handleMultiPiClickAction(element, actionConfigs);
+      const handler = handleMultiInstanceClickAction(element, actionConfigs);
 
       // Test with different action types
       const actions = ['tap', 'double_tap', 'hold'];
@@ -329,7 +329,7 @@ describe('action-handler-delegate.ts', () => {
       // Arrange
       const element = document.createElement('div');
       const actionConfigs: any[] = [];
-      const handler = handleMultiPiClickAction(element, actionConfigs);
+      const handler = handleMultiInstanceClickAction(element, actionConfigs);
       const event = { detail: { action: 'tap' } } as ActionHandlerEvent;
 
       // Act
@@ -349,7 +349,7 @@ describe('action-handler-delegate.ts', () => {
           hold_action: { action: 'more-info' },
         },
       ] as ActionConfigParams[];
-      const handler = handleMultiPiClickAction(element, actionConfigs);
+      const handler = handleMultiInstanceClickAction(element, actionConfigs);
       const event = { detail: { action: 'tap' } } as ActionHandlerEvent;
 
       // Act

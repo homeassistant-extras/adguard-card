@@ -52,6 +52,7 @@
     "switch_spacing": "Espaciado de Interruptores",
     "interactions": "Interacciones",
     "badge": "Insignia",
+    "status": "Estado",
     "information": "Información",
     "adguard_device": "Dispositivo AdGuard",
     "entity_display_order": "Orden de visualización de entidades (hacer clic en orden)",

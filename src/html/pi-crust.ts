@@ -1,4 +1,8 @@
 import { show } from '@common/show-section';
+import {
+  actionHandler,
+  handleMultiInstanceClickAction,
+} from '@delegates/action-handler-delegate';
 import { stateActive } from '@hass/common/entity/state_active';
 import type { HomeAssistant } from '@hass/types';
 import { localize } from '@localize/localize';
@@ -43,6 +47,37 @@ export const createCardHeader = (
     }
   };
 
+  // Create ActionConfigParams for each AdGuard instance
+  const actionConfigs = setup.holes.map((h) => {
+    // If user has custom status config, apply it to all AdGuard instances
+    if (config.status) {
+      return {
+        entity: h.protection?.entity_id ?? h.device_id,
+        ...config.status,
+      };
+    }
+
+    // Use config.status if provided, otherwise create custom actions
+    // Default tap_action is toggle, hold and double_tap default to more-info
+    const baseConfig = {
+      tap_action: {
+        action: 'toggle' as const,
+      },
+      hold_action: {
+        action: 'more-info' as const,
+      },
+      double_tap_action: {
+        action: 'more-info' as const,
+      },
+    };
+
+    // For AdGuard instances, use the base config
+    return {
+      entity: h.protection?.entity_id ?? h.device_id,
+      ...baseConfig,
+    };
+  });
+
   return html`
     <div class="card-header">
       <div class="name">
@@ -53,7 +88,11 @@ export const createCardHeader = (
             >`
           : ''}
       </div>
-      <div style="color: ${getStatusColor()}">
+      <div
+        style="color: ${getStatusColor()}; cursor: pointer;"
+        @action=${handleMultiInstanceClickAction(element, actionConfigs)}
+        .actionHandler=${actionHandler(actionConfigs[0])}
+      >
         <ha-icon
           icon="${activeCount > 0 ? 'mdi:check-circle' : 'mdi:close-circle'}"
         ></ha-icon>

@@ -1,6 +1,6 @@
 import {
   actionHandler,
-  handleMultiPiClickAction,
+  handleMultiInstanceClickAction,
 } from '@delegates/action-handler-delegate';
 import type { Config } from '@type/config';
 import type { AdGuardSetup } from '@type/types';
@@ -51,7 +51,7 @@ export const icon = (
 
   return html`<div
     class="badge"
-    @action=${handleMultiPiClickAction(element, actionConfigs)}
+    @action=${handleMultiInstanceClickAction(element, actionConfigs)}
     .actionHandler=${actionHandler(actionConfigs[0])}
   >
     <ha-icon icon="${config.icon ?? 'mdi:shield-check'}"></ha-icon>

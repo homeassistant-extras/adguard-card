@@ -19,7 +19,7 @@ describe('pi-crust.ts', () => {
   let stateDisplayStub: sinon.SinonStub;
   let showSectionStub: sinon.SinonStub;
   let actionHandlerStub: sinon.SinonStub;
-  let handleMultiPiClickActionStub: sinon.SinonStub;
+  let handleMultiInstanceClickActionStub: sinon.SinonStub;
 
   beforeEach(() => {
     // Create mock element
@@ -37,9 +37,9 @@ describe('pi-crust.ts', () => {
     actionHandlerStub = stub(actionHandlerDelegate, 'actionHandler').returns(
       () => {},
     );
-    handleMultiPiClickActionStub = stub(
+    handleMultiInstanceClickActionStub = stub(
       actionHandlerDelegate,
-      'handleMultiPiClickAction',
+      'handleMultiInstanceClickAction',
     ).returns({ handleEvent: () => {} });
 
     // Mock HomeAssistant instance
@@ -84,7 +84,7 @@ describe('pi-crust.ts', () => {
     stateDisplayStub.restore();
     showSectionStub.restore();
     actionHandlerStub.restore();
-    handleMultiPiClickActionStub.restore();
+    handleMultiInstanceClickActionStub.restore();
   });
 
   it('should return nothing when show returns false for header section', async () => {
@@ -354,5 +354,149 @@ describe('pi-crust.ts', () => {
     const multiStatusEl = el.querySelector('.multi-status');
     expect(multiStatusEl).to.exist;
     expect(multiStatusEl?.textContent?.trim()).to.equal('(1/2)');
+  });
+
+  describe('status click action functionality', () => {
+    beforeEach(() => {
+      // Reset stubs before each test
+      actionHandlerStub.resetHistory();
+      handleMultiInstanceClickActionStub.resetHistory();
+      // Reset mockConfig to default state
+      mockConfig = {
+        device_id: 'adguard_device',
+      };
+    });
+
+    it('should attach action handlers to status div', async () => {
+      // Verify action handlers are called during template creation
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+
+      // actionHandler is called when the template is created (during createCardHeader)
+      expect(actionHandlerStub.called).to.be.true;
+      expect(handleMultiInstanceClickActionStub.called).to.be.true;
+
+      const el = await fixture(result as TemplateResult);
+
+      // Find the status div (has color style and action handler)
+      const statusEl = el.querySelector('div[style*="color"]');
+      expect(statusEl).to.exist;
+    });
+
+    it('should use default toggle action for tap_action when no custom status config', async () => {
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+      await fixture(result as TemplateResult);
+
+      // Get the last call (should be the only call after reset)
+      expect(actionHandlerStub.called).to.be.true;
+      const actionConfig = actionHandlerStub.lastCall.args[0];
+      expect(actionConfig.tap_action.action).to.equal('toggle');
+      expect(actionConfig.hold_action.action).to.equal('more-info');
+      expect(actionConfig.double_tap_action.action).to.equal('more-info');
+    });
+
+    it('should use custom status configuration when provided', async () => {
+      mockConfig.status = {
+        tap_action: {
+          action: 'navigate',
+          navigation_path: '/custom-status-path',
+        },
+        hold_action: {
+          action: 'toggle',
+        },
+      };
+
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+      await fixture(result as TemplateResult);
+
+      // Get the last call (should be the only call after reset)
+      expect(actionHandlerStub.called).to.be.true;
+      const actionConfig = actionHandlerStub.lastCall.args[0];
+      expect(actionConfig.entity).to.equal('binary_sensor.pi_hole_status');
+      expect(actionConfig.tap_action.action).to.equal('navigate');
+      expect(actionConfig.tap_action.navigation_path).to.equal(
+        '/custom-status-path',
+      );
+      expect(actionConfig.hold_action.action).to.equal('toggle');
+    });
+
+    it('should include cursor pointer style on status div', async () => {
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+      const el = await fixture(result as TemplateResult);
+
+      const statusEl = el.querySelector('div[style*="color"]');
+      expect(statusEl?.getAttribute('style')).to.contain('cursor: pointer');
+    });
+
+    it('should create action configs for all AdGuard instances', async () => {
+      const secondDevice = {
+        ...mockDevice,
+        device_id: 'adguard_device_2',
+        protection: {
+          ...mockDevice.protection!,
+          entity_id: 'binary_sensor.pi_hole_2_status',
+        },
+      } as AdGuardDevice;
+
+      mockSetup.holes.push(secondDevice);
+
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+      await fixture(result as TemplateResult);
+
+      // Verify handleMultiInstanceClickAction was called with array of configs
+      const multiClickArgs = handleMultiInstanceClickActionStub.firstCall.args;
+      expect(multiClickArgs[1]).to.be.an('array');
+      expect(multiClickArgs[1]).to.have.length(2);
+      expect(multiClickArgs[1][0].entity).to.equal(
+        'binary_sensor.pi_hole_status',
+      );
+      expect(multiClickArgs[1][1].entity).to.equal(
+        'binary_sensor.pi_hole_2_status',
+      );
+    });
+
+    it('should fallback to device_id when protection entity is not available', async () => {
+      const deviceWithoutProtection = {
+        ...mockDevice,
+        protection: undefined,
+      } as AdGuardDevice;
+
+      mockSetup.holes = [deviceWithoutProtection];
+
+      const result = createCardHeader(
+        mockElement,
+        mockSetup,
+        mockHass,
+        mockConfig,
+      );
+      await fixture(result as TemplateResult);
+
+      const actionConfig = actionHandlerStub.firstCall.args[0];
+      expect(actionConfig.entity).to.equal('adguard_device');
+    });
   });
 });

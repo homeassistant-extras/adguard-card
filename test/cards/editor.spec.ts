@@ -369,6 +369,35 @@ describe('editor.ts', () => {
               ],
             },
             {
+              name: 'status',
+              label: 'editor.status',
+              type: 'expandable',
+              icon: 'mdi:check-circle-outline',
+              schema: [
+                {
+                  name: 'tap_action',
+                  label: 'editor.tap_action',
+                  selector: {
+                    ui_action: {},
+                  },
+                },
+                {
+                  name: 'hold_action',
+                  label: 'editor.hold_action',
+                  selector: {
+                    ui_action: {},
+                  },
+                },
+                {
+                  name: 'double_tap_action',
+                  label: 'editor.double_tap_action',
+                  selector: {
+                    ui_action: {},
+                  },
+                },
+              ],
+            },
+            {
               name: 'stats',
               label: 'editor.statistics',
               type: 'expandable',
