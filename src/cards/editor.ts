@@ -104,7 +104,7 @@ const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
       selector: {
         device: {
           filter: ADGUARD_INTEGRATION_FILTER,
-          //multiple: true, breaks the drop down?
+          multiple: true,
         },
       },
       required: true,
@@ -327,10 +327,21 @@ export class AdGuardCardEditor extends LitElement {
    */
   setConfig(config: Config) {
     this._config = config;
+    // Normalize device_id: convert string to array for multiple selector compatibility
+    if (typeof config.device_id === 'string') {
+      this._config = { ...config, device_id: [config.device_id] };
+    } else {
+      this._config = config;
+    }
   }
 
   private _valueChanged(ev: CustomEvent) {
     const config = ev.detail.value as Config;
+
+    // Normalize device_id: convert single-item array to string for cleaner configs
+    if (Array.isArray(config.device_id) && config.device_id.length === 1) {
+      config.device_id = config.device_id[0]!;
+    }
 
     const shouldDelete = (obj: SectionConfig | undefined) =>
       obj &&
