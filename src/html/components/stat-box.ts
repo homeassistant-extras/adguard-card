@@ -30,7 +30,7 @@ export const createStatBox = (
   const uom = ['%', 'ms'].includes(entity.attributes?.unit_of_measurement ?? '')
     ? entity.attributes?.unit_of_measurement
     : '';
-  const value = formatNumber(entity.state, undefined, {
+  const value = formatNumber(entity.state, hass.locale, {
     maximumFractionDigits: 1,
   });
   const footer =
