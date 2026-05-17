@@ -1,12 +1,8 @@
 # AdGuard Card
 
-<p align="center">
-    <img src="assets/pihole-card.png" align="center" width="50%">
-</p>
-<p align="center"><h1 align="center">AdGuard Card</h1></p>
-<p align="center">
-  <em>Complete AdGuard monitoring and control for Home Assistant</em>
-</p>
+_Complete AdGuard monitoring and control for Home Assistant_
+
+![AdGuard Card](assets/pihole-card.png)
 
 ![Home Assistant](https://img.shields.io/badge/home%20assistant-%2341BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/hacs/integration)
@@ -21,15 +17,13 @@
 ![commits](https://img.shields.io/github/commit-activity/y/homeassistant-extras/adguard-card?style=for-the-badge)
 ![license](https://img.shields.io/github/license/homeassistant-extras/adguard-card?style=for-the-badge&logo=opensourceinitiative&logoColor=white&color=0080ff)
 
-<p align="center">Built with the tools and technologies:</p>
-<p align="center">
-  <img src="https://img.shields.io/badge/npm-CB3837.svg?style=for-the-badge&logo=npm&logoColor=white" alt="npm">
-  <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black" alt="Prettier">
-  <img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white" alt="GitHub%20Actions">
-  <img src="https://img.shields.io/badge/Lit-324FFF.svg?style=for-the-badge&logo=Lit&logoColor=white" alt="Lit">
-</p>
-<br>
+Built with the tools and technologies:
+
+![npm](https://img.shields.io/badge/npm-CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white)
+![Lit](https://img.shields.io/badge/Lit-324FFF.svg?style=for-the-badge&logo=Lit&logoColor=white)
 
 ## Overview
 
@@ -600,6 +594,7 @@ This project is protected under the MIT License. For more details, refer to the 
 - Built using [LitElement](https://lit.dev/)
 - Inspired by AdGuard's own dashboard design
 - Thanks to all contributors!
+- Maintained by [Patrick Masters](https://github.com/warmfire540) / [Curious Cat Consulting](https://curiouscat.consulting/projects/ha-adguard-card?utm_source=github-adguard-card&utm_medium=readme&utm_campaign=oss-presence&utm_content=maintained-by)
 
 [![contributors](https://contrib.rocks/image?repo=homeassistant-extras/adguard-card)](https://github.com/homeassistant-extras/adguard-card/graphs/contributors)
 

@@ -1,9 +1,19 @@
 {
   "name": "adguard",
-  "version": "0.10.0",
-  "author": "Patrick Masters",
+  "version": "0.9.0",
+  "author": {
+    "name": "Patrick Masters",
+    "url": "https://curiouscat.consulting/projects/ha-adguard-card?utm_source=github-adguard-card&utm_medium=package-metadata&utm_campaign=oss-presence&utm_content=author-url"
+  },
   "license": "ISC",
   "description": "Card to summarize information for, and to control your Adguard instance!",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeassistant-extras/adguard-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/homeassistant-extras/adguard-card/issues"
+  },
   "source": "src/index.ts",
   "module": "dist/adguard-card.js",
   "targets": {
