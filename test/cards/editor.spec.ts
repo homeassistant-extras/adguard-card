@@ -12,7 +12,7 @@ describe('editor.ts', () => {
   let hass: HomeAssistant;
   let dispatchStub: sinon.SinonStub;
 
-  beforeEach( () => {
+  beforeEach(() => {
     // Create mock HomeAssistant instance with language set
     hass = {
       language: 'en',
@@ -112,13 +112,13 @@ describe('editor.ts', () => {
   });
 
   describe('render', () => {
-    it('should return nothing when hass is not set',  () => {
+    it('should return nothing when hass is not set', () => {
       card.hass = undefined as any;
       const result = card.render();
       expect(result).to.equal(nothing);
     });
 
-    it('should return nothing when config is not set',  () => {
+    it('should return nothing when config is not set', () => {
       const result = card.render();
       expect(result).to.equal(nothing);
     });

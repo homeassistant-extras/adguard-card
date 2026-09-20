@@ -5,9 +5,8 @@ import { version } from '../package.json';
 
 // Path to the hass module that captures `customCards` at import time. It must
 // be reset alongside index.ts so each test re-captures the current global.
-const customCardsModule = require.resolve(
-  '@homeassistant-extras/hass/data/lovelace_custom_cards',
-);
+const customCardsModule =
+  require.resolve('@homeassistant-extras/hass/data/lovelace_custom_cards');
 
 describe('index.ts', () => {
   let customElementsStub: SinonStub;

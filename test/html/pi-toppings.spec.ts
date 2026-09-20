@@ -71,7 +71,7 @@ describe('pi-toppings.ts', () => {
     showSectionStub.restore();
   });
 
-  it('should return nothing when show returns false for sensors section',  () => {
+  it('should return nothing when show returns false for sensors section', () => {
     // Configure show to return false for sensors section
     showSectionStub.withArgs(mockConfig, 'sensors').returns(false);
 

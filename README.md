@@ -304,9 +304,9 @@ styles:
 
 The following CSS variables can be used within the `styles` configuration for advanced customization:
 
-| Variable                            | Area    | Description                                               | Default |
-| ----------------------------------- | ------- | --------------------------------------------------------- | ------- |
-| `--user--section--caret--display`   | section | Control visibility of section caret icons                 | `block` |
+| Variable                          | Area    | Description                               | Default |
+| --------------------------------- | ------- | ----------------------------------------- | ------- |
+| `--user--section--caret--display` | section | Control visibility of section caret icons | `block` |
 
 **Example:**
 
@@ -567,6 +567,7 @@ exclude_sections:
    ```
 7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
 8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+
 </details>
 
 ## Translations

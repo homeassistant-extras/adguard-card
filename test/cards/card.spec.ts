@@ -90,7 +90,7 @@ describe('AdGuardCard', () => {
     getConfigDeviceStub.restore();
   });
 
-  it('should not update when hass changes but device data remains the same',  () => {
+  it('should not update when hass changes but device data remains the same', () => {
     const card = new AdGuardCard();
 
     // Set initial config and hass

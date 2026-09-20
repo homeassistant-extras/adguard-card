@@ -88,7 +88,7 @@ describe('pi-crust.ts', () => {
     handleMultiInstanceClickActionStub.restore();
   });
 
-  it('should return nothing when show returns false for header section',  () => {
+  it('should return nothing when show returns false for header section', () => {
     // Configure show to return false for header section
     showSectionStub.withArgs(mockConfig, 'header').returns(false);
 
@@ -208,7 +208,7 @@ describe('pi-crust.ts', () => {
     expect(iconEl?.getAttribute('icon')).to.equal('mdi:close-circle');
   });
 
-  it('should call stateDisplay with the status entity',  () => {
+  it('should call stateDisplay with the status entity', () => {
     // Render the card header
     createCardHeader(mockElement, mockSetup, mockHass, mockConfig);
 

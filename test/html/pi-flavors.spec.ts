@@ -116,7 +116,7 @@ describe('pi-flavors.ts', () => {
     expect(switchesDiv!.classList.contains('hidden')).to.be.true;
   });
 
-  it('should call stateContent for each switch entity',  () => {
+  it('should call stateContent for each switch entity', () => {
     createCardActions(mockElement, mockHass, mockSetup, mockDevice, mockConfig);
 
     // Verify that stateContent was called for each switch
@@ -128,7 +128,6 @@ describe('pi-flavors.ts', () => {
       mockDevice.switches[1],
     );
   });
-
 
   it('should handle empty arrays gracefully', async () => {
     // Create a device with empty switches array
@@ -154,5 +153,4 @@ describe('pi-flavors.ts', () => {
     // Should not call the helper functions
     expect(stateContentStub.callCount).to.equal(0);
   });
-
 });

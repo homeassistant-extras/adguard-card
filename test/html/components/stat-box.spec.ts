@@ -148,7 +148,7 @@ describe('stat-box.ts', () => {
     expect(footerEl?.textContent?.trim()).to.equal('List all queries');
   });
 
-  it('should handle missing entity data',  () => {
+  it('should handle missing entity data', () => {
     const result = createStatBox(
       mockElement,
       mockHass,

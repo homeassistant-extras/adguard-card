@@ -85,11 +85,13 @@ export const createCardHeader = (
     <div class="card-header">
       <div class="name">
         ${icon(element, config, setup)}${config.title ?? 'AdGuard'}
-        ${setup.holes.length > 1
-          ? html`<span class="multi-status"
-              >(${activeCount}/${setup.holes.length})</span
-            >`
-          : ''}
+        ${
+          setup.holes.length > 1
+            ? html`<span class="multi-status"
+                >(${activeCount}/${setup.holes.length})</span
+              >`
+            : ''
+        }
       </div>
       <div
         style="color: ${getStatusColor()}; cursor: pointer;"
@@ -99,9 +101,11 @@ export const createCardHeader = (
         <ha-icon
           icon="${activeCount > 0 ? 'mdi:check-circle' : 'mdi:close-circle'}"
         ></ha-icon>
-        ${mixedStatus
-          ? html`${localize(hass, 'card.ui.partial')}`
-          : stateDisplay(hass, primary.protection!)}
+        ${
+          mixedStatus
+            ? html`${localize(hass, 'card.ui.partial')}`
+            : stateDisplay(hass, primary.protection!)
+        }
       </div>
     </div>
   `;

@@ -11,7 +11,6 @@ export interface HassUpdateEvent {
 }
 
 declare global {
-   
   interface HASSDomEvents {
     'hass-update': HassUpdateEvent;
   }

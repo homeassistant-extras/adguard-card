@@ -140,7 +140,7 @@ describe('pi-fillings.ts', () => {
     restore();
   });
 
-  it('should return nothing when show returns false for statistics section',  () => {
+  it('should return nothing when show returns false for statistics section', () => {
     // Configure show to return false for statistics section
     showSectionStub.withArgs(mockConfig, 'statistics').returns(false);
 
@@ -162,7 +162,7 @@ describe('pi-fillings.ts', () => {
     expect(createStatBoxStub.called).to.be.false;
   });
 
-  it('should call getDashboardStats with correct safe searches enforced count',  () => {
+  it('should call getDashboardStats with correct safe searches enforced count', () => {
     // Call createDashboardStats
     createDashboardStats(mockElement, mockHass, mockDevice, mockConfig);
 

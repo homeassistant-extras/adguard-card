@@ -69,7 +69,7 @@ describe('pi-footer.ts', () => {
     createVersionItemStub.restore();
   });
 
-  it('should return nothing when show returns false for footer section',  () => {
+  it('should return nothing when show returns false for footer section', () => {
     // Configure show to return false for footer section
     showSectionStub.withArgs(mockConfig, 'footer').returns(false);
 
@@ -96,7 +96,7 @@ describe('pi-footer.ts', () => {
     expect(el.classList.contains('version-info')).to.be.true;
   });
 
-  it('should call createVersionItem for each update in the device',  () => {
+  it('should call createVersionItem for each update in the device', () => {
     // Call createFooter
     createFooter(mockElement, mockHass, mockConfig, mockDevice);
 

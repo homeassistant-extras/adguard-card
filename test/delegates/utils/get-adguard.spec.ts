@@ -126,11 +126,7 @@ describe('get-adguard.ts', () => {
     // Configure mapEntitiesByTranslationKey to return false (so the entity goes to other arrays)
     mapEntitiesByTranslationKeyStub.returns(false);
 
-    getAdGuard(
-      mockHass,
-      mockConfig,
-      mockConfig.device_id as string,
-    );
+    getAdGuard(mockHass, mockConfig, mockConfig.device_id as string);
 
     // Verify shouldSkipEntity was called for each entity
     expect(shouldSkipEntityStub.callCount).to.equal(mockEntities.length);

@@ -10,7 +10,8 @@ export interface HassUpdateElement {
   hass?: HomeAssistant;
 }
 
-export type Constructor<T = object> = // eslint-disable-next-line @typescript-eslint/no-explicit-any -- mixin constructor args
+export type Constructor<T = object> =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- mixin constructor args
   new (...args: any[]) => T;
 
 export const HassUpdateMixin = <T extends Constructor<LitElement>>(

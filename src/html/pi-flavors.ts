@@ -29,47 +29,49 @@ const switches = (
   const switchCollapsed = isCollapsed(config, 'switches');
   const sectionStyles = config.styles?.section || {};
 
-  return html`${show(config, 'switches')
-    ? html`<div class="collapsible-section" style=${styleMap(sectionStyles)}>
-        <div
-          class="section-header"
-          @click=${(e: Event) => toggleSection(e, '.switches')}
-        >
-          <span>${localize(hass, 'card.sections.switches')}</span>
-          <ha-icon
-            class="caret-icon"
-            icon="mdi:chevron-${switchCollapsed ? 'right' : 'down'}"
-          ></ha-icon>
-        </div>
-        <div
-          class="${[
-            'switches',
-            switchCollapsed ? 'hidden' : undefined,
-            config.switch_spacing,
-          ]
-            .filter((s) => s)
-            .join(' ')}"
-        >
-          ${device.switches.map((piSwitch) => {
-            const orderExists = config.entity_order?.includes(
-              piSwitch.entity_id,
-            );
-            if (orderExists) {
-              const orderIndex = config.entity_order!.indexOf(
+  return html`${
+    show(config, 'switches')
+      ? html`<div class="collapsible-section" style=${styleMap(sectionStyles)}>
+          <div
+            class="section-header"
+            @click=${(e: Event) => toggleSection(e, '.switches')}
+          >
+            <span>${localize(hass, 'card.sections.switches')}</span>
+            <ha-icon
+              class="caret-icon"
+              icon="mdi:chevron-${switchCollapsed ? 'right' : 'down'}"
+            ></ha-icon>
+          </div>
+          <div
+            class="${[
+              'switches',
+              switchCollapsed ? 'hidden' : undefined,
+              config.switch_spacing,
+            ]
+              .filter((s) => s)
+              .join(' ')}"
+          >
+            ${device.switches.map((piSwitch) => {
+              const orderExists = config.entity_order?.includes(
                 piSwitch.entity_id,
               );
-              const nextItem = config.entity_order![orderIndex + 1];
+              if (orderExists) {
+                const orderIndex = config.entity_order!.indexOf(
+                  piSwitch.entity_id,
+                );
+                const nextItem = config.entity_order![orderIndex + 1];
 
-              if (nextItem === 'divider') {
-                return html`${stateContent(hass, piSwitch)}
-                  <div class="divider"></div>`;
+                if (nextItem === 'divider') {
+                  return html`${stateContent(hass, piSwitch)}
+                    <div class="divider"></div>`;
+                }
               }
-            }
-            return stateContent(hass, piSwitch);
-          })}
-        </div>
-      </div>`
-    : nothing}`;
+              return stateContent(hass, piSwitch);
+            })}
+          </div>
+        </div>`
+      : nothing
+  }`;
 };
 
 /**
