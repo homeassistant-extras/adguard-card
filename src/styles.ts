@@ -211,6 +211,50 @@ export const styles = css`
     justify-content: space-between;
   }
 
+  /* Version information styles */
+  .version-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 16px 16px;
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+    border-top: 1px solid var(--divider-color, rgba(0, 0, 0, 0.12));
+    gap: 12px;
+  }
+
+  .version-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .version-item.update-available {
+    border-left: 3px solid var(--warning-color, #ff9800);
+    padding-left: 8px;
+    margin-left: -8px;
+  }
+
+  .version-label {
+    margin-right: 4px;
+    font-weight: 700;
+  }
+
+  .version-text {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .version-separator {
+    margin: 0 4px;
+    color: var(--secondary-text-color);
+  }
+
+  .version-latest {
+    color: var(--warning-color, #ff9800);
+    font-weight: 600;
+  }
+
   /* Very small screen adjustments */
   @media (max-width: 400px) {
     .stat-group {

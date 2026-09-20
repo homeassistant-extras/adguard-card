@@ -54,7 +54,12 @@ export interface Config {
 
 export type SwitchSpacing = 'flex' | 'space-around' | 'space-between';
 export type CollapsibleSections = 'switches';
-export type Sections = 'header' | 'statistics' | 'sensors' | 'switches';
+export type Sections =
+  | 'header'
+  | 'statistics'
+  | 'sensors'
+  | 'switches'
+  | 'footer';
 
 export interface SectionConfig {
   /** Action to perform on tap */

@@ -40,6 +40,7 @@ export const getAdGuardSetup = (
           controls: [],
           sensors: [],
           switches: [],
+          updates: [],
         };
       }
       return hole;

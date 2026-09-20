@@ -30,6 +30,9 @@ export interface AdGuardDevice {
 
   /** Switches for AdGuard */
   switches: EntityInformation[];
+
+  /** Update entities for the device */
+  updates: EntityInformation[];
 }
 
 export interface EntityInformation extends EntityState {

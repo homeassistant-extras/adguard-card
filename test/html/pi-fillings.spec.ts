@@ -121,6 +121,9 @@ describe('pi-fillings.ts', () => {
         attributes: {},
         translation_key: 'safe_searches_enforced',
       },
+      sensors: [],
+      switches: [],
+      updates: [],
     } as AdGuardDevice;
 
     // Mock config

@@ -75,13 +75,17 @@ describe('get-adguard.ts', () => {
     expect(result?.device_id).to.equal(DEVICE_ID);
     expect(result?.sensors).to.be.an('array').with.lengthOf(0);
     expect(result?.switches).to.be.an('array').with.lengthOf(0);
+    expect(result?.updates).to.be.an('array').with.lengthOf(0);
   });
 
-  it('should map entities using mapEntitiesByTranslationKey', () => {
+  it('should map entities using mapEntitiesByTranslationKey and sort updates', () => {
     // Create some test entities
     const mockEntities = [
       createEntity('sensor.test_1', 'dns_queries', '10000'),
       createEntity('button.test_2', undefined),
+      createEntity('update.test_3', undefined, 'off', {
+        title: 'AdGuard Home',
+      }),
     ];
 
     getDeviceEntitiesStub.returns(mockEntities);
@@ -101,6 +105,9 @@ describe('get-adguard.ts', () => {
     expect(mapEntitiesByTranslationKeyStub.callCount).to.equal(
       mockEntities.length,
     );
+
+    // Verify updates are collected by domain
+    expect(result?.updates).to.have.lengthOf(1);
   });
 
   it('should filter out entities that should be skipped', () => {

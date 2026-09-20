@@ -27,6 +27,7 @@ describe('icon.ts', () => {
           device_id: 'adguard_device_1',
           sensors: [],
           switches: [],
+          updates: [],
         } as AdGuardDevice,
       ],
     };
@@ -181,6 +182,7 @@ describe('icon.ts', () => {
         device_id: 'adguard_device_2',
         sensors: [],
         switches: [],
+        updates: [],
       };
       mockSetup.holes.push(secondDevice);
 

@@ -27,6 +27,7 @@ describe('get-setup.ts', () => {
       device_id: 'adguard_device_1',
       sensors: [],
       switches: [],
+      updates: [],
     });
 
     // Default behavior returns undefined for this second device ID
@@ -39,6 +40,7 @@ describe('get-setup.ts', () => {
       device_id: 'adguard_device_2',
       sensors: [],
       switches: [],
+      updates: [],
     });
   });
 

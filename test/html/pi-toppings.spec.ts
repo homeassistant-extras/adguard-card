@@ -53,6 +53,8 @@ describe('pi-toppings.ts', () => {
         createSensor('sensor.dns_unique_domains'),
         createSensor('sensor.dns_queries_cached'),
       ],
+      switches: [],
+      updates: [],
     } as AdGuardDevice;
 
     // Mock config with info section

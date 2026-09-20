@@ -6,6 +6,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 import { createCardHeader } from './pi-crust';
 import { createDashboardStats } from './pi-fillings';
 import { createCardActions } from './pi-flavors';
+import { createFooter } from './pi-tin';
 import { createAdditionalStats } from './pi-toppings';
 
 /**
@@ -33,6 +34,7 @@ export const renderAdGuardCard = (
         ${createAdditionalStats(element, hass, primary, config)}
       </div>
       ${createCardActions(element, hass, setup, primary, config)}
+      ${createFooter(element, hass, config, primary)}
     </ha-card>
   `;
 };

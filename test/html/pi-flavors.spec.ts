@@ -62,6 +62,8 @@ describe('pi-flavors.ts', () => {
     mockDevice = {
       device_id: 'adguard_device',
       switches: [mockSwitch1, mockSwitch2],
+      sensors: [],
+      updates: [],
     } as AdGuardDevice;
 
     // Mock config

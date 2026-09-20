@@ -21,6 +21,7 @@ export type TranslationKey =
   | 'editor.space_around'
   | 'editor.space_between'
   | 'editor.header'
+  | 'editor.footer'
   | 'editor.statistics'
   | 'editor.sensors'
   | 'editor.switches'

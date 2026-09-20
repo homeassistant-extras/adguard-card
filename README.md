@@ -69,13 +69,8 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 
 ### Version Information
 
-- **Component Versions** - Display installed versions for all AdGuard components:
-  - Core
-  - Docker
-  - FTL
-  - Web Interface
-  - Home Assistant Integration
-  - Last Refresh Time
+- **AdGuard Home Version** - Shows the installed version in the card footer
+- **Update Available** - Highlights when a newer version is available and links to the GitHub release
 
 ![Version Information](assets/version-info.png)
 
@@ -205,7 +200,7 @@ The card will automatically:
 
 - Detect all AdGuard entities associated with the device(s)
 - Organize statistics in the dashboard layout
-- Show version information for all components
+- Show version information in the footer
 - For multiple AdGuard instances: combine switches and show aggregated status
 
 ### Finding Your Device ID
@@ -519,7 +514,7 @@ exclude_sections:
 - [x] **`Initial redesign`**: create initial card design
 - [x] **`Auto-discovery`**: automatic detection of AdGuard entities
 - [x] **`Dashboard statistics`**: visual representation of key metrics
-- [x] **`Version info`**: display component versions
+- [x] **`Version info`**: display AdGuard Home version in the footer - thanks @MrPePperNL
 - [x] **`Custom actions`**: tap/hold/double-tap actions for all elements - thanks @dunxd
 - [x] **`Card customization`**: custom title and icon options
 - [x] **`Performance optimizations`**: improved code structure and efficiency
