@@ -78,6 +78,8 @@ A comprehensive dashboard card for managing and monitoring your AdGuard DNS ad b
 
 - **Real-time Status** - Visual indication of AdGuard's current state
 - **Error Detection** - Automatic highlighting when issues are detected
+- **Entity suggestions** - Home Assistant 2026.6+ card picker suggests this card for AdGuard entities
+
 - **Update Indicators** - Clear notification when updates are available
 - **FTL Diagnostic Message Count** - Shows diagnostic message count when more than 0
 - **Interactive Diagnostic Management** - Smart icon behavior based on diagnostic message count:

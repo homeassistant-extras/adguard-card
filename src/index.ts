@@ -1,5 +1,6 @@
 import { AdGuardCard } from '@cards/card';
 import { AdGuardCardEditor } from '@cards/editor';
+import { getEntitySuggestion } from '@delegates/utils/entity-suggestion';
 import { customCards } from '@homeassistant-extras/hass/data/lovelace_custom_cards';
 import { version } from '../package.json';
 
@@ -23,6 +24,9 @@ customCards?.push({
 
   // URL for the card's documentation
   documentationURL: 'https://github.com/homeassistant-extras/adguard-card',
+
+  // Suggest this card when picking an AdGuard entity (HA 2026.6+)
+  getEntitySuggestion,
 });
 
 console.info(`%c🐱 Poat's Tools: adguard-card - ${version}`, 'color: #CFC493;');

@@ -1,3 +1,4 @@
+import { getEntitySuggestion } from '@delegates/utils/entity-suggestion';
 import { expect } from 'chai';
 import { stub, type SinonStub } from 'sinon';
 import { version } from '../package.json';
@@ -47,6 +48,7 @@ describe('index.ts', () => {
       description: 'A card to summarize and control your AdGuard instance.',
       preview: true,
       documentationURL: 'https://github.com/homeassistant-extras/adguard-card',
+      getEntitySuggestion,
     });
   });
 
