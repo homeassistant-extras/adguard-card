@@ -48,5 +48,13 @@ export interface EntityState {
   state: string;
 
   /** Additional attributes associated with the state */
-  attributes: Record<string, any>;
+  attributes: {
+    friendly_name?: string;
+    unit_of_measurement?: string;
+    title?: string;
+    latest_version?: string;
+    installed_version?: string;
+    release_url?: string;
+    [key: string]: unknown;
+  };
 }

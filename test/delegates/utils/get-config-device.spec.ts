@@ -1,6 +1,6 @@
 import { getConfigDevice } from '@delegates/utils/get-config-device';
-import type { DeviceRegistryEntry } from '@hass/data/device_registry';
-import type { HomeAssistant } from '@hass/types';
+import type { DeviceRegistryEntry } from '@homeassistant-extras/hass/data/device/device_registry';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { expect } from 'chai';
 import { stub } from 'sinon';
 
@@ -21,12 +21,24 @@ describe('get-config-device.ts', () => {
           name: 'AdGuard',
           config_entries: ['adguard_config_entry_1'],
           area_id: 'network',
+          identifiers: [],
+          manufacturer: null,
+          model: null,
+          model_id: null,
+          name_by_user: null,
+          serial_number: null,
         },
         other_device: {
           id: 'other_device',
           name: 'Other Device',
           config_entries: ['other_config_entry'],
           area_id: 'living_room',
+          identifiers: [],
+          manufacturer: null,
+          model: null,
+          model_id: null,
+          name_by_user: null,
+          serial_number: null,
         },
       } as Record<string, DeviceRegistryEntry>,
     } as unknown as HomeAssistant;
@@ -86,6 +98,12 @@ describe('get-config-device.ts', () => {
       id: 'adguard_device_2',
       config_entries: ['adguard_config_entry_1'],
       name: 'AdGuard 2',
+      identifiers: [],
+      manufacturer: null,
+      model: null,
+      model_id: null,
+      name_by_user: null,
+      serial_number: null,
     };
 
     // Mock config entry

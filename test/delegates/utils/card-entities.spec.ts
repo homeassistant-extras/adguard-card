@@ -1,6 +1,6 @@
-import { getState } from '@delegates/retrievers/state';
+import * as stateModule from '@delegates/retrievers/state';
 import { getDeviceEntities } from '@delegates/utils/card-entities';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { expect } from 'chai';
 import { stub } from 'sinon';
 
@@ -44,7 +44,7 @@ describe('card-entities.ts', () => {
 
     // Stub the getState function with helper
     getStateStub = stub();
-    (getState as any) = getStateStub;
+    (stateModule as any).getState = getStateStub;
 
     // Configure mock responses
     const mockStates = {

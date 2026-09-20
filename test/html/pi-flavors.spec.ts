@@ -1,6 +1,6 @@
 import * as collapsedStateModule from '@common/collapsed-state';
 import * as showSectionModule from '@common/show-section';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as stateContentModule from '@html/components/state-content';
 import { createCardActions } from '@html/pi-flavors';
 import { fixture } from '@open-wc/testing-helpers';
@@ -116,7 +116,7 @@ describe('pi-flavors.ts', () => {
     expect(switchesDiv!.classList.contains('hidden')).to.be.true;
   });
 
-  it('should call stateContent for each switch entity', async () => {
+  it('should call stateContent for each switch entity',  () => {
     createCardActions(mockElement, mockHass, mockSetup, mockDevice, mockConfig);
 
     // Verify that stateContent was called for each switch

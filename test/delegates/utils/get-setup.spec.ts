@@ -1,6 +1,6 @@
 import * as getAdGuardModule from '@delegates/utils/get-adguard';
 import { getAdGuardSetup } from '@delegates/utils/get-setup';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { Config } from '@type/config';
 import { expect } from 'chai';
 import { restore, stub } from 'sinon';
@@ -245,8 +245,6 @@ describe('get-setup.ts', () => {
 
     // Check second device only has device_id and status, with empty arrays for other properties
     expect(result?.holes[1]?.device_id).to.equal('adguard_device_2');
-    console.log(result?.holes[1]?.protection);
-    console.log(device2Status);
     expect(result?.holes[1]?.protection).to.deep.equal(device2Status);
     expect(result?.holes[1]?.switches).to.be.an('array').with.lengthOf(0);
     expect(result?.holes[1]?.sensors).to.be.an('array').with.lengthOf(0);

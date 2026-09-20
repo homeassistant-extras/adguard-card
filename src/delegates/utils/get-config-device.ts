@@ -1,5 +1,5 @@
-import type { DeviceRegistryEntry } from '@hass/data/device_registry';
-import type { HomeAssistant } from '@hass/types';
+import type { DeviceRegistryEntry } from '@homeassistant-extras/hass/data/device/device_registry';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 
 /**
  * Gets the AdGuard device information from Home Assistant

@@ -1,4 +1,4 @@
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { Config } from '@type/config';
 import type { AdGuardSetup } from '@type/types';
 import { html, type TemplateResult } from 'lit';

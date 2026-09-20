@@ -1,6 +1,6 @@
 import { isCollapsed } from '@common/collapsed-state';
 import { show } from '@common/show-section';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { localize } from '@localize/localize';
 import type { Config } from '@type/config';
 import type { AdGuardDevice, AdGuardSetup } from '@type/types';

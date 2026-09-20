@@ -2,9 +2,14 @@ import { expect } from 'chai';
 import { stub, type SinonStub } from 'sinon';
 import { version } from '../package.json';
 
+// Path to the hass module that captures `customCards` at import time. It must
+// be reset alongside index.ts so each test re-captures the current global.
+const customCardsModule = require.resolve(
+  '@homeassistant-extras/hass/data/lovelace_custom_cards',
+);
+
 describe('index.ts', () => {
   let customElementsStub: SinonStub;
-  let customCardsStub: Array<Object> | undefined;
   let consoleInfoStub: sinon.SinonStub;
 
   beforeEach(() => {
@@ -12,23 +17,17 @@ describe('index.ts', () => {
     customElementsStub = stub(customElements, 'define');
     consoleInfoStub = stub(console, 'info');
 
-    // Create a stub for window.customCards
-    customCardsStub = [];
-    Object.defineProperty(window, 'customCards', {
-      get: () => customCardsStub,
-      set: (value) => {
-        customCardsStub = value;
-      },
-      configurable: true,
-    });
+    // Start each test with a clean global. The hass module snapshots
+    // `globalThis.customCards` when it first loads, so the global must be set
+    // up before requiring index.ts (which transitively loads that module).
+    (globalThis as { customCards?: Array<Object> }).customCards = [];
   });
 
   afterEach(() => {
-    // Restore the original customElements.define
     customElementsStub.restore();
     consoleInfoStub.restore();
-    customCardsStub = undefined;
     delete require.cache[require.resolve('@/index.ts')];
+    delete require.cache[customCardsModule];
   });
 
   it('should register all custom elements', () => {
@@ -38,20 +37,11 @@ describe('index.ts', () => {
     expect(customElementsStub.secondCall.args[0]).to.equal('adguard-editor');
   });
 
-  it('should initialize window.customCards if undefined', () => {
-    customCardsStub = undefined;
-    require('@/index.ts');
-
-    expect(window.customCards).to.be.an('array');
-  });
-
   it('should add card configurations with all fields to window.customCards', () => {
     require('@/index.ts');
 
-    expect(window.customCards).to.have.lengthOf(1);
-
-    // Check device-card configuration
-    expect(window.customCards[0]).to.deep.equal({
+    expect(globalThis.customCards).to.have.lengthOf(1);
+    expect(globalThis.customCards[0]).to.deep.equal({
       type: 'adguard-card',
       name: 'AdGuard Card',
       description: 'A card to summarize and control your AdGuard instance.',
@@ -61,8 +51,7 @@ describe('index.ts', () => {
   });
 
   it('should preserve existing cards when adding new card', () => {
-    // Add an existing card
-    window.customCards = [
+    globalThis.customCards = [
       {
         type: 'existing-card',
         name: 'Existing Card',
@@ -71,8 +60,8 @@ describe('index.ts', () => {
 
     require('@/index.ts');
 
-    expect(window.customCards).to.have.lengthOf(2);
-    expect(window.customCards[0]).to.deep.equal({
+    expect(globalThis.customCards).to.have.lengthOf(2);
+    expect(globalThis.customCards[0]).to.deep.equal({
       type: 'existing-card',
       name: 'Existing Card',
     });
@@ -82,7 +71,7 @@ describe('index.ts', () => {
     require('@/index.ts');
     require('@/index.ts');
 
-    expect(window.customCards).to.have.lengthOf(1);
+    expect(globalThis.customCards).to.have.lengthOf(1);
     expect(customElementsStub.callCount).to.equal(2); // Called once for each component
   });
 
@@ -90,7 +79,6 @@ describe('index.ts', () => {
     require('@/index.ts');
     expect(consoleInfoStub.calledOnce).to.be.true;
 
-    // Assert that it was called with the expected arguments
     expect(
       consoleInfoStub.calledWithExactly(
         `%c🐱 Poat's Tools: adguard-card - ${version}`,

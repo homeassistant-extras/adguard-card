@@ -1,5 +1,5 @@
 import * as showSectionModule from '@common/show-section';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as createVersionItemModule from '@html/components/version-item';
 import { createFooter } from '@html/pi-tin';
 import { fixture } from '@open-wc/testing-helpers';
@@ -69,7 +69,7 @@ describe('pi-footer.ts', () => {
     createVersionItemStub.restore();
   });
 
-  it('should return nothing when show returns false for footer section', async () => {
+  it('should return nothing when show returns false for footer section',  () => {
     // Configure show to return false for footer section
     showSectionStub.withArgs(mockConfig, 'footer').returns(false);
 
@@ -96,7 +96,7 @@ describe('pi-footer.ts', () => {
     expect(el.classList.contains('version-info')).to.be.true;
   });
 
-  it('should call createVersionItem for each update in the device', async () => {
+  it('should call createVersionItem for each update in the device',  () => {
     // Call createFooter
     createFooter(mockElement, mockHass, mockConfig, mockDevice);
 

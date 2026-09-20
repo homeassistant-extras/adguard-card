@@ -2,7 +2,7 @@ import { styles } from '@/styles';
 import { AdGuardCard } from '@cards/card';
 import * as getAdGuardModule from '@delegates/utils/get-adguard';
 import * as getConfigDeviceModule from '@delegates/utils/get-config-device';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
 import type { AdGuardDevice } from '@type/types';
@@ -31,6 +31,10 @@ describe('AdGuardCard', () => {
         },
       },
     } as unknown as HomeAssistant;
+
+    if (!customElements.get('adguard-card')) {
+      customElements.define('adguard-card', AdGuardCard);
+    }
 
     // Create mock device
     mockDevice = {
@@ -71,6 +75,12 @@ describe('AdGuardCard', () => {
       id: 'adguard_device',
       config_entries: ['entry_1'],
       name: 'AdGuard',
+      identifiers: [],
+      manufacturer: null,
+      model: null,
+      model_id: null,
+      name_by_user: null,
+      serial_number: null,
     });
   });
 
@@ -80,7 +90,7 @@ describe('AdGuardCard', () => {
     getConfigDeviceStub.restore();
   });
 
-  it('should not update when hass changes but device data remains the same', async () => {
+  it('should not update when hass changes but device data remains the same',  () => {
     const card = new AdGuardCard();
 
     // Set initial config and hass

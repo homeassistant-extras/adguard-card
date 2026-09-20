@@ -1,4 +1,5 @@
-import { stateActive } from '@hass/common/entity/state_active';
+import { stateActive } from '@homeassistant-extras/hass/common/entity/state_active';
+import type { HassEntity } from '@homeassistant-extras/hass/ws/types';
 import type { EntityInformation } from '@type/types';
 import { type TemplateResult, html } from 'lit';
 
@@ -11,8 +12,11 @@ export const createVersionItem = (
   entity: EntityInformation,
 ): TemplateResult => {
   // super hacky - but too lazy to hardcode the names
-  const label = entity.attributes.friendly_name.replace(' update', '');
-  const hasUpdate = stateActive(entity as any, entity.state);
+  const label = (entity.attributes.friendly_name ?? '').replace(' update', '');
+  const hasUpdate = stateActive(
+    entity as unknown as HassEntity,
+    entity.state,
+  );
   const latestVersion = entity.attributes.latest_version;
   const installedVersion = entity.attributes.installed_version;
 

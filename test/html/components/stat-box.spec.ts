@@ -1,6 +1,6 @@
+import * as formatNumberModule from '@common/format-number';
 import * as actionHandlerModule from '@delegates/action-handler-delegate';
-import * as formatNumberModule from '@hass/common/number/format_number';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { createStatBox } from '@html/components/stat-box';
 import * as localizeModule from '@localize/localize';
 import { fixture } from '@open-wc/testing-helpers';
@@ -68,7 +68,7 @@ describe('stat-box.ts', () => {
 
     // Create stub for localize
     localizeStub = stub(localizeModule, 'localize');
-    localizeStub.callsFake((hass, key, search, replace) => {
+    localizeStub.callsFake((hass, key) => {
       // Simple mock implementation - return a predictable string based on key
       if (key === 'card.stats.total_queries') return 'Total Queries';
       if (key === 'card.stats.safe_searches') return '{number} safe searches';
@@ -108,7 +108,7 @@ describe('stat-box.ts', () => {
     );
 
     // Render the template
-    const el = await fixture(result as TemplateResult);
+    await fixture(result as TemplateResult);
 
     // Verify localize was called with the complex params
     expect(
@@ -148,7 +148,7 @@ describe('stat-box.ts', () => {
     expect(footerEl?.textContent?.trim()).to.equal('List all queries');
   });
 
-  it('should handle missing entity data', async () => {
+  it('should handle missing entity data',  () => {
     const result = createStatBox(
       mockElement,
       mockHass,
@@ -204,7 +204,7 @@ describe('stat-box.ts', () => {
     );
 
     // Render the template
-    const el = await fixture(result as TemplateResult);
+    await fixture(result as TemplateResult);
 
     // Should still render, but action handlers should be called with undefined
     expect(actionHandlerStub.calledWith(undefined)).to.be.true;

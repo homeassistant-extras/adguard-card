@@ -1,6 +1,6 @@
 import * as showSectionModule from '@common/show-section';
 import * as actionHandlerDelegate from '@delegates/action-handler-delegate';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as stateDisplayModule from '@html/components/state-display';
 import { createCardHeader } from '@html/pi-crust';
 import { fixture } from '@open-wc/testing-helpers';
@@ -88,7 +88,7 @@ describe('pi-crust.ts', () => {
     handleMultiInstanceClickActionStub.restore();
   });
 
-  it('should return nothing when show returns false for header section', async () => {
+  it('should return nothing when show returns false for header section',  () => {
     // Configure show to return false for header section
     showSectionStub.withArgs(mockConfig, 'header').returns(false);
 
@@ -208,7 +208,7 @@ describe('pi-crust.ts', () => {
     expect(iconEl?.getAttribute('icon')).to.equal('mdi:close-circle');
   });
 
-  it('should call stateDisplay with the status entity', async () => {
+  it('should call stateDisplay with the status entity',  () => {
     // Render the card header
     createCardHeader(mockElement, mockSetup, mockHass, mockConfig);
 

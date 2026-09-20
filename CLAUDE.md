@@ -12,10 +12,13 @@ Yarn project — use `yarn`, not `npm`.
 
 - `yarn build` — Parcel build, outputs `dist/adguard-card.js` (single bundled module entry from `src/index.ts`).
 - `yarn watch` — Parcel watch mode.
+- `yarn lint` / `yarn lint:fix` — ESLint via `@homeassistant-extras/config`.
+- `yarn typecheck` — `tsc --noEmit` for src and test configs.
+- `yarn pass` — format + typecheck + lint + test.
 - `yarn test` — Mocha + ts-node, picks up `test/**/*.spec.ts` via `.mocharc.json`.
 - `yarn test:watch` — Mocha watch mode (re-runs on `src/` or `test/` changes).
 - `yarn test:coverage` — NYC/Istanbul coverage over the test run.
-- `yarn format` — Prettier write across the repo (uses `@trivago/prettier-plugin-sort-imports` + `prettier-plugin-organize-imports`).
+- `yarn format` — Prettier write across the repo (shared prettier config from `@homeassistant-extras/config`).
 - `yarn update` — `npm-check-updates -u` then `yarn install`.
 
 Run a single test file:
@@ -43,7 +46,7 @@ The card type users reference in YAML is `custom:adguard`.
 
 - `cards/` — Lit components: the main `card.ts`, the `editor.ts`, plus `components/` (sub-elements rendered by the card) and `mixins/` (shared Lit mixin classes).
 - `delegates/` — Non-UI logic. `retrievers/` pull entities/devices/state out of HASS; `utils/` are pure helpers; `action-handler-delegate.ts` wires tap/hold/double-tap from HA's action system.
-- `hass/` — Vendored/forked Home Assistant types and helpers (`types.ts`, `common/`, `components/`, `data/`, `panels/`, `ws/`). Treat as an HA-shaped API surface; don't grow it casually.
+- Home Assistant types/helpers come from `@homeassistant-extras/hass` (not vendored in this repo).
 - `html/` — Lit `html`-template render functions used by the card.
 - `config/` — Card configuration schema and defaults.
 - `types/` — Shared TypeScript types (config shape, sensor shape, etc.).
@@ -66,16 +69,16 @@ When `device_id` is an array, the card aggregates switches across instances and 
 
 Defined in `tsconfig.json` (and mirrored for tests via `tsconfig-paths/register` in `.mocharc.json`):
 
-`@cards/*`, `@delegates/*`, `@hass/*`, `@html/*`, `@localize/*`, `@common/*`, `@config/*`, `@type/*`, `@util/*`, `@test/*`, `@/*` → `src/*`.
+`@cards/*`, `@delegates/*`, `@html/*`, `@localize/*`, `@common/*`, `@config/*`, `@type/*`, `@util/*`, `@test/*`, `@/*` → `src/*`.
 
-Prefer these aliases over relative paths in new code.
+Prefer these aliases over relative paths in new code. Import Home Assistant types/helpers from `@homeassistant-extras/hass/...`.
 
 ### Testing setup
 
 - Mocha + Chai + Sinon, plus `@open-wc/testing` and `@testing-library/dom` for Lit component tests.
-- `mocha.setup.ts` builds a JSDOM window, assigns it to `global.window`/`global.document`, shims `requestAnimationFrame` and `matchMedia` — required because Lit components touch DOM globals at module load.
+- DOM setup comes from `@homeassistant-extras/config/mocha/setup.card` (required in `.mocharc.json`).
 - `proxyquire` is available for swapping module imports in isolation.
-- Coverage config is wired through `@istanbuljs/nyc-config-typescript`.
+- Coverage config extends `@homeassistant-extras/config/nyc`.
 
 ### Build target
 

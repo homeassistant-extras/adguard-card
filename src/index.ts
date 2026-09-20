@@ -1,16 +1,14 @@
 import { AdGuardCard } from '@cards/card';
 import { AdGuardCardEditor } from '@cards/editor';
+import { customCards } from '@homeassistant-extras/hass/data/lovelace_custom_cards';
 import { version } from '../package.json';
 
 // Register the custom elements with the browser
 customElements.define('adguard-card', AdGuardCard);
 customElements.define('adguard-editor', AdGuardCardEditor);
 
-// Ensure the customCards array exists on the window object
-window.customCards = window.customCards || [];
-
 // Register the cards with Home Assistant's custom card registry
-window.customCards.push({
+customCards?.push({
   // Unique identifier for the card type
   type: 'adguard-card',
 

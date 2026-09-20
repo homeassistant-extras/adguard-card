@@ -1,9 +1,9 @@
 import * as mapEntitiesModule from '@common/map-entities';
 import * as skipEntityModule from '@common/skip-entity';
-import { getDevice } from '@delegates/retrievers/device';
+import * as deviceModule from '@delegates/retrievers/device';
 import * as cardEntitiesModule from '@delegates/utils/card-entities';
 import { getAdGuard } from '@delegates/utils/get-adguard';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { Config } from '@type/config';
 import type { EntityInformation } from '@type/types';
 import { expect } from 'chai';
@@ -31,7 +31,7 @@ describe('get-adguard.ts', () => {
 
     // Set up stubs for dependencies
     getDeviceStub = stub();
-    (getDevice as any) = getDeviceStub;
+    (deviceModule as any).getDevice = getDeviceStub;
     getDeviceStub.withArgs(mockHass, DEVICE_ID).returns({
       id: DEVICE_ID,
       name: DEVICE_NAME,
@@ -91,7 +91,7 @@ describe('get-adguard.ts', () => {
     getDeviceEntitiesStub.returns(mockEntities);
 
     // Configure mapEntitiesByTranslationKey to return true for translation keys that exist
-    mapEntitiesByTranslationKeyStub.callsFake((entity, device) => {
+    mapEntitiesByTranslationKeyStub.callsFake((entity) => {
       return !!entity.translation_key;
     });
 
@@ -126,7 +126,7 @@ describe('get-adguard.ts', () => {
     // Configure mapEntitiesByTranslationKey to return false (so the entity goes to other arrays)
     mapEntitiesByTranslationKeyStub.returns(false);
 
-    const result = getAdGuard(
+    getAdGuard(
       mockHass,
       mockConfig,
       mockConfig.device_id as string,
@@ -164,8 +164,7 @@ describe('get-adguard.ts', () => {
     mapEntitiesByTranslationKeyStub.returns(false);
     shouldSkipEntityStub.returns(false);
 
-    // Get the result
-    const result = getAdGuard(mockHass, mockConfig, DEVICE_ID);
+    getAdGuard(mockHass, mockConfig, DEVICE_ID);
 
     // Verify that entities were processed in the order specified by entity_order
     // Check calls to mapEntitiesByTranslationKey which should reflect processing order

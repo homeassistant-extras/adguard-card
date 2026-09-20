@@ -1,5 +1,5 @@
 import { getState } from '@delegates/retrievers/state';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { EntityState } from '@type/types';
 import { expect } from 'chai';
 

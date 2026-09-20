@@ -1,7 +1,7 @@
-import { fireEvent } from '@hass/common/dom/fire_event';
-import type { HaFormSchema } from '@hass/components/ha-form/types';
-import type { SelectOption } from '@hass/data/selector';
-import type { HomeAssistant } from '@hass/types';
+import { fireEvent } from '@homeassistant-extras/hass/common/dom/fire_event';
+import type { HaFormSchema } from '@homeassistant-extras/hass/components/ha-form/types';
+import type { SelectOption } from '@homeassistant-extras/hass/data/selector';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { localize } from '@localize/localize';
 import type { Config, SectionConfig } from '@type/config';
 import type { TranslationKey } from '@type/locale';
@@ -101,7 +101,6 @@ const ACTION_SCHEMA: HaFormSchema[] = [
 ];
 
 const getSchema = (hass: HomeAssistant): HaFormSchema[] => {
-  const l = (label: TranslationKey) => localize(hass, label);
   return [
     {
       name: 'device_id',
@@ -319,7 +318,7 @@ export class AdGuardCardEditor extends LitElement {
         .data=${this._config}
         .schema=${getSchema(this.hass)}
         .computeLabel=${(s: HaFormSchema) =>
-          localize(this.hass, s.label as any)}
+          localize(this.hass, s.label as TranslationKey)}
         @value-changed=${this._valueChanged}
       ></ha-form>
     `;
@@ -380,7 +379,7 @@ export class AdGuardCardEditor extends LitElement {
       delete config.collapsed_sections;
     }
 
-    // @ts-ignore
+    // @ts-expect-error config-changed is a HA editor event not in the local fireEvent map
     fireEvent(this, 'config-changed', {
       config,
     });

@@ -1,6 +1,6 @@
 import * as getStatsModule from '@common/get-stats';
 import * as showSectionModule from '@common/show-section';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as createStatBoxModule from '@html/components/stat-box';
 import { createDashboardStats } from '@html/pi-fillings';
 import { fixture } from '@open-wc/testing-helpers';
@@ -140,7 +140,7 @@ describe('pi-fillings.ts', () => {
     restore();
   });
 
-  it('should return nothing when show returns false for statistics section', async () => {
+  it('should return nothing when show returns false for statistics section',  () => {
     // Configure show to return false for statistics section
     showSectionStub.withArgs(mockConfig, 'statistics').returns(false);
 
@@ -162,7 +162,7 @@ describe('pi-fillings.ts', () => {
     expect(createStatBoxStub.called).to.be.false;
   });
 
-  it('should call getDashboardStats with correct safe searches enforced count', async () => {
+  it('should call getDashboardStats with correct safe searches enforced count',  () => {
     // Call createDashboardStats
     createDashboardStats(mockElement, mockHass, mockDevice, mockConfig);
 

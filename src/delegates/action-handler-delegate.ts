@@ -1,8 +1,8 @@
-import { fireEvent } from '@hass/common/dom/fire_event';
-import type { ActionHandlerEvent } from '@hass/data/lovelace/action_handler';
-import { actionHandler as hassActionHandler } from '@hass/panels/lovelace/common/directives/action-handler-directive';
-import type { ActionConfigParams } from '@hass/panels/lovelace/common/handle-action';
-import type { HomeAssistant } from '@hass/types';
+import { fireEvent } from '@homeassistant-extras/hass/common/dom/fire_event';
+import type { ActionHandlerEvent } from '@homeassistant-extras/hass/data/lovelace/action_handler';
+import { actionHandler as hassActionHandler } from '@homeassistant-extras/hass/panels/lovelace/common/directives/action-handler-directive';
+import type { ActionConfigParams } from '@homeassistant-extras/hass/panels/lovelace/common/handle-action';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { SectionConfig } from '@type/config';
 import type { EntityInformation } from '@type/types';
 
@@ -11,7 +11,7 @@ export interface HassUpdateEvent {
 }
 
 declare global {
-  // eslint-disable-next-line
+   
   interface HASSDomEvents {
     'hass-update': HassUpdateEvent;
   }
@@ -98,7 +98,6 @@ export const handleClickAction = (
         ...(sectionConfig || {}),
       };
 
-      // @ts-ignore
       fireEvent(element, 'hass-action', {
         config,
         action,
@@ -125,7 +124,6 @@ export const handleMultiInstanceClickAction = (
 
       // Process each action configuration
       actionConfigs.forEach((config) => {
-        // @ts-ignore
         fireEvent(element, 'hass-action', {
           config,
           action,

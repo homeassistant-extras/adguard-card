@@ -3,8 +3,9 @@ import {
   actionHandler,
   handleMultiInstanceClickAction,
 } from '@delegates/action-handler-delegate';
-import { stateActive } from '@hass/common/entity/state_active';
-import type { HomeAssistant } from '@hass/types';
+import { stateActive } from '@homeassistant-extras/hass/common/entity/state_active';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
+import type { HassEntity } from '@homeassistant-extras/hass/ws/types';
 import { localize } from '@localize/localize';
 import type { Config } from '@type/config';
 import type { AdGuardSetup } from '@type/types';
@@ -32,7 +33,9 @@ export const createCardHeader = (
   const activeCount = setup.holes
     .map((h) => h.protection)
     .filter(
-      (status) => status !== undefined && stateActive(status, status?.state),
+      (status) =>
+        status !== undefined &&
+        stateActive(status as unknown as HassEntity, status.state),
     ).length;
   const mixedStatus = activeCount > 0 && activeCount < setup.holes.length;
 

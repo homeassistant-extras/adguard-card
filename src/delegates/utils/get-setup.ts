@@ -1,5 +1,5 @@
 import { sortEntitiesByOrder } from '@common/sort-entities';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { Config } from '@type/config';
 import type { AdGuardSetup, EntityInformation } from '@type/types';
 import { getAdGuard } from './get-adguard';
@@ -27,7 +27,7 @@ export const getAdGuardSetup = (
   const spareSwitches: EntityInformation[] = [];
 
   const holes = deviceIds
-    .map((deviceId, i) => getAdGuard(hass, config, deviceId))
+    .map((deviceId) => getAdGuard(hass, config, deviceId))
     .filter((hole) => hole !== undefined)
     .map((hole, i) => {
       if (i > 0) {

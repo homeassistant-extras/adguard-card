@@ -1,5 +1,5 @@
 import { getState } from '@delegates/retrievers/state';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { EntityInformation } from '@type/types';
 
 /**
@@ -30,7 +30,9 @@ export const getDeviceEntities = (
       const name =
         state.attributes.friendly_name === deviceName
           ? deviceName
-          : state.attributes.friendly_name?.replace(deviceName, '').trim();
+          : state.attributes.friendly_name
+              ?.replace(deviceName ?? '', '')
+              .trim();
       return {
         entity_id: entity.entity_id,
         translation_key: entity.translation_key,

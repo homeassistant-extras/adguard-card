@@ -1,4 +1,4 @@
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import type { TranslationKey } from '@type/locale';
 
 import * as bg from '../translations/bg.json';
@@ -11,7 +11,7 @@ import * as fr from '../translations/fr.json';
 // Import other languages as needed above this line and in order
 
 // Define supported languages
-const languages: Record<string, any> = {
+const languages: Record<string, unknown> = {
   bg: bg,
   el: el,
   en: en,
@@ -54,17 +54,17 @@ export const localize = (
 };
 
 // Helper function to safely navigate nested objects
-function getNestedTranslation(obj: any, path: string): string | undefined {
+function getNestedTranslation(obj: unknown, path: string): string | undefined {
   if (!obj) return undefined;
 
   const keys = path.split('.');
-  let result = obj;
+  let result: unknown = obj;
 
   for (const key of keys) {
     if (result === undefined || result === null || typeof result !== 'object') {
       return undefined;
     }
-    result = result[key];
+    result = (result as Record<string, unknown>)[key];
   }
 
   return typeof result === 'string' ? result : undefined;

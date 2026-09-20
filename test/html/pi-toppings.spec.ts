@@ -1,5 +1,5 @@
 import * as showSectionModule from '@common/show-section';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as createAdditionalStatModule from '@html/components/additional-stat';
 import { createAdditionalStats } from '@html/pi-toppings';
 import { fixture } from '@open-wc/testing-helpers';
@@ -71,7 +71,7 @@ describe('pi-toppings.ts', () => {
     showSectionStub.restore();
   });
 
-  it('should return nothing when show returns false for sensors section', async () => {
+  it('should return nothing when show returns false for sensors section',  () => {
     // Configure show to return false for sensors section
     showSectionStub.withArgs(mockConfig, 'sensors').returns(false);
 

@@ -1,5 +1,5 @@
 import * as actionHandlerModule from '@delegates/action-handler-delegate';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { createAdditionalStat } from '@html/components/additional-stat';
 import * as stateDisplayModule from '@html/components/state-display';
 import { fixture } from '@open-wc/testing-helpers';

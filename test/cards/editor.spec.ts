@@ -1,5 +1,5 @@
 import { AdGuardCardEditor } from '@cards/editor';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import * as localizeModule from '@localize/localize';
 import { fixture } from '@open-wc/testing-helpers';
 import type { Config } from '@type/config';
@@ -12,11 +12,16 @@ describe('editor.ts', () => {
   let hass: HomeAssistant;
   let dispatchStub: sinon.SinonStub;
 
-  beforeEach(async () => {
+  beforeEach( () => {
     // Create mock HomeAssistant instance with language set
     hass = {
       language: 'en',
     } as HomeAssistant;
+
+    if (!customElements.get('adguard-editor')) {
+      customElements.define('adguard-editor', AdGuardCardEditor);
+    }
+
     card = new AdGuardCardEditor();
     dispatchStub = sinon.stub(card, 'dispatchEvent');
 
@@ -107,13 +112,13 @@ describe('editor.ts', () => {
   });
 
   describe('render', () => {
-    it('should return nothing when hass is not set', async () => {
+    it('should return nothing when hass is not set',  () => {
       card.hass = undefined as any;
       const result = card.render();
       expect(result).to.equal(nothing);
     });
 
-    it('should return nothing when config is not set', async () => {
+    it('should return nothing when config is not set',  () => {
       const result = card.render();
       expect(result).to.equal(nothing);
     });

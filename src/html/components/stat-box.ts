@@ -1,9 +1,9 @@
+import { formatNumber } from '@common/format-number';
 import {
   actionHandler,
   handleClickAction,
 } from '@delegates/action-handler-delegate';
-import { formatNumber } from '@hass/common/number/format_number';
-import type { HomeAssistant } from '@hass/types';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 import { localize } from '@localize/localize';
 import type { SectionConfig, StatBoxConfig } from '@type/config';
 import type { EntityInformation } from '@type/types';
@@ -30,7 +30,7 @@ export const createStatBox = (
   const uom = ['%', 'ms'].includes(entity.attributes?.unit_of_measurement ?? '')
     ? entity.attributes?.unit_of_measurement
     : '';
-  const value = formatNumber(entity.state, hass.locale, {
+  const value = formatNumber(entity.state, hass.language, {
     maximumFractionDigits: 1,
   });
   const footer =

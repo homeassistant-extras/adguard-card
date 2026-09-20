@@ -1,5 +1,5 @@
-import type { DeviceRegistryEntry } from '@hass/data/device_registry';
-import type { HomeAssistant } from '@hass/types';
+import type { DeviceRegistryEntry } from '@homeassistant-extras/hass/data/device/device_registry';
+import type { HomeAssistant } from '@homeassistant-extras/hass/types';
 
 /**
  * Retrieves device information
@@ -11,4 +11,4 @@ import type { HomeAssistant } from '@hass/types';
 export const getDevice = (
   hass: HomeAssistant,
   deviceId: string,
-): DeviceRegistryEntry => (hass.devices as { [key: string]: any })[deviceId];
+): DeviceRegistryEntry => hass.devices[deviceId]!;
